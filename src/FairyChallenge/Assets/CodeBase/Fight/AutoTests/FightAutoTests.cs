@@ -26,18 +26,35 @@ namespace Fight
             {
                 FightTestStaticData testStaticData = FightTestLibrary.GetFightTest(fightTestId.TestId);
                 HeroTestData ourHeroData = testStaticData.OurHero;
-                Hero hero = _heroFactory.Create(ourHeroData.HeroId, ourHeroData.Level);
                 for (var index = 0; index < testStaticData.Enemies.Count; index++)
                 {
-                    HeroTestData heroTestData = testStaticData.Enemies[index];
-                    Hero enemy = _heroFactory.Create(heroTestData.HeroId, heroTestData.Level);
-                    float progress = (float) index / testStaticData.Enemies.Count;
-                    DisplayProgressBar("Fight", $"{hero} vs {enemy}", progress);
-                    CalcFight(hero, enemy);
+                    HeroTestData enemyTestData = testStaticData.Enemies[index];
+                    TestFight(ourHeroData, enemyTestData, index, testStaticData);
                 }
             }
 
             ClearProgressBar();
+        }
+
+        private void TestFight(HeroTestData ourHeroData, HeroTestData enemyTestData, int index, FightTestStaticData testStaticData)
+        {
+            Hero hero = _heroFactory.Create(ourHeroData.HeroId, ourHeroData.Level);
+            Hero enemy = _heroFactory.Create(enemyTestData.HeroId, enemyTestData.Level);
+            Debug.Log($"Start test {hero}: {hero.PrintStats()} vs {enemy}: {enemy.PrintStats()}");
+
+            var attackIterator = new AttackIterator(hero, enemy);
+            do
+            {
+                enemy = _heroFactory.Create(enemyTestData.HeroId, enemyTestData.Level);
+                hero = _heroFactory.Create(ourHeroData.HeroId, ourHeroData.Level);
+                int currentVariantNumber = attackIterator.CurrentVariantNumber();
+                int estimateVariantsCount = attackIterator.EstimateVariantsCount();
+                float progress = currentVariantNumber / (float) estimateVariantsCount;
+                var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
+                DisplayProgressBar("Fight", info, progress);
+
+                CalcFight(hero, enemy, attackIterator);
+            } while (attackIterator.HasNext());
         }
 
         private static void ClearProgressBar()
@@ -54,30 +71,31 @@ namespace Fight
 #endif
         }
 
-        private void CalcFight(Hero hero, Hero enemy)
+        private void CalcFight(Hero hero, Hero enemy, AttackIterator attackIterator)
         {
-            Debug.Log($"{hero}: {hero.PrintStats()} vs {enemy}: {enemy.PrintStats()}\n");
-
-            List<Hero> heroes = new List<Hero> {hero, enemy};
-
-            int turn = 1;
+            var log = string.Empty;
+            var heroes = new List<Hero> {hero, enemy};
+            var turn = 0;
+            var turnString = string.Empty;
 
             while (hero.IsAlive && enemy.IsAlive)
             {
-                int heroAttackIndex = 0;
-                int enemyAttackIndex = 0;
+                int heroAttackIndex;
+                int enemyAttackIndex;
+                attackIterator.GetIndexForTurn(turn, out heroAttackIndex, out enemyAttackIndex);
 
                 bool heroHasMoreSpeed = hero.Stats.Get(StatType.Speed) > enemy.Stats.Get(StatType.Speed);
                 Hero firstHero = heroHasMoreSpeed ? hero : enemy;
                 int firstHeroAttackIndex = heroHasMoreSpeed ? heroAttackIndex : enemyAttackIndex;
                 Hero secondHero = heroHasMoreSpeed ? enemy : hero;
                 int secondHeroAttackIndex = heroHasMoreSpeed ? enemyAttackIndex : heroAttackIndex;
-                
+
                 _attackResultLogger.SaveState(heroes);
                 AttackResult attackResult = _fightCalculator.CalcAttack(firstHero, firstHeroAttackIndex, secondHero);
                 ApplyResult(attackResult, heroes);
                 _attackResultLogger.ApplyState(heroes);
-                Debug.Log($"{turn}: {firstHero} attacks {secondHero}: {_attackResultLogger.PrintLog()}");
+                turnString = (turn + 1).ToString();
+                log += LogTurn(turnString, firstHero, secondHero, attackResult, _attackResultLogger);
 
                 if (secondHero.IsAlive)
                 {
@@ -85,18 +103,26 @@ namespace Fight
                     attackResult = _fightCalculator.CalcAttack(secondHero, secondHeroAttackIndex, firstHero);
                     ApplyResult(attackResult, heroes);
                     _attackResultLogger.ApplyState(heroes);
-                    Debug.Log($"{turn}: {secondHero} attacks {firstHero}: {_attackResultLogger.PrintLog()}");
+                    log += LogTurn(turnString, secondHero, firstHero, attackResult, _attackResultLogger);
                 }
 
                 turn++;
             }
 
-            Debug.Log($"Result {hero} {PrintResult(hero)} vs {enemy} {PrintResult(enemy)}\n");
+            Debug.Log($"Result {hero} {PrintResult(hero)} vs {enemy} {PrintResult(enemy)} at turn {turnString}: {attackIterator.PrintCurrentVariant()}\n{log}");
+            
+            int lastTurn = turn - 1;
+            attackIterator.FightEndOnTurn(lastTurn);
+        }
+
+        private string LogTurn(string logTurn, Hero firstHero, Hero secondHero, AttackResult attackResult, AttackResultLogger attackResultLogger)
+        {
+            return $"{logTurn}: <color=white>{firstHero}</color> with <color=white>{attackResult.AttackId}</color> attacks {secondHero} : {attackResultLogger.PrintLog()}\n";
         }
 
         private string PrintResult(Hero hero)
         {
-            return hero.IsAlive ? "<color=green>is alive</color>" : "<color=red>is dead</color>";
+            return hero.IsAlive ? "<color=#00FF00>is alive</color>" : "<color=red>is dead</color>";
         }
 
         private static void ApplyResult(AttackResult attackResult, List<Hero> heroes)

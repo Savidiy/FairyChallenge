@@ -7,6 +7,8 @@ namespace Fight
     {
         private readonly Dictionary<Hero, List<StatChangeData>> _changes = new();
 
+        public string AttackId { get; private set; }
+
         public void AddChange(Hero hero, StatChangeData statChangeData)
         {
             if (!_changes.TryGetValue(hero, out List<StatChangeData> heroChanges))
@@ -35,6 +37,11 @@ namespace Fight
             }
 
             return result;
+        }
+
+        public void SetAttackId(string attackId)
+        {
+            AttackId = attackId;
         }
     }
 }

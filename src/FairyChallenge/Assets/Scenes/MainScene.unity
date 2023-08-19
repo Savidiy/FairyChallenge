@@ -172,7 +172,7 @@ MonoBehaviour:
   FightTestLibrary: {fileID: 11400000, guid: baf402ac4c5f4bb4ca5c9df40fe2c225, type: 2}
   FightSettings: {fileID: 11400000, guid: fae41b335ad98384fb63780711b98608, type: 2}
   FightTestIds:
-  - TestId: 1
+  - TestId: Fairy 6 x Blob 6
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,8 +17,12 @@ MonoBehaviour:
     Attacks:
     - AvailableFromLevel: 0
       AttackId: Fairy1
-    - AvailableFromLevel: 3
+    - AvailableFromLevel: 2
       AttackId: Fairy2
+    - AvailableFromLevel: 4
+      AttackId: Fairy3
+    - AvailableFromLevel: 6
+      AttackId: Fairy4
     DefaultHealthPointsDelta: 2
     DefaultAttackDelta: 1
     DefaultDefenceDelta: 1
@@ -26,41 +30,63 @@ MonoBehaviour:
     DefaultExperienceForNextLevelDelta: 10
     Stats:
     - IsInitialized: 0
-      HealthPoints: 15
-      Attack: 10
+      HealthPoints: 20
+      Attack: 5
       Defence: 5
-      Speed: 10
+      Speed: 9
       ExperienceForNextLevel: 4
     - IsInitialized: 1
-      HealthPoints: 17
-      Attack: 11
+      HealthPoints: 22
+      Attack: 6
       Defence: 6
-      Speed: 11
+      Speed: 10
       ExperienceForNextLevel: 14
     - IsInitialized: 1
-      HealthPoints: 19
-      Attack: 12
+      HealthPoints: 24
+      Attack: 7
       Defence: 7
-      Speed: 12
+      Speed: 11
       ExperienceForNextLevel: 24
     - IsInitialized: 1
-      HealthPoints: 21
-      Attack: 13
+      HealthPoints: 26
+      Attack: 8
       Defence: 8
-      Speed: 13
+      Speed: 12
       ExperienceForNextLevel: 34
     - IsInitialized: 1
-      HealthPoints: 23
-      Attack: 14
+      HealthPoints: 28
+      Attack: 9
       Defence: 9
-      Speed: 14
+      Speed: 13
       ExperienceForNextLevel: 44
+    - IsInitialized: 1
+      HealthPoints: 30
+      Attack: 10
+      Defence: 10
+      Speed: 14
+      ExperienceForNextLevel: 54
+    - IsInitialized: 1
+      HealthPoints: 32
+      Attack: 11
+      Defence: 11
+      Speed: 15
+      ExperienceForNextLevel: 64
+    - IsInitialized: 1
+      HealthPoints: 34
+      Attack: 12
+      Defence: 12
+      Speed: 16
+      ExperienceForNextLevel: 74
   - HeroId: Blob
     Attacks:
     - AvailableFromLevel: 0
       AttackId: Blob1
     - AvailableFromLevel: 2
       AttackId: Blob2
+    - AvailableFromLevel: 4
+      AttackId: Blob3
+    - AvailableFromLevel: 6
+      AttackId: Blob4
     DefaultHealthPointsDelta: 1
     DefaultAttackDelta: 1
     DefaultDefenceDelta: 1
@@ -68,32 +94,62 @@ MonoBehaviour:
     DefaultExperienceForNextLevelDelta: 0
     Stats:
     - IsInitialized: 0
-      HealthPoints: 6
+      HealthPoints: 14
       Attack: 5
       Defence: 5
       Speed: 8
       ExperienceForNextLevel: 0
     - IsInitialized: 1
-      HealthPoints: 7
+      HealthPoints: 15
       Attack: 6
       Defence: 6
       Speed: 9
       ExperienceForNextLevel: 0
     - IsInitialized: 1
-      HealthPoints: 8
+      HealthPoints: 16
       Attack: 7
       Defence: 7
       Speed: 10
       ExperienceForNextLevel: 0
     - IsInitialized: 1
-      HealthPoints: 9
+      HealthPoints: 17
       Attack: 8
       Defence: 8
       Speed: 11
       ExperienceForNextLevel: 0
     - IsInitialized: 1
-      HealthPoints: 10
+      HealthPoints: 18
       Attack: 9
       Defence: 9
       Speed: 12
+      ExperienceForNextLevel: 0
+    - IsInitialized: 1
+      HealthPoints: 19
+      Attack: 10
+      Defence: 10
+      Speed: 13
+      ExperienceForNextLevel: 0
+    - IsInitialized: 1
+      HealthPoints: 20
+      Attack: 11
+      Defence: 11
+      Speed: 14
+      ExperienceForNextLevel: 0
+    - IsInitialized: 1
+      HealthPoints: 21
+      Attack: 12
+      Defence: 12
+      Speed: 15
+      ExperienceForNextLevel: 0
+    - IsInitialized: 1
+      HealthPoints: 22
+      Attack: 13
+      Defence: 13
+      Speed: 16
+      ExperienceForNextLevel: 0
+    - IsInitialized: 1
+      HealthPoints: 23
+      Attack: 14
+      Defence: 14
+      Speed: 17
       ExperienceForNextLevel: 0

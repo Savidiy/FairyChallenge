@@ -5,6 +5,7 @@ namespace Fight
         private readonly AttackStaticData _attackStaticData;
         public readonly int FromLevel;
         public int Power => _attackStaticData.Power;
+        public string AttackId => _attackStaticData.AttackId;
 
         public AttackData(AttackStaticData attackStaticData, int fromLevel)
         {

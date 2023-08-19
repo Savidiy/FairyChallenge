@@ -13,14 +13,45 @@ MonoBehaviour:
   m_Name: FightTestLibrary
   m_EditorClassIdentifier: 
   Tests:
-  - TestId: 1
+  - TestId: Fairy 1 x Blob 1
     OurHero:
       HeroId: Fairy
       Level: 1
     Enemies:
     - HeroId: Blob
       Level: 1
+  - TestId: Fairy 2 x Blob 1
+    OurHero:
+      HeroId: Fairy
+      Level: 2
+    Enemies:
+    - HeroId: Blob
+      Level: 1
+  - TestId: Fairy 1 x Blob 2
+    OurHero:
+      HeroId: Fairy
+      Level: 1
+    Enemies:
     - HeroId: Blob
       Level: 2
+  - TestId: Fairy 2 x Blob 2
+    OurHero:
+      HeroId: Fairy
+      Level: 2
+    Enemies:
     - HeroId: Blob
       Level: 2
+  - TestId: Fairy 4 x Blob 4
+    OurHero:
+      HeroId: Fairy
+      Level: 4
+    Enemies:
+    - HeroId: Blob
+      Level: 4
+  - TestId: Fairy 6 x Blob 6
+    OurHero:
+      HeroId: Fairy
+      Level: 6
+    Enemies:
+    - HeroId: Blob
+      Level: 6

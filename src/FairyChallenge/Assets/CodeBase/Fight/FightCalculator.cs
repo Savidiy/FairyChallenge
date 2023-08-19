@@ -27,6 +27,7 @@ namespace Fight
             int damage = Mathf.CeilToInt(attackPower * attackerAttack / (defenderDefence + defenceBonus));
 
             var statChangeData = new StatChangeData(StatType.CurrentHealthPoints, -damage);
+            attackResult.SetAttackId(attackData.AttackId);
             attackResult.AddChange(defender, statChangeData);
             return attackResult;
         }

@@ -17,7 +17,15 @@ MonoBehaviour:
     Power: 3
   - AttackId: Fairy2
     Power: 7
+  - AttackId: Fairy3
+    Power: 10
+  - AttackId: Fairy4
+    Power: 15
   - AttackId: Blob1
     Power: 2
   - AttackId: Blob2
     Power: 4
+  - AttackId: Blob3
+    Power: 7
+  - AttackId: Blob4
+    Power: 11
