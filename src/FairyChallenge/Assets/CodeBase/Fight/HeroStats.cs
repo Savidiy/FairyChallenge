@@ -28,20 +28,12 @@ namespace Fight
                 return;
 
             HeroStatStaticData heroStatStaticData = GetStats(heroStatStaticDatas, level);
-            int experience = 0;
-            for (var i = 0; i < level; i++)
-            {
-                HeroStatStaticData statStaticData = heroStatStaticDatas[i];
-                experience += statStaticData.ExperienceForNextLevel;
-            }
-
+           
             Set(StatType.Attack, heroStatStaticData.Attack);
             Set(StatType.Defence, heroStatStaticData.Defence);
             Set(StatType.Speed, heroStatStaticData.Speed);
             Set(StatType.MaxHealthPoints, heroStatStaticData.HealthPoints);
             Set(StatType.CurrentHealthPoints, heroStatStaticData.HealthPoints);
-            Set(StatType.CurrentExperience, experience);
-            Set(StatType.ExperienceForNextLevel, experience + heroStatStaticData.ExperienceForNextLevel);
         }
 
         private static bool CheckLevelAvailable(List<HeroStatStaticData> heroStatStaticDatas, int level)
@@ -92,8 +84,7 @@ namespace Fight
             return $"HP {Get(StatType.CurrentHealthPoints)}/{Get(StatType.MaxHealthPoints)} " +
                    $"Att {Get(StatType.Attack)}, " +
                    $"Def {Get(StatType.Defence)}, " +
-                   $"Spd {Get(StatType.Speed)}, " +
-                   $"Exp {Get(StatType.CurrentExperience)}/{Get(StatType.ExperienceForNextLevel)}";
+                   $"Spd {Get(StatType.Speed)}";
         }
 
         public void FillAllStatsValues(Dictionary<StatType,int> dictionary)

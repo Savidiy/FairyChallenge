@@ -171,8 +171,9 @@ MonoBehaviour:
   HeroLibrary: {fileID: 11400000, guid: 56df309ea786a6b42ac06aa5a8d34b30, type: 2}
   FightTestLibrary: {fileID: 11400000, guid: baf402ac4c5f4bb4ca5c9df40fe2c225, type: 2}
   FightSettings: {fileID: 11400000, guid: fae41b335ad98384fb63780711b98608, type: 2}
+  ShowVariantsLog: 0
   FightTestIds:
-  - TestId: Fairy 6 x Blob 6
+  - TestId: Fairy 2 x Blob 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

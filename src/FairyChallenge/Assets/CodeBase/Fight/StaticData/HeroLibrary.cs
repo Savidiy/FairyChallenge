@@ -59,7 +59,6 @@ namespace Fight
                 heroStat.Attack = previousStat.Attack + hero.DefaultAttackDelta;
                 heroStat.Defence = previousStat.Defence + hero.DefaultDefenceDelta;
                 heroStat.Speed = previousStat.Speed + hero.DefaultSpeedDelta;
-                heroStat.ExperienceForNextLevel = previousStat.ExperienceForNextLevel + hero.DefaultExperienceForNextLevelDelta;
             }
         }
     }
@@ -76,7 +75,6 @@ namespace Fight
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultAttackDelta;
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultDefenceDelta;
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultSpeedDelta;
-        [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultExperienceForNextLevelDelta;
 
         [TableList(ShowIndexLabels = true)]
         public List<HeroStatStaticData> Stats;
@@ -91,7 +89,6 @@ namespace Fight
                 stat.Attack = lastStat.Attack + DefaultAttackDelta;
                 stat.Defence = lastStat.Defence + DefaultDefenceDelta;
                 stat.Speed = lastStat.Speed + DefaultSpeedDelta;
-                stat.ExperienceForNextLevel = lastStat.ExperienceForNextLevel + DefaultExperienceForNextLevelDelta;
             }
 
             return stat;
@@ -111,6 +108,5 @@ namespace Fight
         public int Attack;
         public int Defence;
         public int Speed;
-        public int ExperienceForNextLevel;
     }
 }

@@ -17,41 +17,161 @@ MonoBehaviour:
     OurHero:
       HeroId: Fairy
       Level: 1
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 1
+    LastResult: 
   - TestId: Fairy 2 x Blob 1
     OurHero:
       HeroId: Fairy
       Level: 2
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 1
+    LastResult: 
   - TestId: Fairy 1 x Blob 2
     OurHero:
       HeroId: Fairy
       Level: 1
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 2
+    LastResult: 
   - TestId: Fairy 2 x Blob 2
     OurHero:
       HeroId: Fairy
       Level: 2
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 2
+    LastResult: 'Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 2, HP=20/24, Att=7, Def=7, Spd=11 (2% 8/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 2, HP=18/24, Att=7,
+      Def=7, Spd=11 (5% 16/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 3, HP=18/24, Att=7, Def=7, Spd=11 (4%
+      14/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 3, HP=16/24, Att=7, Def=7, Spd=11 (13% 42/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 2, HP=16/24, Att=7,
+      Def=7, Spd=11 (2% 8/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 4, HP=16/24, Att=7, Def=7, Spd=11 (0%
+      2/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 3, HP=14/24, Att=7, Def=7, Spd=11 (13% 42/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 4, HP=14/24, Att=7,
+      Def=7, Spd=11 (2% 8/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 5, HP=14/24, Att=7, Def=7, Spd=11 (1%
+      4/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 5, HP=12/24, Att=7, Def=7, Spd=11 (6% 20/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 3, HP=12/24, Att=7,
+      Def=7, Spd=11 (4% 14/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 4, HP=12/24, Att=7, Def=7, Spd=11 (3%
+      12/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 5, HP=10/24, Att=7, Def=7, Spd=11 (13% 40/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 4, HP=10/24, Att=7,
+      Def=7, Spd=11 (2% 8/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 5, HP=8/24, Att=7, Def=7, Spd=11 (13%
+      40/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 4, HP=8/24, Att=7, Def=7, Spd=11 (0% 2/304)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 5, HP=6/24, Att=7,
+      Def=7, Spd=11 (6% 20/304)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 5, HP=4/24, Att=7, Def=7, Spd=11 (1%
+      4/304)'
+  - TestId: Fairy 2 x Blob 4
+    OurHero:
+      HeroId: Fairy
+      Level: 2
+    Enemy:
+      HeroId: Blob
+      Level: 4
+    LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
+      LastTurn: 2, HP=0/24, Att=7, Def=7, Spd=11 (0% 32/7156)
+
+      Hero <color=red>is
+      dead</color>, Enemy <color=#00FF00>is alive</color>, LastTurn: 3, HP=0/24,
+      Att=7, Def=7, Spd=11 (8% 608/7156)
+
+      Hero <color=red>is dead</color>,
+      Enemy <color=#00FF00>is alive</color>, LastTurn: 4, HP=0/24, Att=7, Def=7,
+      Spd=11 (32% 2304/7156)
+
+      Hero <color=red>is dead</color>, Enemy <color=#00FF00>is
+      alive</color>, LastTurn: 5, HP=0/24, Att=7, Def=7, Spd=11 (40% 2912/7156)
+
+      Hero
+      <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>, LastTurn:
+      6, HP=0/24, Att=7, Def=7, Spd=11 (12% 880/7156)
+
+      Hero <color=red>is dead</color>,
+      Enemy <color=#00FF00>is alive</color>, LastTurn: 7, HP=0/24, Att=7, Def=7,
+      Spd=11 (0% 48/7156)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is
+      dead</color>, LastTurn: 4, HP=9/24, Att=7, Def=7, Spd=11 (0% 6/7156)
+
+      Hero
+      <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>, LastTurn:
+      4, HP=6/24, Att=7, Def=7, Spd=11 (0% 30/7156)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 5, HP=6/24, Att=7,
+      Def=7, Spd=11 (0% 30/7156)
+
+      Hero <color=#00FF00>is alive</color>, Enemy
+      <color=red>is dead</color>, LastTurn: 4, HP=3/24, Att=7, Def=7, Spd=11 (1%
+      90/7156)
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
+      LastTurn: 5, HP=3/24, Att=7, Def=7, Spd=11 (2% 180/7156)
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 6, HP=3/24, Att=7,
+      Def=7, Spd=11 (0% 36/7156)'
   - TestId: Fairy 4 x Blob 4
     OurHero:
       HeroId: Fairy
       Level: 4
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 4
+    LastResult: 
   - TestId: Fairy 6 x Blob 6
     OurHero:
       HeroId: Fairy
       Level: 6
-    Enemies:
-    - HeroId: Blob
+    Enemy:
+      HeroId: Blob
       Level: 6
+    LastResult: 

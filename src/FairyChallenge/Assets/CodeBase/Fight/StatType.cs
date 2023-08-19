@@ -7,7 +7,5 @@ namespace Fight
         Attack = 2,
         Defence = 3,
         Speed = 4,
-        CurrentExperience = 5,
-        ExperienceForNextLevel = 6,
     }
 }

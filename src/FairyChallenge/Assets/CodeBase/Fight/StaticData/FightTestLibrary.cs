@@ -9,6 +9,7 @@ namespace Fight
     [CreateAssetMenu(fileName = nameof(FightTestLibrary), menuName = nameof(FightTestLibrary), order = 0)]
     public class FightTestLibrary : AutoSaveScriptableObject
     {
+        [ListDrawerSettings(ListElementLabelName = "@this")]
         public List<FightTestStaticData> Tests = new();
 
         public ValueDropdownList<string> TestIds = new();
@@ -30,6 +31,13 @@ namespace Fight
             foreach (FightTestStaticData test in Tests)
                 TestIds.Add(test.TestId);
         }
+
+        public void SaveTestResult(string testId, string result)
+        {
+            FightTestStaticData fightTestStaticData = GetFightTest(testId);
+            fightTestStaticData.LastResult = result;
+            SavePrefab();
+        }
     }
 
     [Serializable]
@@ -37,9 +45,9 @@ namespace Fight
     {
         public string TestId;
         public HeroTestData OurHero;
-
-        [ListDrawerSettings(AlwaysAddDefaultValue = true)]
-        public List<HeroTestData> Enemies = new();
+        public HeroTestData Enemy;
+        [TextArea] public string LastResult;
+        public override string ToString() => TestId;
     }
 
     [Serializable]
