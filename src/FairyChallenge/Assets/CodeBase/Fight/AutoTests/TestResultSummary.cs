@@ -8,10 +8,12 @@ namespace Fight
         public readonly bool HeroIsAlive;
         public readonly bool EnemyIsAlive;
         public readonly int LastTurn;
+        private readonly string _printCurrentVariant;
         public int Count { get; private set; } = 1;
 
-        public TestResultSummary(Hero hero, Hero enemy, int lastTurn)
+        public TestResultSummary(Hero hero, Hero enemy, int lastTurn, string printCurrentVariant)
         {
+            _printCurrentVariant = printCurrentVariant;
             LastTurn = lastTurn;
             HeroIsAlive = hero.IsAlive;
             hero.Stats.FillAllStatsValues(Stats);
@@ -48,7 +50,7 @@ namespace Fight
         {
             var percent = (int) (Count * 100f / sum);
             return
-                $"Hero {FightAutoTests.PrintAlive(HeroIsAlive)}, Enemy {FightAutoTests.PrintAlive(EnemyIsAlive)}, LastTurn: {LastTurn}, HP={Stats[StatType.CurrentHealthPoints]}/{Stats[StatType.MaxHealthPoints]}, Att={Stats[StatType.Attack]}, Def={Stats[StatType.Defence]}, Spd={Stats[StatType.Speed]} ({percent}% {Count}/{sum})";
+                $"Hero {FightAutoTests.PrintAlive(HeroIsAlive)}, Enemy {FightAutoTests.PrintAlive(EnemyIsAlive)}, LastTurn: {LastTurn}, HP={Stats[StatType.CurrentHealthPoints]}/{Stats[StatType.MaxHealthPoints]}, Att={Stats[StatType.Attack]}, Def={Stats[StatType.Defence]}, Spd={Stats[StatType.Speed]} ({percent}% {Count}/{sum}) ex. {_printCurrentVariant}";
         }
     }
 }

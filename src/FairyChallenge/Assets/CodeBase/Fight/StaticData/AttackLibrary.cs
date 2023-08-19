@@ -36,6 +36,26 @@ namespace Fight
     public class AttackStaticData
     {
         public string AttackId = string.Empty;
+        public List<EffectStaticData> Effects = new();
+    }
+    
+    [Serializable]
+    public class EffectStaticData
+    {
+        public EffectType EffectType;
         public int Power;
+    }
+
+    public enum EffectType
+    {
+        Damage,
+        Heal,
+        HealByDamage,
+        BuffSelfAttack,
+        BuffSelfDefence,
+        BuffSelfSpeed,
+        DebuffEnemyAttack,
+        DebuffEnemyDefence,
+        DebuffEnemySpeed,
     }
 }

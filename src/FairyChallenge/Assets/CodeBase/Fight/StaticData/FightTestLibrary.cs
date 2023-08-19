@@ -29,7 +29,14 @@ namespace Fight
             base.OnValidate();
             TestIds.Clear();
             foreach (FightTestStaticData test in Tests)
+            {
+                HeroTestData hero = test.OurHero;
+                HeroTestData enemy = test.Enemy;
+                test.TestId = $"{hero.HeroId} {hero.Level}{(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",",hero.AdditionalAttacks)})": "")} vs {enemy.HeroId} {enemy.Level}{(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",",enemy.AdditionalAttacks)})": "")}";
                 TestIds.Add(test.TestId);
+            }
+
+            SavePrefab();
         }
 
         public void SaveTestResult(string testId, string result)
@@ -46,7 +53,7 @@ namespace Fight
         public string TestId;
         public HeroTestData OurHero;
         public HeroTestData Enemy;
-        [TextArea] public string LastResult;
+        [TextArea, FoldoutGroup("Result")] public string LastResult;
         public override string ToString() => TestId;
     }
 
@@ -56,5 +63,19 @@ namespace Fight
         [ValueDropdown(nameof(HeroIds)), HorizontalGroup] public string HeroId;
         private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
         [HorizontalGroup] public int Level;
+
+        public List<AdditionalAttackData> AdditionalAttacks = new();
+    }
+
+    [Serializable]
+    public class AdditionalAttackData
+    {
+        [ValueDropdown(nameof(AttackIds)), HideLabel] public string AttackId;
+        private ValueDropdownList<string> AttackIds => OdinAttackIdProvider.AttackIds;
+
+        public override string ToString()
+        {
+            return AttackId;
+        }
     }
 }

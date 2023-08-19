@@ -40,24 +40,24 @@ namespace Fight
                 FightTestStaticData testStaticData = FightTestLibrary.GetFightTest(testId);
                 HeroTestData ourHeroData = testStaticData.OurHero;
                 HeroTestData enemyTestData = testStaticData.Enemy;
-                TestFight(ourHeroData, enemyTestData);
+                TestFight(testId, ourHeroData, enemyTestData);
                 _testStatistics.SaveLog(testId);
             }
 
             ClearProgressBar();
         }
 
-        private void TestFight(HeroTestData ourHeroData, HeroTestData enemyTestData)
+        private void TestFight(string testId, HeroTestData ourHeroData, HeroTestData enemyTestData)
         {
-            Hero hero = _heroFactory.Create(ourHeroData.HeroId, ourHeroData.Level);
-            Hero enemy = _heroFactory.Create(enemyTestData.HeroId, enemyTestData.Level);
-            Debug.Log($"Start test {hero}: {hero.PrintStats()} vs {enemy}: {enemy.PrintStats()}");
+            Hero hero = _heroFactory.Create(ourHeroData);
+            Hero enemy = _heroFactory.Create(enemyTestData);
+            Debug.Log($"Start test '{testId}' {hero}: {hero.PrintStats()} vs {enemy}: {enemy.PrintStats()}");
 
             var attackIterator = new AttackIterator(hero, enemy);
             do
             {
-                enemy = _heroFactory.Create(enemyTestData.HeroId, enemyTestData.Level);
-                hero = _heroFactory.Create(ourHeroData.HeroId, ourHeroData.Level);
+                hero = _heroFactory.Create(ourHeroData);
+                enemy = _heroFactory.Create(enemyTestData);
                 int currentVariantNumber = attackIterator.CurrentVariantNumber();
                 int estimateVariantsCount = attackIterator.EstimateVariantsCount();
                 float progress = currentVariantNumber / (float) estimateVariantsCount;
@@ -120,12 +120,13 @@ namespace Fight
                 turn++;
             }
 
+            string printCurrentVariant = attackIterator.PrintCurrentVariant();
             if (ShowVariantsLog)
                 Debug.Log(
-                    $"Result {hero} {PrintAlive(hero.IsAlive)} vs {enemy} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {attackIterator.PrintCurrentVariant()}\n{log}");
+                    $"Result {hero} {PrintAlive(hero.IsAlive)} vs {enemy} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
 
             int lastTurn = turn - 1;
-            _testStatistics.Add(hero, enemy, lastTurn);
+            _testStatistics.Add(hero, enemy, lastTurn, printCurrentVariant);
             attackIterator.FightEndOnTurn(lastTurn);
         }
 

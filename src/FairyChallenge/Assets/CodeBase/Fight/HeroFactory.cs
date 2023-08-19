@@ -20,5 +20,18 @@ namespace Fight
             var hero = new Hero(heroData, level, attacks);
             return hero;
         }
+
+        public Hero Create(HeroTestData enemyTestData)
+        {
+            string heroId = enemyTestData.HeroId;
+            int level = enemyTestData.Level;
+            var heroData = _heroLibrary.GetStaticData(heroId);
+            List<AttackData> attacks = _attackFactory.Create(heroData.Attacks);
+            foreach (AdditionalAttackData additionalAttackData in enemyTestData.AdditionalAttacks)
+                attacks.Add(_attackFactory.Create(additionalAttackData.AttackId, 0));
+
+            var hero = new Hero(heroData, level, attacks);
+            return hero;
+        }
     }
 }

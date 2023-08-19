@@ -2,11 +2,13 @@ namespace Fight
 {
     public sealed class StatChangeData
     {
+        public readonly Hero Target;
         public readonly StatType StatType;
         public readonly int Delta;
 
-        public StatChangeData(StatType statType, int delta)
+        public StatChangeData(Hero target, StatType statType, int delta)
         {
+            Target = target;
             StatType = statType;
             Delta = delta;
         }

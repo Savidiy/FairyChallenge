@@ -6,6 +6,12 @@ namespace Fight
     public sealed class HeroStats
     {
         private readonly Dictionary<StatType, int> _values = new();
+
+        private readonly Dictionary<StatType, int> _minimalValues = new()
+        {
+            {StatType.Attack, 1}, {StatType.Defence, 1}, {StatType.Speed, 1},
+        };
+
         public bool IsAlive => Get(StatType.CurrentHealthPoints) > 0;
 
         public int Get(StatType statType)
@@ -28,7 +34,7 @@ namespace Fight
                 return;
 
             HeroStatStaticData heroStatStaticData = GetStats(heroStatStaticDatas, level);
-           
+
             Set(StatType.Attack, heroStatStaticData.Attack);
             Set(StatType.Defence, heroStatStaticData.Defence);
             Set(StatType.Speed, heroStatStaticData.Speed);
@@ -76,6 +82,9 @@ namespace Fight
             StatType statType = statChangeData.StatType;
             int currentValue = Get(statType);
             int newValue = currentValue + statChangeData.Delta;
+            if (_minimalValues.TryGetValue(statType, out int minimal))
+                newValue = Mathf.Max(newValue, minimal);
+
             Set(statType, newValue);
         }
 
@@ -87,7 +96,7 @@ namespace Fight
                    $"Spd {Get(StatType.Speed)}";
         }
 
-        public void FillAllStatsValues(Dictionary<StatType,int> dictionary)
+        public void FillAllStatsValues(Dictionary<StatType, int> dictionary)
         {
             foreach ((StatType key, int value) in _values)
                 dictionary.Add(key, value);

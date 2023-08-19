@@ -16,13 +16,7 @@ MonoBehaviour:
   - HeroId: Fairy
     Attacks:
     - AvailableFromLevel: 0
-      AttackId: Fairy1
-    - AvailableFromLevel: 2
-      AttackId: Fairy2
-    - AvailableFromLevel: 4
-      AttackId: Fairy3
-    - AvailableFromLevel: 6
-      AttackId: Fairy4
+      AttackId: FairyHit
     DefaultHealthPointsDelta: 2
     DefaultAttackDelta: 1
     DefaultDefenceDelta: 1
@@ -71,13 +65,7 @@ MonoBehaviour:
   - HeroId: Blob
     Attacks:
     - AvailableFromLevel: 0
-      AttackId: Blob1
-    - AvailableFromLevel: 2
-      AttackId: Blob2
-    - AvailableFromLevel: 4
-      AttackId: Blob3
-    - AvailableFromLevel: 6
-      AttackId: Blob4
+      AttackId: BlobHit
     DefaultHealthPointsDelta: 1
     DefaultAttackDelta: 1
     DefaultDefenceDelta: 1

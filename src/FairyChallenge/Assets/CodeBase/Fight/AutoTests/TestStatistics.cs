@@ -49,7 +49,7 @@ namespace Fight
             return 0;
         }
 
-        public void Add(Hero hero, Hero enemy, int lastTurn)
+        public void Add(Hero hero, Hero enemy, int lastTurn, string printCurrentVariant)
         {
             foreach (TestResultSummary testResultSummary in _results)
             {
@@ -60,7 +60,7 @@ namespace Fight
                 }
             }
             
-            _results.Add(new TestResultSummary(hero, enemy, lastTurn));
+            _results.Add(new TestResultSummary(hero, enemy, lastTurn, printCurrentVariant));
         }
     }
 }

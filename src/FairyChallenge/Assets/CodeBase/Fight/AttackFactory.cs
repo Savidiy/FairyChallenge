@@ -11,17 +11,23 @@ namespace Fight
             _attackLibrary = attackLibrary;
         }
         
-        public IReadOnlyList<AttackData> Create(List<AvailableAttackStaticData> attacks)
+        public List<AttackData> Create(List<AvailableAttackStaticData> attacks)
         {
             var result = new List<AttackData>();
             foreach (var attack in attacks)
             {
-                var attackData = _attackLibrary.GetStaticData(attack.AttackId);
-                var attackInstance = new AttackData(attackData, attack.AvailableFromLevel);
+                AttackData attackInstance = Create(attack.AttackId, attack.AvailableFromLevel);
                 result.Add(attackInstance);
             }
 
             return result;
+        }
+
+        public AttackData Create(string attackId, int availableFromLevel)
+        {
+            var attackData = _attackLibrary.GetStaticData(attackId);
+            var attackInstance = new AttackData(attackData, availableFromLevel);
+            return attackInstance;
         }
     }
 }

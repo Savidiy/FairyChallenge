@@ -9,12 +9,13 @@ namespace Fight
 
         public string AttackId { get; private set; }
 
-        public void AddChange(Hero hero, StatChangeData statChangeData)
+        public void AddChange(StatChangeData statChangeData)
         {
-            if (!_changes.TryGetValue(hero, out List<StatChangeData> heroChanges))
+            Hero target = statChangeData.Target;
+            if (!_changes.TryGetValue(target, out List<StatChangeData> heroChanges))
             {
                 heroChanges = new List<StatChangeData>();
-                _changes.Add(hero, heroChanges);
+                _changes.Add(target, heroChanges);
             }
 
             heroChanges.Add(statChangeData);

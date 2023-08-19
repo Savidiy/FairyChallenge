@@ -173,7 +173,9 @@ MonoBehaviour:
   FightSettings: {fileID: 11400000, guid: fae41b335ad98384fb63780711b98608, type: 2}
   ShowVariantsLog: 0
   FightTestIds:
-  - TestId: Fairy 2 x Blob 4
+  - TestId: Fairy 2(Vampire5-40) vs Blob 3
+  - TestId: Fairy 2(Vampire6-40) vs Blob 3
+  - TestId: Fairy 2(Vampire7-40) vs Blob 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

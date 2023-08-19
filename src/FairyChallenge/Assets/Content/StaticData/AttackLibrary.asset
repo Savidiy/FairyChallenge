@@ -13,19 +13,59 @@ MonoBehaviour:
   m_Name: AttackLibrary
   m_EditorClassIdentifier: 
   Attacks:
-  - AttackId: Fairy1
-    Power: 3
-  - AttackId: Fairy2
-    Power: 7
-  - AttackId: Fairy3
-    Power: 10
-  - AttackId: Fairy4
-    Power: 15
-  - AttackId: Blob1
-    Power: 2
-  - AttackId: Blob2
-    Power: 4
-  - AttackId: Blob3
-    Power: 7
-  - AttackId: Blob4
-    Power: 11
+  - AttackId: FairyHit
+    Effects:
+    - EffectType: 0
+      Power: 5
+  - AttackId: BlobHit
+    Effects:
+    - EffectType: 0
+      Power: 5
+  - AttackId: Vampire7-40
+    Effects:
+    - EffectType: 0
+      Power: 7
+    - EffectType: 2
+      Power: 40
+  - AttackId: Vampire6-40
+    Effects:
+    - EffectType: 0
+      Power: 6
+    - EffectType: 2
+      Power: 40
+  - AttackId: Vampire5-40
+    Effects:
+    - EffectType: 0
+      Power: 5
+    - EffectType: 2
+      Power: 40
+  - AttackId: Vampire7-40
+    Effects:
+    - EffectType: 0
+      Power: 7
+    - EffectType: 2
+      Power: 40
+  - AttackId: BuffAttack20
+    Effects:
+    - EffectType: 3
+      Power: 50
+  - AttackId: BuffDefence20
+    Effects:
+    - EffectType: 4
+      Power: 20
+  - AttackId: BuffSpeed50
+    Effects:
+    - EffectType: 5
+      Power: 50
+  - AttackId: DebuffAttack20
+    Effects:
+    - EffectType: 6
+      Power: 20
+  - AttackId: DebuffDefence20
+    Effects:
+    - EffectType: 7
+      Power: 20
+  - AttackId: DebuffSpeed50
+    Effects:
+    - EffectType: 8
+      Power: 50
