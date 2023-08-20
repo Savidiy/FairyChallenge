@@ -9,7 +9,7 @@ namespace Fight
 
         private readonly Dictionary<StatType, int> _minimalValues = new()
         {
-            {StatType.Attack, 1}, {StatType.Defence, 1}, {StatType.Speed, 1},
+            {StatType.Attack, 1}, {StatType.Defence, 1},
         };
 
         public bool IsAlive => Get(StatType.CurrentHealthPoints) > 0;
@@ -37,7 +37,6 @@ namespace Fight
 
             Set(StatType.Attack, heroStatStaticData.Attack);
             Set(StatType.Defence, heroStatStaticData.Defence);
-            Set(StatType.Speed, heroStatStaticData.Speed);
             Set(StatType.MaxHealthPoints, heroStatStaticData.HealthPoints);
             Set(StatType.CurrentHealthPoints, heroStatStaticData.HealthPoints);
         }
@@ -92,8 +91,7 @@ namespace Fight
         {
             return $"HP {Get(StatType.CurrentHealthPoints)}/{Get(StatType.MaxHealthPoints)} " +
                    $"Att {Get(StatType.Attack)}, " +
-                   $"Def {Get(StatType.Defence)}, " +
-                   $"Spd {Get(StatType.Speed)}";
+                   $"Def {Get(StatType.Defence)}";
         }
 
         public void FillAllStatsValues(Dictionary<StatType, int> dictionary)

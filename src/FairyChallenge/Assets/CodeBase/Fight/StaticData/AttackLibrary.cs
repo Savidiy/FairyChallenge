@@ -53,9 +53,7 @@ namespace Fight
         HealByDamage,
         BuffSelfAttack,
         BuffSelfDefence,
-        BuffSelfSpeed,
         DebuffEnemyAttack,
         DebuffEnemyDefence,
-        DebuffEnemySpeed,
     }
 }

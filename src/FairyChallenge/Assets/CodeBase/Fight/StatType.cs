@@ -6,6 +6,5 @@ namespace Fight
         MaxHealthPoints = 1,
         Attack = 2,
         Defence = 3,
-        Speed = 4,
     }
 }

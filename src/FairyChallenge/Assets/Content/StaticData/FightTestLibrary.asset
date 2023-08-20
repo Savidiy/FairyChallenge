@@ -124,23 +124,22 @@ MonoBehaviour:
       Level: 3
       AdditionalAttacks: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
-      LastTurn: 3, HP=0/24, Att=7, Def=7, Spd=11 (12% 2/16) ex. 00,00,00,00,
+      LastTurn: 3, HP=0/24, Att=7, Def=7, 6% 1/16 ex. 00,00,00,00,
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 3, HP=14/24, Att=7,
+      Def=7, 6% 1/16 ex. 10,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>,
+      Enemy <color=red>is dead</color>, LastTurn: 3, HP=12/24, Att=7, Def=7, 25%
+      4/16 ex. 00,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is
+      dead</color>, LastTurn: 3, HP=10/24, Att=7, Def=7, 37% 6/16 ex. 00,00,10,10,
 
       Hero
       <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>, LastTurn:
-      3, HP=8/24, Att=7, Def=7, Spd=11 (6% 1/16) ex. 10,10,10,10,
-
-      Hero <color=#00FF00>is
-      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 3, HP=6/24, Att=7,
-      Def=7, Spd=11 (25% 4/16) ex. 00,10,10,10,
-
-      Hero <color=#00FF00>is alive</color>,
-      Enemy <color=red>is dead</color>, LastTurn: 3, HP=4/24, Att=7, Def=7, Spd=11
-      (37% 6/16) ex. 00,00,10,10,
-
-      Hero <color=#00FF00>is alive</color>, Enemy
-      <color=red>is dead</color>, LastTurn: 3, HP=2/24, Att=7, Def=7, Spd=11 (18%
-      3/16) ex. 00,00,10,00,'
+      3, HP=8/24, Att=7, Def=7, 25% 4/16 ex. 00,00,00,10,'
   - TestId: Fairy 2(Vampire6-40) vs Blob 3
     OurHero:
       HeroId: Fairy
@@ -152,23 +151,22 @@ MonoBehaviour:
       Level: 3
       AdditionalAttacks: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
-      LastTurn: 3, HP=0/24, Att=7, Def=7, Spd=11 (12% 2/16) ex. 00,00,00,00,
+      LastTurn: 3, HP=0/24, Att=7, Def=7, 6% 1/16 ex. 00,00,00,00,
+
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 3, HP=14/24, Att=7,
+      Def=7, 6% 1/16 ex. 10,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>,
+      Enemy <color=red>is dead</color>, LastTurn: 3, HP=12/24, Att=7, Def=7, 25%
+      4/16 ex. 00,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is
+      dead</color>, LastTurn: 3, HP=10/24, Att=7, Def=7, 37% 6/16 ex. 00,00,10,10,
 
       Hero
       <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>, LastTurn:
-      3, HP=8/24, Att=7, Def=7, Spd=11 (6% 1/16) ex. 10,10,10,10,
-
-      Hero <color=#00FF00>is
-      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 3, HP=6/24, Att=7,
-      Def=7, Spd=11 (25% 4/16) ex. 00,10,10,10,
-
-      Hero <color=#00FF00>is alive</color>,
-      Enemy <color=red>is dead</color>, LastTurn: 3, HP=4/24, Att=7, Def=7, Spd=11
-      (37% 6/16) ex. 00,00,10,10,
-
-      Hero <color=#00FF00>is alive</color>, Enemy
-      <color=red>is dead</color>, LastTurn: 3, HP=2/24, Att=7, Def=7, Spd=11 (18%
-      3/16) ex. 00,00,10,00,'
+      3, HP=8/24, Att=7, Def=7, 25% 4/16 ex. 00,00,00,10,'
   - TestId: Fairy 2(Vampire5-40) vs Blob 3
     OurHero:
       HeroId: Fairy
@@ -180,19 +178,26 @@ MonoBehaviour:
       Level: 3
       AdditionalAttacks: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
-      LastTurn: 3, HP=0/24, Att=7, Def=7, Spd=11 (6% 2/30) ex. 00,00,00,00,
+      LastTurn: 3, HP=0/24, Att=7, Def=7, 3% 1/31 ex. 00,00,00,00,
 
-      Hero
-      <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>, LastTurn:
-      4, HP=-4/24, Att=7, Def=7, Spd=11 (86% 26/30) ex. 00,00,10,00,00,
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 4, HP=10/24, Att=7,
+      Def=7, 3% 1/31 ex. 10,10,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>,
+      Enemy <color=red>is dead</color>, LastTurn: 4, HP=8/24, Att=7, Def=7, 16% 5/31
+      ex. 00,10,10,10,10,
+
+      Hero <color=#00FF00>is alive</color>, Enemy <color=red>is
+      dead</color>, LastTurn: 4, HP=6/24, Att=7, Def=7, 32% 10/31 ex. 00,00,10,10,10,
 
       Hero
       <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>, LastTurn:
-      4, HP=4/24, Att=7, Def=7, Spd=11 (3% 1/30) ex. 10,10,10,10,10,
+      4, HP=4/24, Att=7, Def=7, 32% 10/31 ex. 00,00,00,10,10,
 
-      Hero
-      <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>, LastTurn:
-      4, HP=2/24, Att=7, Def=7, Spd=11 (3% 1/30) ex. 10,10,10,10,00,'
+      Hero <color=#00FF00>is
+      alive</color>, Enemy <color=red>is dead</color>, LastTurn: 4, HP=2/24, Att=7,
+      Def=7, 12% 4/31 ex. 00,00,00,10,00,'
   - TestId: Fairy 1 vs Blob 2
     OurHero:
       HeroId: Fairy

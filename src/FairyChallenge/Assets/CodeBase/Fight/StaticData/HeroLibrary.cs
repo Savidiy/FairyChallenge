@@ -58,7 +58,6 @@ namespace Fight
                 heroStat.HealthPoints = previousStat.HealthPoints + hero.DefaultHealthPointsDelta;
                 heroStat.Attack = previousStat.Attack + hero.DefaultAttackDelta;
                 heroStat.Defence = previousStat.Defence + hero.DefaultDefenceDelta;
-                heroStat.Speed = previousStat.Speed + hero.DefaultSpeedDelta;
             }
         }
     }
@@ -74,7 +73,6 @@ namespace Fight
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultHealthPointsDelta;
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultAttackDelta;
         [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultDefenceDelta;
-        [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultSpeedDelta;
 
         [TableList(ShowIndexLabels = true)]
         public List<HeroStatStaticData> Stats;
@@ -88,7 +86,6 @@ namespace Fight
                 stat.HealthPoints = lastStat.HealthPoints + DefaultHealthPointsDelta;
                 stat.Attack = lastStat.Attack + DefaultAttackDelta;
                 stat.Defence = lastStat.Defence + DefaultDefenceDelta;
-                stat.Speed = lastStat.Speed + DefaultSpeedDelta;
             }
 
             return stat;
@@ -107,6 +104,5 @@ namespace Fight
         public int HealthPoints;
         public int Attack;
         public int Defence;
-        public int Speed;
     }
 }

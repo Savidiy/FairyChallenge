@@ -33,7 +33,7 @@ namespace Fight
         public void Run()
         {
             Initialize();
-            
+
             foreach (FightTestId fightTestId in FightTestIds)
             {
                 string testId = fightTestId.TestId;
@@ -91,30 +91,22 @@ namespace Fight
 
             while (hero.IsAlive && enemy.IsAlive)
             {
-                int heroAttackIndex;
-                int enemyAttackIndex;
-                attackIterator.GetIndexForTurn(turn, out heroAttackIndex, out enemyAttackIndex);
-
-                bool heroHasMoreSpeed = hero.Stats.Get(StatType.Speed) > enemy.Stats.Get(StatType.Speed);
-                Hero firstHero = heroHasMoreSpeed ? hero : enemy;
-                int firstHeroAttackIndex = heroHasMoreSpeed ? heroAttackIndex : enemyAttackIndex;
-                Hero secondHero = heroHasMoreSpeed ? enemy : hero;
-                int secondHeroAttackIndex = heroHasMoreSpeed ? enemyAttackIndex : heroAttackIndex;
+                attackIterator.GetIndexForTurn(turn, out int heroAttackIndex, out int enemyAttackIndex);
 
                 _attackResultLogger.SaveState(heroes);
-                AttackResult attackResult = _fightCalculator.CalcAttack(firstHero, firstHeroAttackIndex, secondHero);
+                AttackResult attackResult = _fightCalculator.CalcAttack(hero, heroAttackIndex, enemy);
                 ApplyResult(attackResult, heroes);
                 _attackResultLogger.ApplyState(heroes);
                 turnString = (turn + 1).ToString();
-                log += LogTurn(turnString, firstHero, secondHero, attackResult, _attackResultLogger);
+                log += LogTurn(turnString, hero, enemy, attackResult, _attackResultLogger);
 
-                if (secondHero.IsAlive)
+                if (enemy.IsAlive)
                 {
                     _attackResultLogger.SaveState(heroes);
-                    attackResult = _fightCalculator.CalcAttack(secondHero, secondHeroAttackIndex, firstHero);
+                    attackResult = _fightCalculator.CalcAttack(enemy, enemyAttackIndex, hero);
                     ApplyResult(attackResult, heroes);
                     _attackResultLogger.ApplyState(heroes);
-                    log += LogTurn(turnString, secondHero, firstHero, attackResult, _attackResultLogger);
+                    log += LogTurn(turnString, enemy, hero, attackResult, _attackResultLogger);
                 }
 
                 turn++;

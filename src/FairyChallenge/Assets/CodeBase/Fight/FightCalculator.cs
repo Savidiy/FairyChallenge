@@ -34,10 +34,8 @@ namespace Fight
                     EffectType.HealByDamage => CalcHeal(attacker, power, damage),
                     EffectType.BuffSelfAttack => CalcBuff(StatType.Attack, attacker, power),
                     EffectType.BuffSelfDefence => CalcBuff(StatType.Defence, attacker, power),
-                    EffectType.BuffSelfSpeed => CalcBuff(StatType.Speed, attacker, power),
                     EffectType.DebuffEnemyAttack => CalcBuff(StatType.Attack, defender, -power),
                     EffectType.DebuffEnemyDefence => CalcBuff(StatType.Defence, defender, -power),
-                    EffectType.DebuffEnemySpeed => CalcBuff(StatType.Speed, defender, -power),
                     _ => throw new Exception($"Unknown effect type '{effectType}'")
                 };
                 attackResult.AddChange(statChangeData);
