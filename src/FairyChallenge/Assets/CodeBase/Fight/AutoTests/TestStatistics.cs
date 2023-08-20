@@ -57,6 +57,7 @@ namespace Fight
                 if (testResultSummary.IsSame(hero, enemy, lastTurn))
                 {
                     testResultSummary.IncreaseCount();
+                    testResultSummary.AddPrintVariant(printCurrentVariant);
                     return;
                 }
             }

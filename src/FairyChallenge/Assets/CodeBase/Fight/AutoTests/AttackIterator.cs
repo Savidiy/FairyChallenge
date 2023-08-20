@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using Savidiy.Utils;
 using UnityEngine;
 
 namespace Fight
@@ -61,12 +63,20 @@ namespace Fight
 
         public string PrintCurrentVariant()
         {
-            string result = "";
-            foreach (int i in _currentVariant)
+            StringBuilder stringBuilder = StringBuilderPool.Get();
+            for (var index = 0; index < _currentVariant.Count; index++)
             {
-                GetAttackIndexes(i, out int firstIndex, out int secondIndex);
-                result += $"{firstIndex}{secondIndex},";
+                if (index > 0)
+                    stringBuilder.Append(",");
+                int variant = _currentVariant[index];
+                GetAttackIndexes(variant, out int firstIndex, out int secondIndex);
+                stringBuilder.Append(firstIndex);
+                stringBuilder.Append(secondIndex);
             }
+            
+            var result = stringBuilder.ToString();
+            StringBuilderPool.Release(stringBuilder);
+
             return result;
         }
 

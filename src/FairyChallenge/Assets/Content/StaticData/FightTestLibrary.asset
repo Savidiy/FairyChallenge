@@ -68,20 +68,21 @@ MonoBehaviour:
       AdditionalAttacks: []
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
       <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>12</color>/14,
-      Att=11, Def=10, 25% 2/8 ex. 00,10,10,
-
-      <color=#FF00E0>Fairy</color> <color=#00FF00>is
-      alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>,
-      LastTurn: 2, HP=<color=#FF0000>11</color>/14, Att=11, Def=10, 25% 2/8 ex. 00,10,00,
+      Att=11, Def=10, 25% 2/8 ex. 00,10,10 10,10,10
 
       <color=#FF00E0>Fairy</color>
       <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is
-      dead</color>, LastTurn: 2, HP=<color=#FF0000>9</color>/14, Att=11, Def=10,
-      25% 2/8 ex. 00,00,10,
+      dead</color>, LastTurn: 2, HP=<color=#FF0000>11</color>/14, Att=11, Def=10,
+      25% 2/8 ex. 00,10,00 10,10,00
 
       <color=#FF00E0>Fairy</color> <color=#00FF00>is
       alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>,
-      LastTurn: 2, HP=<color=#FF0000>8</color>/14, Att=11, Def=10, 25% 2/8 ex. 00,00,00,'
+      LastTurn: 2, HP=<color=#FF0000>9</color>/14, Att=11, Def=10, 25% 2/8 ex. 00,00,10
+      10,00,10
+
+      <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
+      <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
+      Att=11, Def=10, 25% 2/8 ex. 00,00,00 10,00,00'
   - TestId: 'Fairy (Vampire6-40) vs Blob '
     OurHero:
       HeroId: Fairy
