@@ -31,78 +31,26 @@ namespace Fight
             HeroIds.Clear();
             foreach (HeroStaticData hero in Heroes)
                 HeroIds.Add(hero.HeroId);
-
-            foreach (HeroStaticData hero in Heroes)
-            {
-                if (hero.Stats.Count == 0)
-                    hero.Stats.Add(new HeroStatStaticData());
-
-                InitializeStats(hero);
-            }
-        }
-
-        private static void InitializeStats(HeroStaticData hero)
-        {
-            for (var index = 0; index < hero.Stats.Count; index++)
-            {
-                if (index == 0)
-                    continue;
-
-                HeroStatStaticData heroStat = hero.Stats[index];
-                if (heroStat.IsInitialized)
-                    continue;
-
-                HeroStatStaticData previousStat = hero.Stats[index - 1];
-
-                heroStat.IsInitialized = true;
-                heroStat.HealthPoints = previousStat.HealthPoints + hero.DefaultHealthPointsDelta;
-                heroStat.Attack = previousStat.Attack + hero.DefaultAttackDelta;
-                heroStat.Defence = previousStat.Defence + hero.DefaultDefenceDelta;
-            }
         }
     }
 
     [Serializable]
     public class HeroStaticData
     {
-        private const string DEFAULT_LEVEL_UP = "Default level up values";
+        private const int MAX_HEALTH_POINTS = 30;
+        private const int MAX_ATTACK = 30;
+        private const int MAX_DEFENCE = 30;
+
         public string HeroId = string.Empty;
 
         public List<AvailableAttackStaticData> Attacks;
-
-        [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultHealthPointsDelta;
-        [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultAttackDelta;
-        [FoldoutGroup(DEFAULT_LEVEL_UP)] public int DefaultDefenceDelta;
-
-        [TableList(ShowIndexLabels = true)]
-        public List<HeroStatStaticData> Stats;
-
-        private HeroStatStaticData OnAddStat()
-        {
-            var stat = new HeroStatStaticData();
-            if (Stats.Count > 0)
-            {
-                HeroStatStaticData lastStat = Stats[^1];
-                stat.HealthPoints = lastStat.HealthPoints + DefaultHealthPointsDelta;
-                stat.Attack = lastStat.Attack + DefaultAttackDelta;
-                stat.Defence = lastStat.Defence + DefaultDefenceDelta;
-            }
-
-            return stat;
-        }
+        [ProgressBar(1, nameof(MAX_HEALTH_POINTS), r: 0, g: 1, b: 0)] public int HealthPoints;
+        [ProgressBar(1, nameof(MAX_ATTACK), r: 1, g: 0, b: 0)] public int Attack;
+        [ProgressBar(1, nameof(MAX_DEFENCE), r: 0, g: 0, b: 1)] public int Defence;
 
         public override string ToString()
         {
             return HeroId;
         }
-    }
-
-    [Serializable]
-    public sealed class HeroStatStaticData
-    {
-        [HideInInspector] public bool IsInitialized;
-        public int HealthPoints;
-        public int Attack;
-        public int Defence;
     }
 }

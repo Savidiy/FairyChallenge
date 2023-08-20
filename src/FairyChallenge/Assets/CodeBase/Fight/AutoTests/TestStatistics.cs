@@ -30,23 +30,23 @@ namespace Fight
             int compareTo = x.HeroIsAlive.CompareTo(y.HeroIsAlive);
             if (compareTo != 0)
                 return compareTo;
-            
+
             compareTo = x.EnemyIsAlive.CompareTo(y.EnemyIsAlive);
             if (compareTo != 0)
                 return compareTo;
-            
-            compareTo = -x.Stats[StatType.CurrentHealthPoints].CompareTo(y.Stats[StatType.CurrentHealthPoints]);
+
+            compareTo = -x.Stats[StatType.HealthPoints].CompareTo(y.Stats[StatType.HealthPoints]);
             if (compareTo != 0)
                 return compareTo;
-            
+
             compareTo = x.LastTurn.CompareTo(y.LastTurn);
             if (compareTo != 0)
                 return compareTo;
-            
+
             compareTo = -x.Count.CompareTo(y.Count);
             if (compareTo != 0)
                 return compareTo;
-            
+
             return 0;
         }
 
@@ -60,7 +60,7 @@ namespace Fight
                     return;
                 }
             }
-            
+
             _results.Add(new TestResultSummary(hero, enemy, lastTurn, printCurrentVariant));
         }
     }

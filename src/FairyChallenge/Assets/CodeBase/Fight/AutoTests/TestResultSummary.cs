@@ -50,7 +50,7 @@ namespace Fight
         {
             var percent = (int) (Count * 100f / sum);
             return
-                $"Hero {FightAutoTests.PrintAlive(HeroIsAlive)}, Enemy {FightAutoTests.PrintAlive(EnemyIsAlive)}, LastTurn: {LastTurn}, HP={Stats[StatType.CurrentHealthPoints]}/{Stats[StatType.MaxHealthPoints]}, Att={Stats[StatType.Attack]}, Def={Stats[StatType.Defence]}, {percent}% {Count}/{sum} ex. {_printCurrentVariant}";
+                $"Hero {FightAutoTests.PrintAlive(HeroIsAlive)}, Enemy {FightAutoTests.PrintAlive(EnemyIsAlive)}, LastTurn: {LastTurn}, HP={Stats[StatType.HealthPoints]}/{Stats[StatType.MaxHealthPoints]}, Att={Stats[StatType.Attack]}, Def={Stats[StatType.Defence]}, {percent}% {Count}/{sum} ex. {_printCurrentVariant}";
         }
     }
 }

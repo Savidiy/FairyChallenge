@@ -16,17 +16,17 @@ namespace Fight
             var result = new List<AttackData>();
             foreach (var attack in attacks)
             {
-                AttackData attackInstance = Create(attack.AttackId, attack.AvailableFromLevel);
+                AttackData attackInstance = Create(attack.AttackId);
                 result.Add(attackInstance);
             }
 
             return result;
         }
 
-        public AttackData Create(string attackId, int availableFromLevel)
+        public AttackData Create(string attackId)
         {
             var attackData = _attackLibrary.GetStaticData(attackId);
-            var attackInstance = new AttackData(attackData, availableFromLevel);
+            var attackInstance = new AttackData(attackData);
             return attackInstance;
         }
     }

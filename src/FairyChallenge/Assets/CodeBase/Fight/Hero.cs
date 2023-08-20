@@ -7,41 +7,20 @@ namespace Fight
         private readonly HeroStaticData _heroStaticData;
         private readonly List<AttackData> _availableAttacks = new();
 
-        public int Level;
-        private readonly IReadOnlyList<AttackData> _allAttacks;
         public IReadOnlyList<AttackData> AvailableAttacks => _availableAttacks;
         public bool IsAlive => Stats.IsAlive;
-        public readonly HeroStats Stats = new();
+        public readonly HeroStats Stats;
 
-        public Hero(HeroStaticData heroStaticData, int level, IReadOnlyList<AttackData> allAttacks)
+        public Hero(HeroStaticData heroStaticData, IReadOnlyList<AttackData> allAttacks)
         {
             _heroStaticData = heroStaticData;
-            Level = level;
-            _allAttacks = allAttacks;
-            FillAvailableAttacks(Level);
-            UpdateStats(Level, Stats);
-        }
-
-        private void UpdateStats(int level, HeroStats heroStats)
-        {
-            heroStats.Init(_heroStaticData.Stats, level);
-        }
-
-        private void FillAvailableAttacks(int level)
-        {
-            _availableAttacks.Clear();
-            foreach (AttackData attack in _allAttacks)
-            {
-                if (attack.FromLevel > level)
-                    continue;
-
-                _availableAttacks.Add(attack);
-            }
+            _availableAttacks.AddRange(allAttacks);
+            Stats = new HeroStats(_heroStaticData);
         }
 
         public override string ToString()
         {
-            return $"{_heroStaticData.HeroId}({Level})";
+            return $"{_heroStaticData.HeroId}";
         }
 
         public string PrintStats()

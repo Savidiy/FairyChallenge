@@ -55,7 +55,7 @@ namespace Fight
         private static StatChangeData CalcHeal(Hero attacker, int power, int baseValue)
         {
             int value = Ceil(baseValue * power / 100f);
-            return new StatChangeData(attacker, StatType.CurrentHealthPoints, value);
+            return new StatChangeData(attacker, StatType.HealthPoints, value);
         }
 
         private StatChangeData CalcBuff(StatType statType, Hero target, int percent)
@@ -87,7 +87,7 @@ namespace Fight
             float defenceBonus = Mathf.Max(0f, defenceMultiplier * (defenderDefence - attackerAttack));
             int damage = Mathf.CeilToInt(power * attackerAttack / (defenderDefence + defenceBonus));
 
-            var statChangeData = new StatChangeData(defender, StatType.CurrentHealthPoints, -damage);
+            var statChangeData = new StatChangeData(defender, StatType.HealthPoints, -damage);
             return statChangeData;
         }
     }

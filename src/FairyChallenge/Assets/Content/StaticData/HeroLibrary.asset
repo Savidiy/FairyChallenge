@@ -15,109 +15,13 @@ MonoBehaviour:
   Heroes:
   - HeroId: Fairy
     Attacks:
-    - AvailableFromLevel: 0
-      AttackId: FairyHit
-    DefaultHealthPointsDelta: 2
-    DefaultAttackDelta: 1
-    DefaultDefenceDelta: 1
-    DefaultSpeedDelta: 1
-    Stats:
-    - IsInitialized: 0
-      HealthPoints: 20
-      Attack: 5
-      Defence: 5
-      Speed: 9
-    - IsInitialized: 1
-      HealthPoints: 22
-      Attack: 6
-      Defence: 6
-      Speed: 10
-    - IsInitialized: 1
-      HealthPoints: 24
-      Attack: 7
-      Defence: 7
-      Speed: 11
-    - IsInitialized: 1
-      HealthPoints: 26
-      Attack: 8
-      Defence: 8
-      Speed: 12
-    - IsInitialized: 1
-      HealthPoints: 28
-      Attack: 9
-      Defence: 9
-      Speed: 13
-    - IsInitialized: 1
-      HealthPoints: 30
-      Attack: 10
-      Defence: 10
-      Speed: 14
-    - IsInitialized: 1
-      HealthPoints: 32
-      Attack: 11
-      Defence: 11
-      Speed: 15
-    - IsInitialized: 1
-      HealthPoints: 34
-      Attack: 12
-      Defence: 12
-      Speed: 16
+    - AttackId: FairyHit
+    HealthPoints: 14
+    Attack: 11
+    Defence: 10
   - HeroId: Blob
     Attacks:
-    - AvailableFromLevel: 0
-      AttackId: BlobHit
-    DefaultHealthPointsDelta: 1
-    DefaultAttackDelta: 1
-    DefaultDefenceDelta: 1
-    DefaultSpeedDelta: 1
-    Stats:
-    - IsInitialized: 0
-      HealthPoints: 14
-      Attack: 5
-      Defence: 5
-      Speed: 8
-    - IsInitialized: 1
-      HealthPoints: 15
-      Attack: 6
-      Defence: 6
-      Speed: 9
-    - IsInitialized: 1
-      HealthPoints: 16
-      Attack: 7
-      Defence: 7
-      Speed: 10
-    - IsInitialized: 1
-      HealthPoints: 17
-      Attack: 8
-      Defence: 8
-      Speed: 11
-    - IsInitialized: 1
-      HealthPoints: 18
-      Attack: 9
-      Defence: 9
-      Speed: 12
-    - IsInitialized: 1
-      HealthPoints: 19
-      Attack: 10
-      Defence: 10
-      Speed: 13
-    - IsInitialized: 1
-      HealthPoints: 20
-      Attack: 11
-      Defence: 11
-      Speed: 14
-    - IsInitialized: 1
-      HealthPoints: 21
-      Attack: 12
-      Defence: 12
-      Speed: 15
-    - IsInitialized: 1
-      HealthPoints: 22
-      Attack: 13
-      Defence: 13
-      Speed: 16
-    - IsInitialized: 1
-      HealthPoints: 23
-      Attack: 14
-      Defence: 14
-      Speed: 17
+    - AttackId: BlobHit
+    HealthPoints: 17
+    Attack: 7
+    Defence: 7

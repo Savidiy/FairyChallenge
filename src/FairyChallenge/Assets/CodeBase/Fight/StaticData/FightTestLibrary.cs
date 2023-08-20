@@ -12,7 +12,7 @@ namespace Fight
         [ListDrawerSettings(ListElementLabelName = "@this")]
         public List<FightTestStaticData> Tests = new();
 
-        public ValueDropdownList<string> TestIds = new();
+        public readonly ValueDropdownList<string> TestIds = new();
 
         public FightTestStaticData GetFightTest(string testId)
         {
@@ -33,7 +33,7 @@ namespace Fight
                 HeroTestData hero = test.OurHero;
                 HeroTestData enemy = test.Enemy;
                 test.TestId =
-                    $"{hero.HeroId} {hero.Level}{(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",", hero.AdditionalAttacks)})" : "")} vs {enemy.HeroId} {enemy.Level}{(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",", enemy.AdditionalAttacks)})" : "")}";
+                    $"{hero.HeroId} {(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",", hero.AdditionalAttacks)}) " : "")}vs {enemy.HeroId} {(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",", enemy.AdditionalAttacks)})" : "")}";
 
                 TestIds.Add(test.TestId);
             }
@@ -66,7 +66,6 @@ namespace Fight
     {
         [ValueDropdown(nameof(HeroIds)), HorizontalGroup] public string HeroId;
         private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
-        [HorizontalGroup] public int Level;
 
         public List<AdditionalAttackData> AdditionalAttacks = new();
     }
