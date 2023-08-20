@@ -19,24 +19,26 @@ namespace Fight
         {
             var heroData = _heroLibrary.GetStaticData(heroId);
             IReadOnlyList<ActionData> actions = _actionFactory.Create(heroData.Actions);
-            var hero = new Hero(heroData, actions);
+            var heroActions = new HeroActions(actions);
+            var heroStats = new HeroStats(heroData);
+            var itemEffectApplier = new ItemEffectApplier(heroStats, heroActions, _actionFactory);
+            var inventory = new Inventory(itemEffectApplier);
+            var hero = new Hero(heroData, heroActions, heroStats, inventory);
             return hero;
         }
 
         public Hero Create(string heroId, List<AdditionalActionData> additionalActions,
             List<SelectedConsumablesData> consumablesData)
         {
-            var heroData = _heroLibrary.GetStaticData(heroId);
-            List<ActionData> actions = _actionFactory.Create(heroData.Actions);
+            Hero hero = Create(heroId);
             foreach (AdditionalActionData additionalActionData in additionalActions)
-                actions.Add(_actionFactory.Create(additionalActionData.ActionId));
+                hero.HeroActions.AddAction(_actionFactory.Create(additionalActionData.ActionId));
 
-            var hero = new Hero(heroData, actions);
             foreach (SelectedConsumablesData selectedConsumablesData in consumablesData)
             {
                 string itemId = selectedConsumablesData.ItemId;
                 Item item = _itemFactory.Create(itemId);
-                hero.Inventory.AddConsumable(item);
+                hero.Inventory.AddItem(item);
             }
             return hero;
         }

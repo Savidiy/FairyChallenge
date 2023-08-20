@@ -1,21 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Fight
 {
     public sealed class Inventory
     {
-        public IReadOnlyList<Item> Consumables => _consumables;
-        private readonly List<Item> _consumables = new();
+        private readonly Dictionary<ItemType, List<Item>> _items = new();
         
-        public void AddConsumable(Item item)
+        public IReadOnlyList<Item> Consumables => _items[ItemType.Consumable];
+
+        public readonly ItemSlot UsedWeapon;
+        public readonly ItemSlot UsedArmor;
+        public readonly ItemSlot UsedAccessory;
+
+        public Inventory(ItemEffectApplier itemEffectApplier)
         {
-            _consumables.Add(item);
+            UsedArmor = new ItemSlot(ItemType.Armor, itemEffectApplier);
+            UsedAccessory = new ItemSlot(ItemType.Accessory, itemEffectApplier);
+            UsedWeapon = new ItemSlot(ItemType.Weapon, itemEffectApplier);
+            Array values = Enum.GetValues(typeof(ItemType));
+            foreach (ItemType itemType in values)
+                _items.Add(itemType, new List<Item>());
+        }
+        
+        public void AddItem(Item item)
+        {
+            _items[item.ItemStaticData.ItemType].Add(item);
         }
 
         public Item TakeConsumable(int itemIndex)
         {
-            Item item = _consumables[itemIndex];
-            _consumables.RemoveAt(itemIndex);
+            List<Item> consumables = _items[ItemType.Consumable];
+            Item item = consumables[itemIndex];
+            consumables.RemoveAt(itemIndex);
             return item;
         }
     }

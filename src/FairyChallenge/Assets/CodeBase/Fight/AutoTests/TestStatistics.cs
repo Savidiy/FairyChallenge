@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Savidiy.Utils;
 using UnityEngine;
@@ -9,10 +10,12 @@ namespace Fight
     {
         private readonly FightTestLibrary _fightTestLibrary;
         private readonly List<TestResultSummary> _results = new();
+        private readonly DateTime _startTime;
 
         public TestStatistics(FightTestLibrary fightTestLibrary)
         {
             _fightTestLibrary = fightTestLibrary;
+            _startTime = DateTime.Now;
         }
 
         public void SaveLog(string testId)
@@ -20,7 +23,8 @@ namespace Fight
             _results.Sort(Comparison);
             int sum = _results.Select(a => a.Count).Sum();
             string result = string.Join("\n", _results.Select(a => a.PrintLog(sum)));
-            Debug.Log($"Test '{testId.Color("white")}' results:\n{result}");
+            int seconds = (int) (DateTime.Now - _startTime).TotalSeconds;
+            Debug.Log($"Test '{testId.Color("white")}' duration {seconds} sec results:\n{result}");
             _fightTestLibrary.SaveTestResult(testId, result);
             _results.Clear();
         }

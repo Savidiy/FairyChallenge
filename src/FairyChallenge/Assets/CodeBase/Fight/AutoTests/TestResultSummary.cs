@@ -41,9 +41,8 @@ namespace Fight
             if (!HeroIsAlive)
                 return true;
 
-            foreach ((StatType statType, int value) in Stats)
-                if (value != hero.Stats.Get(statType))
-                    return false;
+            if (Stats[StatType.HealthPoints] == hero.Stats.Get(StatType.HealthPoints))
+                return true;
 
             return true;
         }

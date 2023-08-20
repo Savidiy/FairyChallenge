@@ -25,12 +25,13 @@ namespace Fight
         private FightCalculator _fightCalculator;
         private TestStatistics _testStatistics;
         private readonly ActionResultLogger _actionResultLogger = new();
+        private ItemFactory _itemFactory;
 
         private void Initialize()
         {
             var actionFactory = new ActionFactory(ActionLibrary);
-            var itemFactory = new ItemFactory(ItemsLibrary);
-            _heroFactory = new HeroFactory(HeroLibrary, actionFactory, itemFactory);
+            _itemFactory = new ItemFactory(ItemsLibrary);
+            _heroFactory = new HeroFactory(HeroLibrary, actionFactory, _itemFactory);
             _fightCalculator = new FightCalculator(FightSettings);
             _testStatistics = new TestStatistics(FightTestLibrary);
         }
@@ -39,43 +40,41 @@ namespace Fight
         public void Run()
         {
             List<FightTestId> fightTestIds = FightTestIds;
-            StartTests(fightTestIds, ShowVariantsLog);
-        }
-
-        public void StartTests(List<FightTestId> fightTestIds, bool needDetails)
-        {
-            Initialize();
-
-            foreach (FightTestId fightTestId in fightTestIds)
-            {
-                string testId = fightTestId.TestId;
-                TestFight(testId, needDetails);
-                _testStatistics.SaveLog(testId);
-            }
-
-            ClearProgressBar();
+            List<FightTestStaticData> datas = fightTestIds.ConvertAll(id => FightTestLibrary.GetFightTest(id.TestId));
+            StartTests(datas, ShowVariantsLog);
         }
 
         [Button, HorizontalGroup(BUTTONS)]
         public void ClearConsole() => ClearLogConsole();
 
-        public void StartTest(string testId, string actionVariant)
+        public void StartTests(List<FightTestStaticData> fightTestIds, bool needDetails)
         {
             Initialize();
 
-            FightTestStaticData data = FightTestLibrary.GetFightTest(testId);
-            Hero hero = CreateHero(data);
-            Hero enemy = CreateEnemy(data);
-            Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
+            foreach (FightTestStaticData data in fightTestIds)
+            {
+                TestFight(needDetails, data);
+                _testStatistics.SaveLog(data.TestId);
+            }
 
-            var actionIterator = new ActionIterator(hero, enemy, actionVariant);
-            CalcFight(hero, enemy, actionIterator, needDetails: true);
+            ClearProgressBar();
         }
 
-        private void TestFight(string testId, bool needDetails)
+        public void StartTest(FightTestStaticData data, string actionVariant)
         {
-            FightTestStaticData data = FightTestLibrary.GetFightTest(testId);
+            Initialize();
 
+            Hero hero = CreateHero(data);
+            Hero enemy = CreateEnemy(data);
+            Debug.Log($"Start test '{data.TestId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
+
+            var actionIterator = new ActionIterator(hero, enemy, actionVariant);
+            CalcFight(hero, enemy, actionIterator, needDetails: true, maxTurns: FightSettings.MaxTurns);
+        }
+
+        private void TestFight(bool needDetails, FightTestStaticData data)
+        {
+            var testId = data.TestId;
             Hero hero = CreateHero(data);
             Hero enemy = CreateEnemy(data);
             Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
@@ -85,19 +84,29 @@ namespace Fight
             {
                 hero = CreateHero(data);
                 enemy = CreateEnemy(data);
-                int currentVariantNumber = actionIterator.CurrentVariantNumber();
-                int estimateVariantsCount = actionIterator.EstimateVariantsCount();
-                float progress = currentVariantNumber / (float) estimateVariantsCount;
-                var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
+                long currentVariantNumber = actionIterator.CurrentVariantNumber();
+                double estimateVariantsCount = actionIterator.EstimateVariantsCount();
+                var progress = (float) (currentVariantNumber / estimateVariantsCount);
+                var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount:F0}";
                 DisplayProgressBar("Fight", info, progress);
 
-                CalcFight(hero, enemy, actionIterator, needDetails);
+                CalcFight(hero, enemy, actionIterator, needDetails, data.MaxTurns);
             } while (actionIterator.HasNext());
         }
 
         private Hero CreateHero(FightTestStaticData data)
         {
-            return _heroFactory.Create(data.HeroId, data.AdditionalActions, data.Consumables);
+            Hero hero = _heroFactory.Create(data.HeroId, data.AdditionalActions, data.Consumables);
+            if (data.Accessory.HasItem())
+                hero.Inventory.UsedAccessory.SetItem(_itemFactory.Create(data.Accessory.ItemId));
+            
+            if (data.Weapon.HasItem())
+                hero.Inventory.UsedWeapon.SetItem(_itemFactory.Create(data.Weapon.ItemId));
+            
+            if (data.Armor.HasItem())
+                hero.Inventory.UsedArmor.SetItem(_itemFactory.Create(data.Armor.ItemId));
+
+            return hero;
         }
 
         private Hero CreateEnemy(FightTestStaticData data)
@@ -105,7 +114,7 @@ namespace Fight
             return _heroFactory.Create(data.EnemyId);
         }
 
-        private void CalcFight(Hero hero, Hero enemy, ActionIterator actionIterator, bool needDetails)
+        private void CalcFight(Hero hero, Hero enemy, ActionIterator actionIterator, bool needDetails, int maxTurns)
         {
             var log = string.Empty;
             var heroes = new List<Hero> {hero, enemy};
@@ -113,7 +122,7 @@ namespace Fight
             var turnString = string.Empty;
             var startStatLog = $"Start stat {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole} {enemy.PrintStats()}";
 
-            while (hero.IsAlive && enemy.IsAlive)
+            while (hero.IsAlive && enemy.IsAlive && turn < maxTurns)
             {
                 actionIterator.GetIndexForTurn(turn, out int firstIndex, out int secondIndex);
 

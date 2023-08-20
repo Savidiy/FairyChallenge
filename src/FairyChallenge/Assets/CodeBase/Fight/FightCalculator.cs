@@ -19,7 +19,7 @@ namespace Fight
             if (IsIndexOutOfRange(attacker, actionIndex))
                 return false;
             
-            if (actionIndex >= attacker.Actions.Count)
+            if (actionIndex >= attacker.HeroActions.Count)
             {
                 UseItem(attacker, actionIndex, actionResult);
                 return true;
@@ -32,7 +32,7 @@ namespace Fight
 
         private static void UseItem(Hero attacker, int heroAttackIndex, ActionResult actionResult)
         {
-            int itemIndex = heroAttackIndex - attacker.Actions.Count;
+            int itemIndex = heroAttackIndex - attacker.HeroActions.Count;
             Item item = attacker.Inventory.TakeConsumable(itemIndex);
 
             string itemId = item.ItemStaticData.ItemId;
@@ -63,7 +63,7 @@ namespace Fight
 
         private void UseAction(Hero attacker, Hero defender, ActionResult actionResult, int actionIndex)
         {
-            ActionData actionData = attacker.Actions[actionIndex];
+            ActionData actionData = attacker.HeroActions.Actions[actionIndex];
             actionResult.SetActionId(actionData.ActionId);
             var damage = 0;
 
@@ -117,7 +117,7 @@ namespace Fight
 
         private static bool IsIndexOutOfRange(Hero attacker, int heroAttackIndex)
         {
-            int actionsCount = attacker.Actions.Count + attacker.Inventory.Consumables.Count;
+            int actionsCount = attacker.HeroActions.Count + attacker.Inventory.Consumables.Count;
             return heroAttackIndex >= actionsCount;
         }
 

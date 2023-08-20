@@ -7,5 +7,6 @@ namespace Fight
     public class FightSettings : AutoSaveScriptableObject
     {
         public float DefenceMultiplier = 2f;
+        public int MaxTurns = 12;
     }
 }

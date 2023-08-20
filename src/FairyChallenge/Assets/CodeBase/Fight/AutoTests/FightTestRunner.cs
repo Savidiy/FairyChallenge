@@ -9,22 +9,22 @@ namespace Fight
     {
         private static FightAutoTests _fightAutoTests;
 
-        public static void StartTest(string testId, bool needDetails)
+        public static void StartTest(FightTestStaticData data, bool needDetails)
         {
             if (IsTesterValid())
                 return;
 
-            _fightAutoTests.StartTests(new List<FightTestId>() {new() {TestId = testId}}, needDetails);
+            _fightAutoTests.StartTests(new List<FightTestStaticData>() {data}, needDetails);
         }
 
-        public static void StartTest(string testId, string actionVariants)
+        public static void StartTest(FightTestStaticData data, string actionVariants)
         {
             if (IsTesterValid())
                 return;
 
             string[] split = actionVariants.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             foreach (string actionVariant in split)
-                _fightAutoTests.StartTest(testId, actionVariant);
+                _fightAutoTests.StartTest(data, actionVariant);
         }
 
         private static bool IsTesterValid()

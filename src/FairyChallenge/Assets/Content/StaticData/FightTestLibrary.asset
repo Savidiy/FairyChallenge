@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: FightTestLibrary
   m_EditorClassIdentifier: 
   Tests:
-  - TestId: Fairy (BuffAttack20)  vs Blob
+  - TestId: Fairy (   BuffAttack20 ) vs Blob
     AdditionalActions:
     - ActionId: BuffAttack20
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: Blob
+    MaxTurns: 8
     LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#38AD63>Blob</color>
       <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
       Att=11, Def=10, 61% 16/26 ex. 00,00,10,10,10 00,10,00,10,10 00,10,10,00,10
@@ -40,36 +47,37 @@ MonoBehaviour:
       23% 6/26 ex. 00,00,10,10,00 00,10,00,10,00 00,10,10,00,00 10,00,00,10,00 10,00,10,00,00
       10,10,00,00,00'
     Variant: 
-  - TestId: Fairy (Vampire5-40)  vs Blob
+  - TestId: Fairy (   Vampire5-40 ) vs Blob
     AdditionalActions:
     - ActionId: Vampire5-40
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: Blob
+    MaxTurns: 6
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
-      <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>12</color>/14,
-      Att=11, Def=10, 25% 2/8 ex. 00,10,10 10,10,10
-
-      <color=#FF00E0>Fairy</color>
-      <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is
-      dead</color>, LastTurn: 2, HP=<color=#FF0000>11</color>/14, Att=11, Def=10,
-      25% 2/8 ex. 00,10,00 10,10,00
-
-      <color=#FF00E0>Fairy</color> <color=#00FF00>is
-      alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>,
-      LastTurn: 2, HP=<color=#FF0000>9</color>/14, Att=11, Def=10, 25% 2/8 ex. 00,00,10
-      10,00,10
-
-      <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
-      <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
-      Att=11, Def=10, 25% 2/8 ex. 00,00,00 10,00,00'
+      <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
+      Att=11, Def=10, 100% 8/8 ex. 00,00,00 00,00,10 00,10,00 00,10,10 10,00,00 10,00,10
+      10,10,00 10,10,10'
     Variant: 
-  - TestId: Fairy (Vampire6-40)  vs Blob
+  - TestId: Fairy (   Vampire6-40 ) vs Blob
     AdditionalActions:
     - ActionId: Vampire6-40
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: Blob
+    MaxTurns: 8
     LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#38AD63>Blob</color>
       <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
       Att=11, Def=10, 61% 16/26 ex. 00,00,10,10,10 00,10,00,10,10 00,10,10,00,10
@@ -91,12 +99,19 @@ MonoBehaviour:
       23% 6/26 ex. 00,00,10,10,00 00,10,00,10,00 00,10,10,00,00 10,00,00,10,00 10,00,10,00,00
       10,10,00,00,00'
     Variant: 
-  - TestId: Fairy (Vampire7-40)  vs Blob
+  - TestId: Fairy (   Vampire7-40 ) vs Blob
     AdditionalActions:
     - ActionId: Vampire7-40
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: Blob
+    MaxTurns: 8
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
       <color=#FF0000>is dead</color>, LastTurn: 1, HP=<color=#FF0000>14</color>/14,
       Att=11, Def=10, 40% 2/5 ex. 00,10,00 10,10
@@ -114,84 +129,312 @@ MonoBehaviour:
       alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>,
       LastTurn: 2, HP=<color=#FF0000>8</color>/14, Att=11, Def=10, 20% 1/5 ex. 00,00,00'
     Variant: 
-  - TestId: Fairy  vs Blob
+  - TestId: Fairy (    ) vs Blob
     AdditionalActions: []
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: Blob
+    MaxTurns: 8
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
       <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
       Att=11, Def=10, 100% 1/1 ex. 00,00,00'
     Variant: 
-  - TestId: Fairy  vs BlobBoss
+  - TestId: Fairy (    ) vs BlobBoss
     AdditionalActions: []
     Consumables: []
+    Weapon:
+      ItemId: 
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: BlobBoss
-    LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color>
-      <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
-      Att=11, Def=10, 100% 1/1 ex. 00,00,00,00,00'
+    MaxTurns: 8
+    LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color>
+      <color=#FF0000>is dead</color>, LastTurn: 5, HP=<color=#FF0000>14</color>/14,
+      Att=11, Def=15, 3% 2/64 ex. 00,10,10,10,10,10 10,10,10,10,10,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>12</color>/14, Att=11, Def=15,
+      15% 10/64 ex. 00,00,10,10,10,10 00,10,00,10,10,10 00,10,10,00,10,10 00,10,10,10,00,10
+      00,10,10,10,10,00 10,00,10,10,10,10 10,10,00,10,10,10 10,10,10,00,10,10 10,10,10,10,00,10
+      10,10,10,10,10,00
+
+      <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
+      <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>, LastTurn: 5,
+      HP=<color=#FF0000>10</color>/14, Att=11, Def=15, 31% 20/64 ex. 00,00,00,10,10,10
+      00,00,10,00,10,10 00,00,10,10,00,10 00,00,10,10,10,00 00,10,00,00,10,10 00,10,00,10,00,10
+      00,10,00,10,10,00 00,10,10,00,00,10 00,10,10,00,10,00 00,10,10,10,00,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>8</color>/14, Att=11, Def=15,
+      31% 20/64 ex. 00,00,00,00,10,10 00,00,00,10,00,10 00,00,00,10,10,00 00,00,10,00,00,10
+      00,00,10,00,10,00 00,00,10,10,00,00 00,10,00,00,00,10 00,10,00,00,10,00 00,10,00,10,00,00
+      00,10,10,00,00,00
+
+      <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
+      <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>, LastTurn: 5,
+      HP=<color=#FF0000>6</color>/14, Att=11, Def=15, 15% 10/64 ex. 00,00,00,00,00,10
+      00,00,00,00,10,00 00,00,00,10,00,00 00,00,10,00,00,00 00,10,00,00,00,00 10,00,00,00,00,10
+      10,00,00,00,10,00 10,00,00,10,00,00 10,00,10,00,00,00 10,10,00,00,00,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>4</color>/14, Att=11, Def=15,
+      3% 2/64 ex. 00,00,00,00,00,00 10,00,00,00,00,00'
     Variant: 
-  - TestId: Fairy  (Small Health Potion) vs BlobBoss
+  - TestId: Fairy (    C:Small Health Potion) vs BlobBoss
     AdditionalActions: []
     Consumables:
     - ItemId: Small Health Potion
+    Weapon:
+      ItemId: None
+    Armor:
+      ItemId: 
+    Accessory:
+      ItemId: 
     HeroId: Fairy
     EnemyId: BlobBoss
+    MaxTurns: 8
     LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color>
       <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
-      Att=11, Def=10, 33% 2/6 ex. 00,00,00,00,00 10,00,00,00,00
+      Att=11, Def=10, 0% 3/423 ex. 00,00,00,00,00 10,00,00,00,00 20,00,00,00,00
 
       <color=#FF00E0>Fairy</color>
       <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
       alive</color>, LastTurn: 5, HP=<color=#FF0000>-1</color>/14, Att=11, Def=10,
-      16% 1/6 ex. 00,10,00,00,00,00
+      3% 16/423 ex. 00,20,00,00,00,00 10,20,00,00,00,00 20,00,00,00,10,00 20,00,00,00,10,10
+      20,00,00,10,00,00 20,00,00,10,00,10 20,00,00,10,10,00 20,00,10,00,00,00 20,00,10,00,00,10
+      20,00,10,00,10,00
+
+      <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
+      <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>, LastTurn: 6,
+      HP=<color=#FF0000>12</color>/14, Att=11, Def=10, 0% 4/423 ex. 00,10,10,10,10,20,10
+      00,10,10,10,20,10,10 10,10,10,10,10,20,10 10,10,10,10,20,10,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>11</color>/14, Att=11, Def=10,
+      0% 2/423 ex. 00,10,10,20,10,10,10 10,10,10,20,10,10,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>10</color>/14, Att=11, Def=10,
+      6% 28/423 ex. 00,00,10,10,10,20,10 00,00,10,10,20,10,10 00,00,10,20,10,10,10
+      00,00,20,10,10,10,10 00,10,00,10,10,20,10 00,10,00,10,20,10,10 00,10,00,20,10,10,10
+      00,10,10,00,10,20,10 00,10,10,00,20,10,10 00,10,10,10,00,20,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>9</color>/14, Att=11, Def=10,
+      0% 2/423 ex. 00,10,10,10,10,10 10,10,10,10,10,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>9</color>/14, Att=11, Def=10,
+      1% 8/423 ex. 00,10,10,20,00,10,10 00,10,10,20,10,00,10 00,10,10,20,10,10,00
+      00,20,10,10,10,10,10 10,10,10,20,00,10,10 10,10,10,20,10,00,10 10,10,10,20,10,10,00
+      10,20,10,10,10,10,10
 
       <color=#FF00E0>Fairy</color> <color=#00FF00>is
       alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>,
-      LastTurn: 6, HP=<color=#FF0000>2</color>/14, Att=11, Def=10, 50% 3/6 ex. 00,00,00,00,10,00,00
-      00,00,00,10,00,00,00 00,00,10,00,00,00,00'
-    Variant: 00,10,00,00,00,00  00,00,00,10,00,00,00
-  - TestId: Fairy  (Small Health Potion,Small Health Potion) vs BlobBoss
-    AdditionalActions: []
-    Consumables:
-    - ItemId: Small Health Potion
-    - ItemId: Small Health Potion
-    HeroId: Fairy
-    EnemyId: BlobBoss
-    LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color>
-      <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
-      Att=11, Def=10, 6% 3/45 ex. 00,00,00,00,00 10,00,00,00,00 20,00,00,00,00
+      LastTurn: 6, HP=<color=#FF0000>8</color>/14, Att=11, Def=10, 16% 71/423 ex.
+      00,00,00,10,10,20,10 00,00,00,10,20,10,10 00,00,00,20,10,10,10 00,00,10,00,10,20,10
+      00,00,10,00,20,10,10 00,00,10,10,00,20,10 00,00,10,10,10,20,00 00,00,10,10,20,00,10
+      00,00,10,10,20,10,00 00,00,10,20,00,10,10
 
       <color=#FF00E0>Fairy</color>
-      <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
-      alive</color>, LastTurn: 5, HP=<color=#FF0000>-1</color>/14, Att=11, Def=10,
-      8% 4/45 ex. 00,10,00,00,00,00 00,20,00,00,00,00 10,10,00,00,00,00 20,10,00,00,00,00
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>7</color>/14, Att=11, Def=10,
+      2% 10/423 ex. 00,00,10,10,10,10 00,10,00,10,10,10 00,10,10,00,10,10 00,10,10,10,00,10
+      00,10,10,10,10,00,00 10,00,10,10,10,10 10,10,00,10,10,10 10,10,10,00,10,10
+      10,10,10,10,00,10 10,10,10,10,10,00,00
 
       <color=#FF00E0>Fairy</color>
-      <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
-      alive</color>, LastTurn: 6, HP=<color=#FF0000>-1</color>/14, Att=11, Def=10,
-      17% 8/45 ex. 00,10,10,00,00,00,00 00,20,10,00,00,00,00 10,00,00,00,10,00,00
-      10,00,00,10,00,00,00 10,00,10,00,00,00,00 20,00,00,00,10,00,00 20,00,00,10,00,00,00
-      20,00,10,00,00,00,00
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>7</color>/14, Att=11, Def=10,
+      3% 16/423 ex. 00,10,10,20,00,00,10 00,10,10,20,00,10,00 00,10,10,20,10,00,00
+      00,20,00,10,10,10,10 00,20,10,00,10,10,10 00,20,10,10,00,10,10 00,20,10,10,10,00,10
+      00,20,10,10,10,10,00 10,10,10,20,00,00,10 10,10,10,20,00,10,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>6</color>/14, Att=11, Def=10,
+      20% 88/423 ex. 00,00,00,00,10,20,10 00,00,00,00,20,10,10 00,00,00,10,00,20,10
+      00,00,00,10,10,20,00 00,00,00,10,20,00,10 00,00,00,10,20,10,00 00,00,00,20,00,10,10
+      00,00,00,20,10,00,10 00,00,00,20,10,10,00 00,00,10,00,00,20,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>5</color>/14, Att=11, Def=10,
+      4% 20/423 ex. 00,00,00,10,10,10 00,00,10,00,10,10 00,00,10,10,00,10 00,00,10,10,10,00,00
+      00,10,00,00,10,10 00,10,00,10,00,10 00,10,00,10,10,00,00 00,10,10,00,00,10
+      00,10,10,00,10,00,00 00,10,10,10,00,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>5</color>/14, Att=11, Def=10,
+      5% 22/423 ex. 00,10,10,20,00,00,00 00,20,00,00,10,10,10 00,20,00,10,00,10,10
+      00,20,00,10,10,00,10 00,20,00,10,10,10,00 00,20,10,00,00,10,10 00,20,10,00,10,00,10
+      00,20,10,00,10,10,00 00,20,10,10,00,00,10 00,20,10,10,00,10,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>4</color>/14, Att=11, Def=10,
+      13% 59/423 ex. 00,00,00,00,10,20,00 00,00,00,00,20,00,10 00,00,00,00,20,10,00
+      00,00,00,10,00,20,00 00,00,00,10,20,00,00 00,00,00,20,00,00,10 00,00,00,20,00,10,00
+      00,00,00,20,10,00,00 00,00,10,00,00,20,00 00,00,10,00,20,00,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>3</color>/14, Att=11, Def=10,
+      4% 20/423 ex. 00,00,00,00,10,10 00,00,00,10,00,10 00,00,00,10,10,00,00 00,00,10,00,00,10
+      00,00,10,00,10,00,00 00,00,10,10,00,00 00,10,00,00,00,10 00,10,00,00,10,00,00
+      00,10,00,10,00,00 00,10,10,00,00,00
 
       <color=#FF00E0>Fairy</color> <color=#00FF00>is
       alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>,
-      LastTurn: 7, HP=<color=#FF0000>5</color>/14, Att=11, Def=10, 35% 16/45 ex.
-      00,00,00,00,10,00,10,00 00,00,00,00,10,10,00,00 00,00,00,00,20,00,10,00 00,00,00,00,20,10,00,00
-      00,00,00,10,00,00,10,00 00,00,00,10,00,10,00,00 00,00,00,10,10,00,00,00 00,00,00,20,00,00,10,00
-      00,00,00,20,00,10,00,00 00,00,00,20,10,00,00,00
+      LastTurn: 6, HP=<color=#FF0000>3</color>/14, Att=11, Def=10, 4% 20/423 ex.
+      00,20,00,00,00,10,10 00,20,00,00,10,00,10 00,20,00,00,10,10,00 00,20,00,10,00,00,10
+      00,20,00,10,00,10,00 00,20,00,10,10,00,00 00,20,10,00,00,00,10 00,20,10,00,00,10,00
+      00,20,10,00,10,00,00 00,20,10,10,00,00,00
 
       <color=#FF00E0>Fairy</color>
       <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
       dead</color>, LastTurn: 6, HP=<color=#FF0000>2</color>/14, Att=11, Def=10,
-      13% 6/45 ex. 00,00,00,00,10,00,00 00,00,00,00,20,00,00 00,00,00,10,00,00,00
-      00,00,00,20,00,00,00 00,00,10,00,00,00,00 00,00,20,00,00,00,00
+      4% 18/423 ex. 00,00,00,00,20,00,00 00,00,00,20,00,00,00 00,00,20,00,00,00,00
+      00,10,20,00,00,00,00 10,00,00,00,20,00,00 10,00,00,20,00,00,00 10,00,20,00,00,00,00
+      10,10,20,00,00,00,00 20,00,00,10,10,10,00 20,00,10,00,10,10,00
 
       <color=#FF00E0>Fairy</color>
       <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
-      dead</color>, LastTurn: 7, HP=<color=#FF0000>2</color>/14, Att=11, Def=10,
-      17% 8/45 ex. 00,00,10,10,00,00,00,00 00,00,20,10,00,00,00,00 00,10,00,00,00,10,00,00
-      00,10,00,00,10,00,00,00 00,10,00,10,00,00,00,00 00,20,00,00,00,10,00,00 00,20,00,00,10,00,00,00
-      00,20,00,10,00,00,00,00'
-    Variant: 
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>1</color>/14, Att=11, Def=10,
+      1% 8/423 ex. 00,00,00,00,10,00 00,00,00,10,00,00 00,00,10,00,00,00 00,10,00,00,00,00
+      10,00,00,00,10,00 10,00,00,10,00,00 10,00,10,00,00,00 10,10,00,00,00,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>1</color>/14, Att=11, Def=10,
+      1% 8/423 ex. 00,20,00,00,00,10,00 00,20,00,00,10,00,00 00,20,00,10,00,00,00
+      00,20,10,00,00,00,00 10,20,00,00,00,10,00 10,20,00,00,10,00,00 10,20,00,10,00,00,00
+      10,20,10,00,00,00,00'
+    Variant: 00,10,00,00,00,00  00,00,00,10,00,00,00
+  - TestId: Fairy (W:Vampire Sphere S:Shield A:Magic Book  ) vs BlobBoss
+    AdditionalActions: []
+    Consumables: []
+    Weapon:
+      ItemId: Vampire Sphere
+    Armor:
+      ItemId: Shield
+    Accessory:
+      ItemId: Magic Book
+    HeroId: Fairy
+    EnemyId: BlobBoss
+    MaxTurns: 10
+    LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color>
+      <color=#00FF00>is alive</color>, LastTurn: 6, HP=<color=#FF0000>0</color>/14,
+      Att=26, Def=15, 0% 297/265111 ex. 00,00,00,00,00,10,10 00,00,00,00,00,10,20
+      00,00,00,00,00,20,10 00,00,00,00,10,10,10 00,00,00,00,10,10,20 00,00,00,00,10,20,10
+      00,00,00,00,20,00,10 00,00,00,00,20,10,10 00,00,00,10,00,10,10 00,00,00,10,00,10,20
+
+      <color=#FF00E0>Fairy</color>
+      <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
+      alive</color>, LastTurn: 7, HP=<color=#FF0000>0</color>/14, Att=17, Def=22,
+      0% 766/265111 ex. 00,00,00,00,00,20,20,10 00,00,00,00,00,20,20,20 00,00,00,00,10,20,20,10
+      00,00,00,00,10,20,20,20 00,00,00,00,20,00,20,10 00,00,00,00,20,00,20,20 00,00,00,00,20,10,20,10
+      00,00,00,00,20,10,20,20 00,00,00,00,20,30,10,10 00,00,00,00,30,10,10,10
+
+      <color=#FF00E0>Fairy</color>
+      <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
+      alive</color>, LastTurn: 8, HP=<color=#FF0000>0</color>/14, Att=26, Def=22,
+      0% 2588/265111 ex. 00,00,00,00,20,20,00,10,10 00,00,00,00,20,20,00,10,20 00,00,00,00,20,20,00,20,10
+      00,00,00,00,20,20,00,20,20 00,00,00,00,20,20,10,10,10 00,00,00,00,20,20,10,10,20
+      00,00,00,00,20,20,10,20,10 00,00,00,00,20,20,10,20,20 00,00,00,00,20,20,20,00,10
+      00,00,00,00,20,20,20,00,20
+
+      <color=#FF00E0>Fairy</color> <color=#FF0000>is
+      dead</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is alive</color>,
+      LastTurn: 9, HP=<color=#FF0000>0</color>/14, Att=39, Def=22, 2% 7506/265111
+      ex. 00,00,00,00,20,30,20,10,10,10 00,00,00,00,20,30,20,10,10,20 00,00,00,00,20,30,20,10,20,10
+      00,00,00,00,20,30,20,10,20,20 00,00,00,00,20,30,20,20,10,10 00,00,00,00,20,30,20,20,10,20
+      00,00,00,00,20,30,20,20,20,10 00,00,00,00,20,30,20,20,20,20 00,00,00,00,30,20,20,10,10,10
+      00,00,00,00,30,20,20,10,10,20
+
+      <color=#FF00E0>Fairy</color> <color=#00FF00>is
+      alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>,
+      LastTurn: 4, HP=<color=#FF0000>6</color>/14, Att=17, Def=15, 0% 74/265111 ex.
+      00,10,00,00,00,00 00,10,00,00,30,00 00,10,00,30,00,00 00,10,00,30,30,00 00,10,10,00,00
+      00,10,10,00,30,00 00,10,10,30,00,00 00,10,10,30,30,00 00,10,30,00,00,00 00,10,30,00,30,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 5, HP=<color=#FF0000>4</color>/14, Att=11, Def=15,
+      0% 692/265111 ex. 00,00,00,00,00,00 00,00,00,00,00,30,00 00,00,00,00,10,00
+      00,00,00,00,10,30,00 00,00,00,00,30,00,00 00,00,00,00,30,30,00 00,00,00,10,00,00
+      00,00,00,10,00,30,00 00,00,00,10,30,00,00 00,00,00,10,30,30,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 6, HP=<color=#FF0000>2</color>/14, Att=17, Def=15,
+      1% 3412/265111 ex. 00,00,00,00,00,10,00 00,00,00,00,00,10,30 00,00,00,00,00,20,00
+      00,00,00,00,00,20,30,00 00,00,00,00,10,10,00 00,00,00,00,10,10,30 00,00,00,00,10,20,00
+      00,00,00,00,10,20,30,00 00,00,00,00,20,00,00 00,00,00,00,20,00,30,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 9, HP=<color=#FF0000>2</color>/14, Att=11, Def=33,
+      33% 87530/265111 ex. 00,00,00,00,20,20,20,20,30,00 00,00,00,00,20,20,20,20,30,30
+      00,00,00,00,20,20,20,30,10,00 00,00,00,00,20,20,20,30,10,30 00,00,00,00,20,20,20,30,20,00
+      00,00,00,00,20,20,20,30,20,30 00,00,00,00,20,20,30,10,10,00 00,00,00,00,20,20,30,10,10,30
+      00,00,00,00,20,20,30,10,20,00 00,00,00,00,20,20,30,10,20,30
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 7, HP=<color=#FF0000>1</color>/14, Att=11, Def=22,
+      4% 11718/265111 ex. 00,00,00,00,00,20,20,00 00,00,00,00,00,20,20,30 00,00,00,00,10,20,20,00
+      00,00,00,00,10,20,20,30 00,00,00,00,20,00,20,00 00,00,00,00,20,00,20,30 00,00,00,00,20,10,20,00
+      00,00,00,00,20,10,20,30 00,00,00,00,20,20,00,00 00,00,00,00,20,20,00,30,00
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is
+      dead</color>, LastTurn: 8, HP=<color=#FF0000>1</color>/14, Att=17, Def=22,
+      12% 34204/265111 ex. 00,00,00,00,20,20,00,10,00 00,00,00,00,20,20,00,10,30
+      00,00,00,00,20,20,00,20,00 00,00,00,00,20,20,00,20,30 00,00,00,00,20,20,10,10,00
+      00,00,00,00,20,20,10,10,30 00,00,00,00,20,20,10,20,00 00,00,00,00,20,20,10,20,30
+      00,00,00,00,20,20,20,00,00 00,00,00,00,20,20,20,00,30
+
+      <color=#FF00E0>Fairy</color>
+      <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#00FF00>is
+      alive</color>, LastTurn: 9, HP=<color=#FF0000>1</color>/14, Att=17, Def=33,
+      43% 116324/265111 ex. 00,00,00,00,20,20,20,20,30,10 00,00,00,00,20,20,20,20,30,20
+      00,00,00,00,20,20,20,30,10,10 00,00,00,00,20,20,20,30,10,20 00,00,00,00,20,20,20,30,20,10
+      00,00,00,00,20,20,20,30,20,20 00,00,00,00,20,20,30,10,10,10 00,00,00,00,20,20,30,10,10,20
+      00,00,00,00,20,20,30,10,20,10 00,00,00,00,20,20,30,10,20,20'
+    Variant: 00,10,00,00,00,00  00,00,00,10,00,00,00
+  - TestId: Fairy (W:Vampire Sphere S:Shield   ) vs BlobBoss
+    AdditionalActions: []
+    Consumables: []
+    Weapon:
+      ItemId: Vampire Sphere
+    Armor:
+      ItemId: Shield
+    Accessory:
+      ItemId: None
+    HeroId: Fairy
+    EnemyId: BlobBoss
+    MaxTurns: 9
+    LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#2AFFB6>BlobBoss</color>
+      <color=#FF0000>is dead</color>, LastTurn: 5, HP=<color=#FF0000>4</color>/14,
+      Att=11, Def=15, 100% 64/64 ex. 00,00,00,00,00,00 00,00,00,00,00,10 00,00,00,00,10,00
+      00,00,00,00,10,10 00,00,00,10,00,00 00,00,00,10,00,10 00,00,00,10,10,00 00,00,00,10,10,10
+      00,00,10,00,00,00 00,00,10,00,00,10'
+    Variant: 00,10,00,00,00,00  00,00,00,10,00,00,00

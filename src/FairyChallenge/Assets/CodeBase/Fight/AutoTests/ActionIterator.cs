@@ -15,8 +15,8 @@ namespace Fight
 
         public ActionIterator(Hero hero, Hero enemy)
         {
-            int firstActionCount = hero.Actions.Count + hero.Inventory.Consumables.Count;
-            _secondActionCount = enemy.Actions.Count + enemy.Inventory.Consumables.Count;
+            int firstActionCount = hero.HeroActions.Count + hero.Inventory.Consumables.Count;
+            _secondActionCount = enemy.HeroActions.Count + enemy.Inventory.Consumables.Count;
             _oneTurnVariantsCount = firstActionCount * _secondActionCount;
             _currentVariant.Clear();
         }
@@ -39,9 +39,9 @@ namespace Fight
             }
         }
 
-        public int CurrentVariantNumber()
+        public long CurrentVariantNumber()
         {
-            var index = 0;
+            var index = 0L;
             var multiplier = 1;
             int count = _currentVariant.Count;
             for (int i = _longestFightTurn - 1; i >= 0; i--)
@@ -54,9 +54,9 @@ namespace Fight
             return index;
         }
 
-        public int EstimateVariantsCount()
+        public double EstimateVariantsCount()
         {
-            return Mathf.RoundToInt(Mathf.Pow(_oneTurnVariantsCount, _longestFightTurn));
+            return Math.Pow(_oneTurnVariantsCount, _longestFightTurn);
         }
 
         public bool HasNext()

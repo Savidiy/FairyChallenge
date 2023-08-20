@@ -9,6 +9,8 @@ namespace Fight
     [CreateAssetMenu(fileName = nameof(ItemsLibrary), menuName = nameof(ItemsLibrary), order = 0)]
     public class ItemsLibrary : AutoSaveScriptableObject
     {
+        public const string NONE = "None";
+
         private readonly Dictionary<ItemType, ValueDropdownList<string>> _itemIdsByType = new();
         private ValueDropdownList<string> _emptyValueDropdownList = new();
 
@@ -27,11 +29,12 @@ namespace Fight
             base.OnValidate();
             ItemIds.Clear();
             _itemIdsByType.Clear();
+            ItemIds.Add(NONE);
             foreach (ItemStaticData item in Items)
             {
                 ItemIds.Add(item.ItemId);
                 if (!_itemIdsByType.ContainsKey(item.ItemType))
-                    _itemIdsByType.Add(item.ItemType, new ValueDropdownList<string>());
+                    _itemIdsByType.Add(item.ItemType, new ValueDropdownList<string>() {NONE});
 
                 _itemIdsByType[item.ItemType].Add(item.ItemId);
             }
