@@ -14,12 +14,13 @@ namespace Fairy
             Hide();
         }
 
-        public UniTask ShowAsync()
+        public async UniTask ShowAsync()
         {
-            StartButton.onClick.AddListener(OnStartButtonClick);
+            await UniTask.NextFrame();
             gameObject.SetActive(true);
+            StartButton.onClick.AddListener(OnStartButtonClick);
             _completionSource = new UniTaskCompletionSource();
-            return _completionSource.Task;
+            await _completionSource.Task;
         }
 
         public UniTask HideAsync()

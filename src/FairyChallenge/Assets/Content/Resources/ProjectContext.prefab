@@ -74,3 +74,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155264aca5a2c174f8aa21ee2df93200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeroLibrary: {fileID: 11400000, guid: 56df309ea786a6b42ac06aa5a8d34b30, type: 2}
+  FightTestLibrary: {fileID: 11400000, guid: baf402ac4c5f4bb4ca5c9df40fe2c225, type: 2}
+  ItemsLibrary: {fileID: 11400000, guid: 55af0e8115c07be42b7f1995d2c228db, type: 2}
+  FightSettings: {fileID: 11400000, guid: fae41b335ad98384fb63780711b98608, type: 2}
+  BackgroundLibrary: {fileID: 11400000, guid: 1f1ec83c0f862c44b870b3ff667c0797, type: 2}
+  NodesLibrary: {fileID: 11400000, guid: c6ae223c4fdf9a24ba58e4f5db9baa3f, type: 2}
+  StorySettings: {fileID: 11400000, guid: b271ebd605d48434c99e686629821ea6, type: 2}
+  PersonLibrary: {fileID: 11400000, guid: 0193c6d271a1ad34dbed00dc813ff4f0, type: 2}

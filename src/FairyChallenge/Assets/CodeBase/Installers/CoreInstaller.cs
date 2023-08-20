@@ -9,6 +9,10 @@ namespace Fairy
         public FightTestLibrary FightTestLibrary;
         public ItemsLibrary ItemsLibrary;
         public FightSettings FightSettings;
+        public BackgroundLibrary BackgroundLibrary;
+        public NodesLibrary NodesLibrary;
+        public StorySettings StorySettings;
+        public PersonLibrary PersonLibrary;
 
         public override void InstallBindings()
         {
@@ -18,6 +22,10 @@ namespace Fairy
             Container.BindInstance(FightTestLibrary);
             Container.BindInstance(ItemsLibrary);
             Container.BindInstance(FightSettings);
+            Container.BindInstance(BackgroundLibrary);
+            Container.BindInstance(NodesLibrary);
+            Container.BindInstance(StorySettings);
+            Container.BindInstance(PersonLibrary);
             
             Container.Bind<HeroFactory>().AsSingle();
             Container.Bind<ActionFactory>().AsSingle();

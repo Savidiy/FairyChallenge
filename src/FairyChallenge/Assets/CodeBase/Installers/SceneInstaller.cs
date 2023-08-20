@@ -17,6 +17,12 @@ namespace Fairy
             Container.BindInterfacesTo<SelectContinueApplicationState>().AsSingle();
             Container.BindInterfacesTo<NewGameApplicationState>().AsSingle();
             Container.BindInterfacesTo<StoryApplicationState>().AsSingle();
+
+            Container.Bind<StoryTeller>().AsSingle();
+
+            Container.Bind<StepFactory>().AsSingle();
+            Container.BindInterfacesTo<BackgroundStepFactory>().AsSingle();
+            Container.BindInterfacesTo<DialogStepFactory>().AsSingle();
         }
     }
 }
