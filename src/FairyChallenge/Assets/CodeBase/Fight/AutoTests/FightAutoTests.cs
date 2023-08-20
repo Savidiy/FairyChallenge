@@ -47,10 +47,7 @@ namespace Fight
             foreach (FightTestId fightTestId in fightTestIds)
             {
                 string testId = fightTestId.TestId;
-                FightTestStaticData testStaticData = FightTestLibrary.GetFightTest(testId);
-                HeroTestData ourHeroData = testStaticData.OurHero;
-                HeroTestData enemyTestData = testStaticData.Enemy;
-                TestFight(testId, ourHeroData, enemyTestData, needDetails);
+                TestFight(testId, needDetails);
                 _testStatistics.SaveLog(testId);
             }
 
@@ -60,25 +57,37 @@ namespace Fight
         [Button, HorizontalGroup(BUTTONS)]
         public void ClearConsole() => ClearLogConsole();
 
-        private void TestFight(string testId, HeroTestData ourHeroData, HeroTestData enemyTestData, bool needDetails)
+        private void TestFight(string testId, bool needDetails)
         {
-            Hero hero = _heroFactory.Create(ourHeroData);
-            Hero enemy = _heroFactory.Create(enemyTestData);
+            FightTestStaticData data = FightTestLibrary.GetFightTest(testId);
+
+            Hero hero = CreateHero(data);
+            Hero enemy = CreateEnemy(data);
             Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
 
             var actionIterator = new ActionIterator(hero, enemy);
             do
             {
-                hero = _heroFactory.Create(ourHeroData);
-                enemy = _heroFactory.Create(enemyTestData);
+                hero = CreateHero(data);
+                enemy = CreateEnemy(data);
                 int currentVariantNumber = actionIterator.CurrentVariantNumber();
                 int estimateVariantsCount = actionIterator.EstimateVariantsCount();
                 float progress = currentVariantNumber / (float) estimateVariantsCount;
-                var info = $"{hero.ForConsole} vs {enemy.ForConsole}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
+                var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
                 DisplayProgressBar("Fight", info, progress);
 
                 CalcFight(hero, enemy, actionIterator, needDetails);
             } while (actionIterator.HasNext());
+        }
+
+        private Hero CreateHero(FightTestStaticData data)
+        {
+            return _heroFactory.Create(data.HeroId, data.AdditionalActions);
+        }
+
+        private Hero CreateEnemy(FightTestStaticData data)
+        {
+            return _heroFactory.Create(data.EnemyId);
         }
 
         private void CalcFight(Hero hero, Hero enemy, ActionIterator actionIterator, bool needDetails)

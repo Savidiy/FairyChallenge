@@ -21,12 +21,11 @@ namespace Fight
             return hero;
         }
 
-        public Hero Create(HeroTestData enemyTestData)
+        public Hero Create(string heroId, List<AdditionalActionData> additionalActions)
         {
-            string heroId = enemyTestData.HeroId;
             var heroData = _heroLibrary.GetStaticData(heroId);
             List<ActionData> actions = _actionFactory.Create(heroData.Actions);
-            foreach (AdditionalActionData additionalActionData in enemyTestData.AdditionalActions)
+            foreach (AdditionalActionData additionalActionData in additionalActions)
                 actions.Add(_actionFactory.Create(additionalActionData.ActionId));
 
             var hero = new Hero(heroData, actions);

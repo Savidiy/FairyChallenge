@@ -31,10 +31,11 @@ namespace Fight
             TestIds.Clear();
             foreach (FightTestStaticData test in Tests)
             {
-                HeroTestData hero = test.OurHero;
-                HeroTestData enemy = test.Enemy;
+                string heroId = test.HeroId;
+                string enemyId = test.EnemyId;
+                List<AdditionalActionData> actions = test.AdditionalActions;
                 test.TestId =
-                    $"{hero.HeroId} {(hero.AdditionalActions.Count > 0 ? $"({string.Join(",", hero.AdditionalActions)}) " : "")}vs {enemy.HeroId} {(enemy.AdditionalActions.Count > 0 ? $"({string.Join(",", enemy.AdditionalActions)})" : "")}";
+                    $"{heroId} {(actions.Count > 0 ? $"({string.Join(",", actions)}) " : "")}vs {enemyId}";
 
                 TestIds.Add(test.TestId);
             }
@@ -53,9 +54,11 @@ namespace Fight
     [Serializable]
     public class FightTestStaticData
     {
-        public string TestId;
-        public HeroTestData OurHero;
-        public HeroTestData Enemy;
+        public string TestId = string.Empty;
+        public List<AdditionalActionData> AdditionalActions = new();
+        [ValueDropdown(nameof(HeroIds))] public string HeroId;
+        private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
+        [ValueDropdown(nameof(HeroIds))] public string EnemyId;
         [ShowInInspector] public string LastResult;
         [Button, HorizontalGroup(width:0.2f)] private void ToConsole() => Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
         [Button, HorizontalGroup] private void Test() => FightTestRunner.StartTest(TestId, false);
@@ -63,15 +66,6 @@ namespace Fight
         [Button, HorizontalGroup(width:0.2f)] private void ClearConsole() => SafeEditorUtils.ClearLogConsole();
 
         public override string ToString() => TestId;
-    }
-
-    [Serializable]
-    public class HeroTestData
-    {
-        [ValueDropdown(nameof(HeroIds)), HorizontalGroup] public string HeroId;
-        private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
-
-        [FormerlySerializedAs("AdditionalAttacks")] public List<AdditionalActionData> AdditionalActions = new();
     }
 
     [Serializable]

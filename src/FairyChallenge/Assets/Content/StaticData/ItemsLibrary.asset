@@ -49,3 +49,31 @@ MonoBehaviour:
       StatType: 0
       Value: 0
       ActionId: BuffDefence20
+  - ItemId: Small Health Potion
+    ItemType: 3
+    Effects:
+    - ItemEffectType: 1
+      StatType: 2
+      Value: 6
+      ActionId: 
+  - ItemId: Big Health Potion
+    ItemType: 3
+    Effects:
+    - ItemEffectType: 1
+      StatType: 2
+      Value: 12
+      ActionId: 
+  - ItemId: Attack Potion
+    ItemType: 3
+    Effects:
+    - ItemEffectType: 1
+      StatType: 0
+      Value: 10
+      ActionId: 
+  - ItemId: Defence Potion
+    ItemType: 3
+    Effects:
+    - ItemEffectType: 1
+      StatType: 1
+      Value: 10
+      ActionId: 
