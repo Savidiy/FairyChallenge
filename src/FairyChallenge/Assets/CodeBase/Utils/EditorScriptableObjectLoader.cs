@@ -1,5 +1,7 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Savidiy.Utils
@@ -10,6 +12,7 @@ namespace Savidiy.Utils
 
         public T GetAsset()
         {
+#if UNITY_EDITOR
             if (_asset != null)
                 return _asset;
 
@@ -23,8 +26,9 @@ namespace Savidiy.Utils
 
             if (guids.Length > 1)
                 Debug.LogError($"Found '{guids.Length}' assets of type '{typeof(T)}', returned '{assetPath}'", asset);
-                
+
             _asset = asset;
+#endif
             return _asset;
         }
     }
