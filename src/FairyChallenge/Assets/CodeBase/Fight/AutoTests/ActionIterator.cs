@@ -4,7 +4,7 @@ using System.Text;
 using Savidiy.Utils;
 using UnityEngine;
 
-namespace Fight
+namespace Fairy
 {
     internal class ActionIterator
     {

@@ -4,7 +4,7 @@ using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Fight
+namespace Fairy
 {
     [CreateAssetMenu(fileName = nameof(ItemsLibrary), menuName = nameof(ItemsLibrary), order = 0)]
     public class ItemsLibrary : AutoSaveScriptableObject

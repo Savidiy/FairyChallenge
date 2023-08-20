@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine.Serialization;
 
-namespace Fight
+namespace Fairy
 {
     [Serializable]
     public class AvailableActionStaticData

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Fight
+namespace Fairy
 {
     public sealed class Inventory
     {

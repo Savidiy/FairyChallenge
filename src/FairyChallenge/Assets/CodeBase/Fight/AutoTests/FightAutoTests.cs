@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 using static Savidiy.Utils.ConsoleColor;
 using static Savidiy.Utils.SafeEditorUtils;
 
-namespace Fight
+namespace Fairy
 {
     public class FightAutoTests : MonoBehaviour
     {

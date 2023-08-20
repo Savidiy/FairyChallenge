@@ -1,6 +1,6 @@
 using Savidiy.Utils;
 
-namespace Fight
+namespace Fairy
 {
     public static class StatTypeExtensions
     {

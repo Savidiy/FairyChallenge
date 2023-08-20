@@ -1,7 +1,7 @@
 ﻿using Savidiy.Utils;
 using UnityEngine;
 
-namespace Fight
+namespace Fairy
 {
     [CreateAssetMenu(fileName = nameof(FightSettings), menuName = nameof(FightSettings), order = 0)]
     public class FightSettings : AutoSaveScriptableObject

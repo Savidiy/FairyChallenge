@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Savidiy.Utils;
 
-namespace Fight
+namespace Fairy
 {
     public sealed class HeroStats
     {

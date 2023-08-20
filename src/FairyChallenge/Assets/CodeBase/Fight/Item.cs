@@ -1,4 +1,4 @@
-﻿namespace Fight
+﻿namespace Fairy
 {
     public class Item
     {

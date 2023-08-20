@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fight
+namespace Fairy
 {
     public sealed class ItemEffectApplier
     {

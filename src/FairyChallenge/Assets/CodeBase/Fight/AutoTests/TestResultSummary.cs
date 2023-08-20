@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Savidiy.Utils;
-using static Fight.FightAutoTests;
+using static Fairy.FightAutoTests;
 
-namespace Fight
+namespace Fairy
 {
     internal class TestResultSummary
     {

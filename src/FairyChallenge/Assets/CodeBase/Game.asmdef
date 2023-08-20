@@ -1,4 +1,16 @@
 {
-	"name": "Game",
-	"references":[ "GUID:e3d664dab41df274797fd15e43bca207" ]
+    "name": "Game",
+    "rootNamespace": "Fairy",
+    "references": [
+        "GUID:e3d664dab41df274797fd15e43bca207"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

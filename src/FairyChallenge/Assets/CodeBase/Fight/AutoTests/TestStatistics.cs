@@ -4,7 +4,7 @@ using System.Linq;
 using Savidiy.Utils;
 using UnityEngine;
 
-namespace Fight
+namespace Fairy
 {
     internal class TestStatistics
     {

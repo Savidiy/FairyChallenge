@@ -1,7 +1,7 @@
 using Savidiy.Utils;
 using static Savidiy.Utils.ConsoleColor;
 
-namespace Fight
+namespace Fairy
 {
     internal class ActionResultChange
     {

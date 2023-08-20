@@ -2,7 +2,7 @@ using System;
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 
-namespace Fight
+namespace Fairy
 {
     [Serializable]
     public static class OdinFightTestIdProvider

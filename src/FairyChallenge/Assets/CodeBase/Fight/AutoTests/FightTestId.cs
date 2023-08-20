@@ -1,7 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace Fight
+namespace Fairy
 {
     [Serializable]
     public class FightTestId

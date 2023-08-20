@@ -1,7 +1,7 @@
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 
-namespace Fight
+namespace Fairy
 {
     public static class OdinActionIdProvider
     {

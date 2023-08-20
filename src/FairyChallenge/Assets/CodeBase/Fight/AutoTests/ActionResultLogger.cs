@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.Pool;
 
-namespace Fight
+namespace Fairy
 {
     internal class ActionResultLogger
     {

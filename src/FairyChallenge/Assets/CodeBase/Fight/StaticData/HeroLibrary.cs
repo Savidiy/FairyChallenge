@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Fight
+namespace Fairy
 {
     [CreateAssetMenu(fileName = nameof(HeroLibrary), menuName = nameof(HeroLibrary), order = 0)]
     public class HeroLibrary : AutoSaveScriptableObject

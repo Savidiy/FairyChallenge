@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fight
+namespace Fairy
 {
     public sealed class ActionData
     {
