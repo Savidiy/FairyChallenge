@@ -16,7 +16,7 @@ namespace Fairy
         [SerializeField] private Ease TextTypingEase = Ease.Linear;
         [SerializeField] private int SymbolsPerSecond = 25;
 
-        [CanBeNull] private Tween _typingSequence;
+        [CanBeNull] private Tween _tween;
         private string _message;
         private bool _isPrintCompleted;
         private bool _isClicked;
@@ -38,8 +38,8 @@ namespace Fairy
         public async UniTask ShowAsync(string message, CancellationToken token)
         {
             Show();
-            _typingSequence?.Kill();
             _showTokenSource?.Cancel();
+            _tween?.Kill();
             _showTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token);
 
             _message = message;
@@ -50,23 +50,23 @@ namespace Fairy
             int totalCharacters = Text.text.Length;
             float duration = totalCharacters / (float) SymbolsPerSecond;
             Text.maxVisibleCharacters = 0;
-            _typingSequence = DOTween
+            _tween = DOTween
                 .To(() => Text.maxVisibleCharacters,
                     visibleChars => { Text.maxVisibleCharacters = visibleChars; },
                     totalCharacters,
                     duration)
                 .SetEase(TextTypingEase);
 
-            _typingSequence.Play();
-            await UniTask.WaitWhile(_typingSequence.IsPlaying, cancellationToken: _showTokenSource.Token);
+            _tween.Play();
+            await UniTask.WaitWhile(IsTweenPlaying, cancellationToken: _showTokenSource.Token);
             _isPrintCompleted = true;
-            _typingSequence = null;
             Text.maxVisibleCharacters = MaxVisibleCharacters;
             await UniTask.WaitWhile(IsClickWait, cancellationToken: token);
             SkipButton.gameObject.SetActive(false);
         }
 
         private bool IsClickWait() => !_isClicked;
+        private bool IsTweenPlaying() => _tween.IsActive() && _tween.IsPlaying();
         
         private void OnSkipClick()
         {
@@ -78,8 +78,8 @@ namespace Fairy
 
         private void ForceFinish()
         {
-            _typingSequence?.Kill(true);
-            _typingSequence = null;
+            _tween?.Kill(true);
+            _tween = null;
         }
 
         private void Show()
