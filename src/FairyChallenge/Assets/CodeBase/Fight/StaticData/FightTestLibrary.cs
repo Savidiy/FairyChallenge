@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Fight
 {
@@ -33,7 +34,7 @@ namespace Fight
                 HeroTestData hero = test.OurHero;
                 HeroTestData enemy = test.Enemy;
                 test.TestId =
-                    $"{hero.HeroId} {(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",", hero.AdditionalAttacks)}) " : "")}vs {enemy.HeroId} {(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",", enemy.AdditionalAttacks)})" : "")}";
+                    $"{hero.HeroId} {(hero.AdditionalActions.Count > 0 ? $"({string.Join(",", hero.AdditionalActions)}) " : "")}vs {enemy.HeroId} {(enemy.AdditionalActions.Count > 0 ? $"({string.Join(",", enemy.AdditionalActions)})" : "")}";
 
                 TestIds.Add(test.TestId);
             }
@@ -70,18 +71,18 @@ namespace Fight
         [ValueDropdown(nameof(HeroIds)), HorizontalGroup] public string HeroId;
         private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
 
-        public List<AdditionalAttackData> AdditionalAttacks = new();
+        [FormerlySerializedAs("AdditionalAttacks")] public List<AdditionalActionData> AdditionalActions = new();
     }
 
     [Serializable]
-    public class AdditionalAttackData
+    public class AdditionalActionData
     {
-        [ValueDropdown(nameof(AttackIds)), HideLabel] public string AttackId;
-        private ValueDropdownList<string> AttackIds => OdinAttackIdProvider.AttackIds;
+        [FormerlySerializedAs("AttackId")] [ValueDropdown(nameof(ActionIds)), HideLabel] public string ActionId;
+        private ValueDropdownList<string> ActionIds => OdinActionIdProvider.ActionIds;
 
         public override string ToString()
         {
-            return AttackId;
+            return ActionId;
         }
     }
 }

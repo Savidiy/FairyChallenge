@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Fight
 {
@@ -43,11 +44,11 @@ namespace Fight
 
         public string HeroId = string.Empty;
 
-        public List<AvailableAttackStaticData> Attacks;
+        [FormerlySerializedAs("Attacks")] public List<AvailableActionStaticData> Actions;
         [ProgressBar(1, nameof(MAX_HEALTH_POINTS), r: 0, g: 1, b: 0)] public int HealthPoints;
         [ProgressBar(1, nameof(MAX_ATTACK), r: 1, g: 0, b: 0)] public int Attack;
         [ProgressBar(1, nameof(MAX_DEFENCE), r: 0, g: 0, b: 1)] public int Defence;
-        public Color ConsoleColor = new Color(1,1,1,1);
+        public Color ConsoleColor = new Color(1, 1, 1, 1);
 
         public override string ToString()
         {

@@ -6,16 +6,16 @@ namespace Fight
     public class Hero
     {
         private readonly HeroStaticData _heroStaticData;
-        private readonly List<AttackData> _availableAttacks = new();
+        private readonly List<ActionData> _actions = new();
 
-        public IReadOnlyList<AttackData> AvailableAttacks => _availableAttacks;
+        public IReadOnlyList<ActionData> Actions => _actions;
         public bool IsAlive => Stats.IsAlive;
         public readonly HeroStats Stats;
 
-        public Hero(HeroStaticData heroStaticData, IReadOnlyList<AttackData> allAttacks)
+        public Hero(HeroStaticData heroStaticData, IReadOnlyList<ActionData> allAttacks)
         {
             _heroStaticData = heroStaticData;
-            _availableAttacks.AddRange(allAttacks);
+            _actions.AddRange(allAttacks);
             Stats = new HeroStats(_heroStaticData);
         }
 

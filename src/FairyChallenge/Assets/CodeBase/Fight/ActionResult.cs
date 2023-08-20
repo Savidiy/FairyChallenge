@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Fight
 {
-    public sealed class AttackResult
+    public sealed class ActionResult
     {
         private readonly Dictionary<Hero, List<StatChangeData>> _changes = new();
 
-        public string AttackId { get; private set; }
+        public string ActionId { get; private set; }
 
         public void AddChange(StatChangeData statChangeData)
         {
@@ -40,9 +40,9 @@ namespace Fight
             return result;
         }
 
-        public void SetAttackId(string attackId)
+        public void SetActionId(string actionId)
         {
-            AttackId = attackId;
+            ActionId = actionId;
         }
     }
 }

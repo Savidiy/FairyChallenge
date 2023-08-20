@@ -2,6 +2,7 @@
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static Savidiy.Utils.ConsoleColor;
 using static Savidiy.Utils.SafeEditorUtils;
 
@@ -11,7 +12,7 @@ namespace Fight
     {
         private const string DEPENDENCIES = "Dependencies";
         private const string BUTTONS = "Buttons";
-        [FoldoutGroup(DEPENDENCIES)] public AttackLibrary AttackLibrary;
+        [FormerlySerializedAs("AttackLibrary")] [FoldoutGroup(DEPENDENCIES)] public ActionLibrary ActionLibrary;
         [FoldoutGroup(DEPENDENCIES)] public HeroLibrary HeroLibrary;
         [FoldoutGroup(DEPENDENCIES)] public FightTestLibrary FightTestLibrary;
         [FoldoutGroup(DEPENDENCIES)] public FightSettings FightSettings;
@@ -22,12 +23,12 @@ namespace Fight
         private HeroFactory _heroFactory;
         private FightCalculator _fightCalculator;
         private TestStatistics _testStatistics;
-        private readonly AttackResultLogger _attackResultLogger = new();
+        private readonly ActionResultLogger _actionResultLogger = new();
 
         private void Initialize()
         {
-            var attackFactory = new AttackFactory(AttackLibrary);
-            _heroFactory = new HeroFactory(HeroLibrary, attackFactory);
+            var actionFactory = new ActionFactory(ActionLibrary);
+            _heroFactory = new HeroFactory(HeroLibrary, actionFactory);
             _fightCalculator = new FightCalculator(FightSettings);
             _testStatistics = new TestStatistics(FightTestLibrary);
         }
@@ -65,22 +66,22 @@ namespace Fight
             Hero enemy = _heroFactory.Create(enemyTestData);
             Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
 
-            var attackIterator = new AttackIterator(hero, enemy);
+            var actionIterator = new ActionIterator(hero, enemy);
             do
             {
                 hero = _heroFactory.Create(ourHeroData);
                 enemy = _heroFactory.Create(enemyTestData);
-                int currentVariantNumber = attackIterator.CurrentVariantNumber();
-                int estimateVariantsCount = attackIterator.EstimateVariantsCount();
+                int currentVariantNumber = actionIterator.CurrentVariantNumber();
+                int estimateVariantsCount = actionIterator.EstimateVariantsCount();
                 float progress = currentVariantNumber / (float) estimateVariantsCount;
                 var info = $"{hero.ForConsole} vs {enemy.ForConsole}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
                 DisplayProgressBar("Fight", info, progress);
 
-                CalcFight(hero, enemy, attackIterator, needDetails);
-            } while (attackIterator.HasNext());
+                CalcFight(hero, enemy, actionIterator, needDetails);
+            } while (actionIterator.HasNext());
         }
 
-        private void CalcFight(Hero hero, Hero enemy, AttackIterator attackIterator, bool needDetails)
+        private void CalcFight(Hero hero, Hero enemy, ActionIterator actionIterator, bool needDetails)
         {
             var log = string.Empty;
             var heroes = new List<Hero> {hero, enemy};
@@ -89,42 +90,42 @@ namespace Fight
 
             while (hero.IsAlive && enemy.IsAlive)
             {
-                attackIterator.GetIndexForTurn(turn, out int heroAttackIndex, out int enemyAttackIndex);
+                actionIterator.GetIndexForTurn(turn, out int firstIndex, out int secondIndex);
 
-                _attackResultLogger.SaveState(heroes);
-                AttackResult attackResult = _fightCalculator.CalcAttack(hero, heroAttackIndex, enemy);
-                ApplyResult(attackResult, heroes);
-                _attackResultLogger.ApplyState(heroes);
+                _actionResultLogger.SaveState(heroes);
+                ActionResult actionResult = _fightCalculator.CalcAction(hero, firstIndex, enemy);
+                ApplyResult(actionResult, heroes);
+                _actionResultLogger.ApplyState(heroes);
                 turnString = (turn + 1).ToString();
-                log += LogTurn(turnString, hero, enemy, attackResult, _attackResultLogger);
+                log += LogTurn(turnString, hero, enemy, actionResult, _actionResultLogger);
 
                 if (enemy.IsAlive)
                 {
-                    _attackResultLogger.SaveState(heroes);
-                    attackResult = _fightCalculator.CalcAttack(enemy, enemyAttackIndex, hero);
-                    ApplyResult(attackResult, heroes);
-                    _attackResultLogger.ApplyState(heroes);
-                    log += LogTurn(turnString, enemy, hero, attackResult, _attackResultLogger);
+                    _actionResultLogger.SaveState(heroes);
+                    actionResult = _fightCalculator.CalcAction(enemy, secondIndex, hero);
+                    ApplyResult(actionResult, heroes);
+                    _actionResultLogger.ApplyState(heroes);
+                    log += LogTurn(turnString, enemy, hero, actionResult, _actionResultLogger);
                 }
 
                 turn++;
             }
 
-            string printCurrentVariant = attackIterator.PrintCurrentVariant();
+            string printCurrentVariant = actionIterator.PrintCurrentVariant();
             if (needDetails)
                 Debug.Log(
                     $"Result {hero.ForConsole} {PrintAlive(hero.IsAlive)} vs {enemy.ForConsole} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
 
             int lastTurn = turn - 1;
             _testStatistics.Add(hero, enemy, lastTurn, printCurrentVariant);
-            attackIterator.FightEndOnTurn(lastTurn);
+            actionIterator.FightEndOnTurn(lastTurn);
         }
 
-        private string LogTurn(string logTurn, Hero firstHero, Hero secondHero, AttackResult attackResult,
-            AttackResultLogger attackResultLogger)
+        private string LogTurn(string logTurn, Hero firstHero, Hero secondHero, ActionResult actionResult,
+            ActionResultLogger actionResultLogger)
         {
             return
-                $"{logTurn}: {firstHero.ForConsole} use {attackResult.AttackId.Color(WHITE)}: {attackResultLogger.PrintLog()}\n";
+                $"{logTurn}: {firstHero.ForConsole} use {actionResult.ActionId.Color(WHITE)}: {actionResultLogger.PrintLog()}\n";
         }
 
         public static string PrintAlive(bool isAlive)
@@ -132,10 +133,10 @@ namespace Fight
             return isAlive ? "is alive".Color(GREEN) : "is dead".Color(RED);
         }
 
-        private static void ApplyResult(AttackResult attackResult, List<Hero> heroes)
+        private static void ApplyResult(ActionResult actionResult, List<Hero> heroes)
         {
             foreach (Hero hero in heroes)
-            foreach (StatChangeData heroChange in attackResult.GetChanges(hero))
+            foreach (StatChangeData heroChange in actionResult.GetChanges(hero))
                 hero.Stats.ApplyChange(heroChange);
         }
     }

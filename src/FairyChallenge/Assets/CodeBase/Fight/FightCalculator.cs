@@ -12,21 +12,21 @@ namespace Fight
             _fightSettings = fightSettings;
         }
 
-        public AttackResult CalcAttack(Hero attacker, int heroAttackIndex, Hero defender)
+        public ActionResult CalcAction(Hero attacker, int heroAttackIndex, Hero defender)
         {
-            var attackResult = new AttackResult();
+            var actionResult = new ActionResult();
 
             if (IsIndexOutOfRange(attacker, heroAttackIndex))
-                return attackResult;
+                return actionResult;
 
-            AttackData attackData = attacker.AvailableAttacks[heroAttackIndex];
-            attackResult.SetAttackId(attackData.AttackId);
+            ActionData actionData = attacker.Actions[heroAttackIndex];
+            actionResult.SetActionId(actionData.ActionId);
             var damage = 0;
 
-            foreach (EffectStaticData attackDataEffect in attackData.Effects)
+            foreach (EffectStaticData effectStaticData in actionData.Effects)
             {
-                int power = attackDataEffect.Power;
-                EffectType effectType = attackDataEffect.EffectType;
+                int power = effectStaticData.Power;
+                EffectType effectType = effectStaticData.EffectType;
                 StatChangeData statChangeData = effectType switch
                 {
                     EffectType.Damage => CalcDamage(attacker, defender, power),
@@ -38,7 +38,7 @@ namespace Fight
                     EffectType.DebuffEnemyDefence => CalcBuff(StatType.Defence, defender, -power),
                     _ => throw new Exception($"Unknown effect type '{effectType}'")
                 };
-                attackResult.AddChange(statChangeData);
+                actionResult.AddChange(statChangeData);
                 if (effectType == EffectType.Damage)
                 {
                     var effectiveDamage = Mathf.Min(defender.Stats.Get(StatType.HealthPoints), -statChangeData.Delta);
@@ -46,7 +46,7 @@ namespace Fight
                 }
             }
 
-            return attackResult;
+            return actionResult;
         }
 
         private static StatChangeData CalcHeal(Hero attacker, int power)
@@ -74,11 +74,11 @@ namespace Fight
 
         private static bool IsIndexOutOfRange(Hero attacker, int heroAttackIndex)
         {
-            int availableAttacksCount = attacker.AvailableAttacks.Count;
-            if (heroAttackIndex < availableAttacksCount)
+            int actionsCount = attacker.Actions.Count;
+            if (heroAttackIndex < actionsCount)
                 return false;
 
-            Debug.LogError($"Attack index '{heroAttackIndex}' out of range '{availableAttacksCount}'");
+            Debug.LogError($"Action index '{heroAttackIndex}' out of range '{actionsCount}'");
             return true;
         }
 

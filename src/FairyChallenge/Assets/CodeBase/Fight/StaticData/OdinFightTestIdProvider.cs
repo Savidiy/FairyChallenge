@@ -8,6 +8,6 @@ namespace Fight
     public static class OdinFightTestIdProvider
     {
         private static readonly EditorScriptableObjectLoader<FightTestLibrary> Loader = new();
-        public static readonly ValueDropdownList<string> TestIds = Loader.GetAsset().TestIds;
+        public static ValueDropdownList<string> TestIds => Loader.GetAsset().TestIds;
     }
 }

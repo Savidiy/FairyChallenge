@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace Fight
 {
-    internal class AttackIterator
+    internal class ActionIterator
     {
-        private readonly int _secondAttackCount;
+        private readonly int _secondActionCount;
         private readonly int _oneTurnVariantsCount;
         private readonly List<int> _currentVariant = new();
-        private int _longestFightTurn = 0;
+        private int _longestFightTurn;
 
-        public AttackIterator(Hero hero, Hero enemy)
+        public ActionIterator(Hero hero, Hero enemy)
         {
-            int firstAttackCount = hero.AvailableAttacks.Count;
-            _secondAttackCount = enemy.AvailableAttacks.Count;
-            _oneTurnVariantsCount = firstAttackCount * _secondAttackCount;
+            int firstActionCount = hero.Actions.Count;
+            _secondActionCount = enemy.Actions.Count;
+            _oneTurnVariantsCount = firstActionCount * _secondActionCount;
             _currentVariant.Clear();
         }
 
@@ -58,7 +58,7 @@ namespace Fight
                 _currentVariant.Add(0);
 
             int variant = _currentVariant[turn];
-            GetAttackIndexes(variant, out firstIndex, out secondIndex);
+            GetActionIndexes(variant, out firstIndex, out secondIndex);
         }
 
         public string PrintCurrentVariant()
@@ -69,7 +69,7 @@ namespace Fight
                 if (index > 0)
                     stringBuilder.Append(",");
                 int variant = _currentVariant[index];
-                GetAttackIndexes(variant, out int firstIndex, out int secondIndex);
+                GetActionIndexes(variant, out int firstIndex, out int secondIndex);
                 stringBuilder.Append(firstIndex);
                 stringBuilder.Append(secondIndex);
             }
@@ -80,12 +80,12 @@ namespace Fight
             return result;
         }
 
-        private void GetAttackIndexes(int variant, out int firstIndex, out int secondIndex)
+        private void GetActionIndexes(int variant, out int firstIndex, out int secondIndex)
         {
-            if (_secondAttackCount > 1)
+            if (_secondActionCount > 1)
             {
-                firstIndex = variant / _secondAttackCount;
-                secondIndex = variant % _secondAttackCount;
+                firstIndex = variant / _secondActionCount;
+                secondIndex = variant % _secondActionCount;
             }
             else
             {

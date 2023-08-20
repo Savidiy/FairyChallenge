@@ -5,19 +5,19 @@ namespace Fight
     public class HeroFactory
     {
         private readonly HeroLibrary _heroLibrary;
-        private readonly AttackFactory _attackFactory;
+        private readonly ActionFactory _actionFactory;
 
-        public HeroFactory(HeroLibrary heroLibrary, AttackFactory attackFactory)
+        public HeroFactory(HeroLibrary heroLibrary, ActionFactory actionFactory)
         {
             _heroLibrary = heroLibrary;
-            _attackFactory = attackFactory;
+            _actionFactory = actionFactory;
         }
 
         public Hero Create(string heroId)
         {
             var heroData = _heroLibrary.GetStaticData(heroId);
-            IReadOnlyList<AttackData> attacks = _attackFactory.Create(heroData.Attacks);
-            var hero = new Hero(heroData, attacks);
+            IReadOnlyList<ActionData> actions = _actionFactory.Create(heroData.Actions);
+            var hero = new Hero(heroData, actions);
             return hero;
         }
 
@@ -25,11 +25,11 @@ namespace Fight
         {
             string heroId = enemyTestData.HeroId;
             var heroData = _heroLibrary.GetStaticData(heroId);
-            List<AttackData> attacks = _attackFactory.Create(heroData.Attacks);
-            foreach (AdditionalAttackData additionalAttackData in enemyTestData.AdditionalAttacks)
-                attacks.Add(_attackFactory.Create(additionalAttackData.AttackId));
+            List<ActionData> actions = _actionFactory.Create(heroData.Actions);
+            foreach (AdditionalActionData additionalActionData in enemyTestData.AdditionalActions)
+                actions.Add(_actionFactory.Create(additionalActionData.ActionId));
 
-            var hero = new Hero(heroData, attacks);
+            var hero = new Hero(heroData, actions);
             return hero;
         }
     }

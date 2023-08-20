@@ -3,10 +3,10 @@ using UnityEngine.Pool;
 
 namespace Fight
 {
-    internal class AttackResultLogger
+    internal class ActionResultLogger
     {
         private readonly Dictionary<Hero, Dictionary<StatType, int>> _savedStats = new();
-        private readonly List<AttackResultChange> _changes = new();
+        private readonly List<ActionResultChange> _changes = new();
         private readonly Dictionary<StatType, int> _currentStats = new();
 
         public void SaveState(List<Hero> heroes)
@@ -50,11 +50,11 @@ namespace Fight
                 if (savedStats.TryGetValue(statType, out int savedValue))
                 {
                     if (savedValue != newValue)
-                        _changes.Add(new AttackResultChange(hero, statType, savedValue, newValue));
+                        _changes.Add(new ActionResultChange(hero, statType, savedValue, newValue));
                 }
                 else
                 {
-                    _changes.Add(new AttackResultChange(hero, statType, 0, newValue));
+                    _changes.Add(new ActionResultChange(hero, statType, 0, newValue));
                 }
             }
         }

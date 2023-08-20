@@ -16,11 +16,11 @@ MonoBehaviour:
   - TestId: 'Fairy (BuffAttack20) vs Blob '
     OurHero:
       HeroId: Fairy
-      AdditionalAttacks:
-      - AttackId: BuffAttack20
+      AdditionalActions:
+      - ActionId: BuffAttack20
     Enemy:
       HeroId: Blob
-      AdditionalAttacks: []
+      AdditionalActions: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
       LastTurn: 4, HP=-1/14, Att=39, Def=10, 25% 4/16 ex. 00,00,10,10,10,
 
@@ -61,11 +61,11 @@ MonoBehaviour:
   - TestId: 'Fairy (Vampire5-40) vs Blob '
     OurHero:
       HeroId: Fairy
-      AdditionalAttacks:
-      - AttackId: Vampire5-40
+      AdditionalActions:
+      - ActionId: Vampire5-40
     Enemy:
       HeroId: Blob
-      AdditionalAttacks: []
+      AdditionalActions: []
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
       <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>12</color>/14,
       Att=11, Def=10, 25% 2/8 ex. 00,10,10 10,10,10
@@ -86,11 +86,11 @@ MonoBehaviour:
   - TestId: 'Fairy (Vampire6-40) vs Blob '
     OurHero:
       HeroId: Fairy
-      AdditionalAttacks:
-      - AttackId: Vampire6-40
+      AdditionalActions:
+      - ActionId: Vampire6-40
     Enemy:
       HeroId: Blob
-      AdditionalAttacks: []
+      AdditionalActions: []
     LastResult: 'Hero <color=#00FF00>is alive</color>, Enemy <color=red>is dead</color>,
       LastTurn: 1, HP=19/14, Att=11, Def=10, 20% 1/5 ex. 10,10,
 
@@ -107,11 +107,11 @@ MonoBehaviour:
   - TestId: 'Fairy (Vampire7-40) vs Blob '
     OurHero:
       HeroId: Fairy
-      AdditionalAttacks:
-      - AttackId: Vampire7-40
+      AdditionalActions:
+      - ActionId: Vampire7-40
     Enemy:
       HeroId: Blob
-      AdditionalAttacks: []
+      AdditionalActions: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
       LastTurn: 3, HP=0/24, Att=7, Def=7, 6% 1/16 ex. 00,00,00,00,
 
@@ -132,9 +132,9 @@ MonoBehaviour:
   - TestId: 'Fairy vs Blob '
     OurHero:
       HeroId: Fairy
-      AdditionalAttacks: []
+      AdditionalActions: []
     Enemy:
       HeroId: Blob
-      AdditionalAttacks: []
+      AdditionalActions: []
     LastResult: 'Hero <color=red>is dead</color>, Enemy <color=#00FF00>is alive</color>,
       LastTurn: 3, HP=-2/22, Att=6, Def=6, Spd=10 (100% 1/1)'
