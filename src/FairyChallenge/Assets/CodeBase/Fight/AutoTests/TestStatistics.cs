@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Savidiy.Utils;
 using UnityEngine;
 
 namespace Fight
@@ -19,7 +20,7 @@ namespace Fight
             _results.Sort(Comparison);
             int sum = _results.Select(a => a.Count).Sum();
             string result = string.Join("\n", _results.Select(a => a.PrintLog(sum)));
-            Debug.Log($"Test results:\n{result}");
+            Debug.Log($"Test '{testId.Color("white")}' results:\n{result}");
             _fightTestLibrary.SaveTestResult(testId, result);
             _results.Clear();
         }

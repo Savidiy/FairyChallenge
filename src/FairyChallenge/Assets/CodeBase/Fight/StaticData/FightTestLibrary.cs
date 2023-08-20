@@ -32,7 +32,9 @@ namespace Fight
             {
                 HeroTestData hero = test.OurHero;
                 HeroTestData enemy = test.Enemy;
-                test.TestId = $"{hero.HeroId} {hero.Level}{(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",",hero.AdditionalAttacks)})": "")} vs {enemy.HeroId} {enemy.Level}{(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",",enemy.AdditionalAttacks)})": "")}";
+                test.TestId =
+                    $"{hero.HeroId} {hero.Level}{(hero.AdditionalAttacks.Count > 0 ? $"({string.Join(",", hero.AdditionalAttacks)})" : "")} vs {enemy.HeroId} {enemy.Level}{(enemy.AdditionalAttacks.Count > 0 ? $"({string.Join(",", enemy.AdditionalAttacks)})" : "")}";
+
                 TestIds.Add(test.TestId);
             }
 
@@ -53,7 +55,9 @@ namespace Fight
         public string TestId;
         public HeroTestData OurHero;
         public HeroTestData Enemy;
-        [TextArea, FoldoutGroup("Result")] public string LastResult;
+        [ShowInInspector] public string LastResult;
+        [Button] private void ToConsole() => Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
+
         public override string ToString() => TestId;
     }
 
