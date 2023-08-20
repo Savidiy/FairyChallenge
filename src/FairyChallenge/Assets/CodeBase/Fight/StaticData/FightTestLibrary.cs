@@ -56,7 +56,10 @@ namespace Fight
         public HeroTestData OurHero;
         public HeroTestData Enemy;
         [ShowInInspector] public string LastResult;
-        [Button] private void ToConsole() => Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
+        [Button, HorizontalGroup(width:0.2f)] private void ToConsole() => Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
+        [Button, HorizontalGroup] private void Test() => FightTestRunner.StartTest(TestId, false);
+        [Button, HorizontalGroup] private void TestWithDetails() => FightTestRunner.StartTest(TestId, true);
+        [Button, HorizontalGroup(width:0.2f)] private void ClearConsole() => SafeEditorUtils.ClearLogConsole();
 
         public override string ToString() => TestId;
     }

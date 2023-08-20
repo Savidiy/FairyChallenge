@@ -33,15 +33,21 @@ namespace Fight
         [Button, HorizontalGroup(BUTTONS)]
         public void Run()
         {
+            List<FightTestId> fightTestIds = FightTestIds;
+            StartTests(fightTestIds, ShowVariantsLog);
+        }
+
+        public void StartTests(List<FightTestId> fightTestIds, bool needDetails)
+        {
             Initialize();
 
-            foreach (FightTestId fightTestId in FightTestIds)
+            foreach (FightTestId fightTestId in fightTestIds)
             {
                 string testId = fightTestId.TestId;
                 FightTestStaticData testStaticData = FightTestLibrary.GetFightTest(testId);
                 HeroTestData ourHeroData = testStaticData.OurHero;
                 HeroTestData enemyTestData = testStaticData.Enemy;
-                TestFight(testId, ourHeroData, enemyTestData);
+                TestFight(testId, ourHeroData, enemyTestData, needDetails);
                 _testStatistics.SaveLog(testId);
             }
 
@@ -51,7 +57,7 @@ namespace Fight
         [Button, HorizontalGroup(BUTTONS)]
         public void ClearConsole() => ClearLogConsole();
 
-        private void TestFight(string testId, HeroTestData ourHeroData, HeroTestData enemyTestData)
+        private void TestFight(string testId, HeroTestData ourHeroData, HeroTestData enemyTestData, bool needDetails)
         {
             Hero hero = _heroFactory.Create(ourHeroData);
             Hero enemy = _heroFactory.Create(enemyTestData);
@@ -68,11 +74,11 @@ namespace Fight
                 var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
                 DisplayProgressBar("Fight", info, progress);
 
-                CalcFight(hero, enemy, attackIterator);
+                CalcFight(hero, enemy, attackIterator, needDetails);
             } while (attackIterator.HasNext());
         }
 
-        private void CalcFight(Hero hero, Hero enemy, AttackIterator attackIterator)
+        private void CalcFight(Hero hero, Hero enemy, AttackIterator attackIterator, bool needDetails)
         {
             var log = string.Empty;
             var heroes = new List<Hero> {hero, enemy};
@@ -103,7 +109,7 @@ namespace Fight
             }
 
             string printCurrentVariant = attackIterator.PrintCurrentVariant();
-            if (ShowVariantsLog)
+            if (needDetails)
                 Debug.Log(
                     $"Result {hero} {PrintAlive(hero.IsAlive)} vs {enemy} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
 
