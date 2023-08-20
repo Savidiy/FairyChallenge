@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fight
+namespace Savidiy.Utils
 {
     public class EnumStringCache<T> where T : Enum
     {

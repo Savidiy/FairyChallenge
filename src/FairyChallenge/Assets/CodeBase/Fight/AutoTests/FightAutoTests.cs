@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
+using static Savidiy.Utils.SafeEditorUtils;
 
 namespace Fight
 {
     public class FightAutoTests : MonoBehaviour
     {
         private const string DEPENDENCIES = "Dependencies";
+        private const string BUTTONS = "Buttons";
         [FoldoutGroup(DEPENDENCIES)] public AttackLibrary AttackLibrary;
         [FoldoutGroup(DEPENDENCIES)] public HeroLibrary HeroLibrary;
         [FoldoutGroup(DEPENDENCIES)] public FightTestLibrary FightTestLibrary;
@@ -29,7 +30,7 @@ namespace Fight
             _testStatistics = new TestStatistics(FightTestLibrary);
         }
 
-        [Button]
+        [Button, HorizontalGroup(BUTTONS)]
         public void Run()
         {
             Initialize();
@@ -46,6 +47,9 @@ namespace Fight
 
             ClearProgressBar();
         }
+
+        [Button, HorizontalGroup(BUTTONS)]
+        public void ClearConsole() => ClearLogConsole();
 
         private void TestFight(string testId, HeroTestData ourHeroData, HeroTestData enemyTestData)
         {
@@ -66,20 +70,6 @@ namespace Fight
 
                 CalcFight(hero, enemy, attackIterator);
             } while (attackIterator.HasNext());
-        }
-
-        private static void ClearProgressBar()
-        {
-#if UNITY_EDITOR
-            EditorUtility.ClearProgressBar();
-#endif
-        }
-
-        private static void DisplayProgressBar(string title, string info, float progress)
-        {
-#if UNITY_EDITOR
-            EditorUtility.DisplayProgressBar(title, info, progress);
-#endif
         }
 
         private void CalcFight(Hero hero, Hero enemy, AttackIterator attackIterator)

@@ -1,3 +1,5 @@
+using Savidiy.Utils;
+
 namespace Fight
 {
     public static class StatTypeExtensions
