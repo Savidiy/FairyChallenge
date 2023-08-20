@@ -29,7 +29,7 @@ namespace Fairy
 
         public PersonStaticData GetPersonData(string personId)
         {
-            if (personId.Equals(DefaultPerson.PersonId))
+            if (personId.Equals(DefaultPerson.PersonId) || string.IsNullOrEmpty(personId))
                 return DefaultPerson;
 
             foreach (PersonStaticData person in Persons)

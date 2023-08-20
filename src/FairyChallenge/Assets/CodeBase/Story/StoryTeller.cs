@@ -3,17 +3,27 @@ using Cysharp.Threading.Tasks;
 
 namespace Fairy
 {
-    public class StoryTeller
+    public sealed class StoryTeller
     {
         private readonly StepFactory _stepFactory;
         private readonly NodesLibrary _nodesLibrary;
+        private readonly StoryWindow _storyWindow;
+        
         private string _currentNodeId;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public StoryTeller(StepFactory stepFactory, NodesLibrary nodesLibrary)
+        public StoryTeller(StepFactory stepFactory, NodesLibrary nodesLibrary, StoryWindow storyWindow)
         {
             _stepFactory = stepFactory;
             _nodesLibrary = nodesLibrary;
+            _storyWindow = storyWindow;
+            _storyWindow.ActionButtons.NodeClicked += OnNodeClicked;
+        }
+
+        private void OnNodeClicked(string nodeId)
+        {
+            _storyWindow.ActionButtons.HideButtons();
+            PlayNode(nodeId);    
         }
 
         public void SetCurrentNodeId(string currentNodeId)
@@ -21,7 +31,7 @@ namespace Fairy
             _currentNodeId = currentNodeId;
         }
 
-        public void PlayNode(string nodeId)
+        private void PlayNode(string nodeId)
         {
             SetCurrentNodeId(nodeId);
             PlayCurrentNode().Forget();

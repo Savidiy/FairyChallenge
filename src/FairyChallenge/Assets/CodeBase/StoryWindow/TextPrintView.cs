@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -64,6 +63,7 @@ namespace Fairy
             _typingSequence = null;
             Text.maxVisibleCharacters = MaxVisibleCharacters;
             await UniTask.WaitWhile(IsClickWait, cancellationToken: token);
+            SkipButton.gameObject.SetActive(false);
         }
 
         private bool IsClickWait() => !_isClicked;

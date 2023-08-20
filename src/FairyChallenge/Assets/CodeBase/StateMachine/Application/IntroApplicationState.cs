@@ -12,7 +12,7 @@ namespace Fairy
             _introWindow = introWindow;
             _applicationStateMachine = applicationStateMachine;
         }
-        
+
         public void Enter()
         {
             ShowIntroWindow().Forget();

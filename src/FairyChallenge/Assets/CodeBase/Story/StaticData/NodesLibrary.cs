@@ -46,8 +46,8 @@ namespace Fairy
     public class StepStaticData
     {
         [EnumToggleButtons, LabelWidth(40)] public StepType Type;
-        private bool ShowGoto => Type == StepType.Goto;
-        [ShowIf(nameof(ShowGoto)), ValueDropdown(nameof(NodeIds))] public string NodeId = string.Empty;
+        private bool ShowNodeId => Type is StepType.Goto or StepType.Button;
+        [ShowIf(nameof(ShowNodeId)), ValueDropdown(nameof(NodeIds))] public string NodeId = string.Empty;
         private ValueDropdownList<string> NodeIds => OdinNodeIdProvider.NodeIds;
 
         private bool ShowBackground => Type == StepType.Background;
@@ -61,6 +61,11 @@ namespace Fairy
 
         private bool ShowButton => Type == StepType.Button;
         [ShowIf(nameof(ShowButton)), LabelWidth(40)] public string ButtonText;
-        [ShowIf(nameof(ShowButton)), ValueDropdown(nameof(NodeIds))] public string ButtonNodeId = string.Empty;
+        
+        private bool ShowFight => Type == StepType.Encounter;
+        [ShowIf(nameof(ShowFight)), ValueDropdown(nameof(EncounterIds))] public string EncounterId;
+        private ValueDropdownList<string> EncounterIds => OdinEncounterIdProvider.EncounterIds;
+        [ShowIf(nameof(ShowFight)), ValueDropdown(nameof(NodeIds))] public string WinNodeId = string.Empty;
+        [ShowIf(nameof(ShowFight)), ValueDropdown(nameof(NodeIds))] public string LoseNodeId = string.Empty;
     }
 }
