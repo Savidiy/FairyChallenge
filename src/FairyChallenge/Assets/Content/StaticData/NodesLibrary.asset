@@ -80,7 +80,7 @@ MonoBehaviour:
       LoseNodeId: 
     - Type: 4
       NodeId: 
-      BackgroundId: FindCoin
+      BackgroundId: None
       PersonId: None
       Text: "\u041A\u0430\u043A\u0430\u044F \u0436\u0435 \u043E\u043D\u0430 \u043E\u0433\u0440\u043E\u043C\u043D\u0430\u044F!"
       ButtonText: 
@@ -316,6 +316,15 @@ MonoBehaviour:
       Text: "\u041B\u0438\u043B\u0438\u044F \u043F\u043E\u0434\u0431\u0438\u0440\u0430\u0435\u0442
         \u043F\u0430\u043B\u043A\u0443, \u0442\u0435\u043F\u0435\u0440\u044C \u0435\u0439
         \u043D\u0430\u0434\u043E \u0432\u0437\u044F\u0442\u044C \u0432 \u0440\u0443\u043A\u0438!"
+      ButtonText: 
+      EncounterId: 
+      WinNodeId: 
+      LoseNodeId: 
+    - Type: 0
+      NodeId: 
+      BackgroundId: 
+      PersonId: 
+      Text: "\u041D\u0430 \u044D\u0442\u043E\u043C \u0438\u0433\u0440\u0430 \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044F("
       ButtonText: 
       EncounterId: 
       WinNodeId: 

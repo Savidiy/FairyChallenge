@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ namespace Fairy
         [SerializeField] private Button RepeatButton;
         [SerializeField] private Button RestartButton;
         [SerializeField] private GameObject LosePanel;
+        [SerializeField] private TMP_Text HeroHealthText;
+        [SerializeField] private TMP_Text EnemyHealth;
 
         private void Awake()
         {
@@ -27,7 +30,6 @@ namespace Fairy
         public UniTask<bool> ShowAsync()
         {
             gameObject.SetActive(true);
-            SubscribeButtons();
             _completionSource = new UniTaskCompletionSource<bool>();
             return _completionSource.Task;
         }
@@ -62,10 +64,18 @@ namespace Fairy
         {
             HeroImage.sprite = hero.StaticData.FightSprite;
             EnemyImage.sprite = enemy.StaticData.FightSprite;
+            SetHealth(hero, HeroHealthText);
+            SetHealth(enemy, EnemyHealth);
+        }
+
+        private void SetHealth(Hero hero, TMP_Text heroHealthText)
+        {
+            heroHealthText.text = $"HP: {hero.Stats.Get(StatType.HealthPoints)}/{hero.Stats.Get(StatType.MaxHealthPoints)}";
         }
 
         public void ShowActions(Hero hero)
         {
+            SubscribeButtons();
             ActionButtons.HideButtons();
             int actionsCount = hero.HeroActions.Actions.Count;
             for (var index = 0; index < actionsCount; index++)
@@ -112,9 +122,10 @@ namespace Fairy
             UnsubscribeButtons();
         }
 
-        public void ShowActionResult(ActionResult actionResult)
+        public void ShowActionResult(Hero hero, Hero enemy, ActionResult actionResult)
         {
-            
+            SetHealth(hero, HeroHealthText);
+            SetHealth(enemy, EnemyHealth);
         }
 
         public void ShowLose()

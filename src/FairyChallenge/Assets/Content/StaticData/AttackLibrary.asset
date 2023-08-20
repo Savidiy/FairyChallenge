@@ -14,70 +14,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - ActionId: FairyHit
-    Effects:
-    - EffectType: 0
-      Power: 5
     UseText: Hit
+    Effects:
+    - EffectType: 0
+      Power: 10
   - ActionId: BlobHit
+    UseText: BlobHit
     Effects:
     - EffectType: 0
       Power: 5
+  - ActionId: BlobHeal
     UseText: BlobHit
+    Effects:
+    - EffectType: 1
+      Power: 5
   - ActionId: Vampire7-40
+    UseText: Vampire7-40
     Effects:
     - EffectType: 0
       Power: 7
     - EffectType: 2
       Power: 40
-    UseText: Vampire7-40
   - ActionId: Vampire6-40
+    UseText: Vampire6-40
     Effects:
     - EffectType: 0
       Power: 6
     - EffectType: 2
       Power: 40
-    UseText: Vampire6-40
   - ActionId: Vampire5-40
+    UseText: Vampire5-40
     Effects:
     - EffectType: 0
       Power: 5
     - EffectType: 2
       Power: 40
-    UseText: Vampire5-40
-  - ActionId: Vampire7-40
+  - ActionId: Life Link
+    UseText: Cast Life Link
     Effects:
     - EffectType: 0
-      Power: 7
+      Power: 6
     - EffectType: 2
-      Power: 40
-    UseText: Vampire7-40
+      Power: 25
   - ActionId: BuffAttack20
+    UseText: BuffAttack20
     Effects:
     - EffectType: 3
       Power: 50
-    UseText: BuffAttack20
   - ActionId: BuffDefence20
+    UseText: BuffDefence20
     Effects:
     - EffectType: 4
       Power: 20
-    UseText: BuffDefence20
   - ActionId: BuffSpeed50
+    UseText: BuffSpeed50
     Effects:
     - EffectType: 5
       Power: 50
-    UseText: BuffSpeed50
   - ActionId: DebuffAttack20
+    UseText: DebuffAttack20
     Effects:
     - EffectType: 6
       Power: 20
-    UseText: DebuffAttack20
   - ActionId: DebuffDefence20
+    UseText: DebuffDefence20
     Effects:
     - EffectType: 7
       Power: 20
-    UseText: DebuffDefence20
   - ActionId: DebuffSpeed50
+    UseText: 
     Effects:
     - EffectType: 8
       Power: 50
-    UseText: 

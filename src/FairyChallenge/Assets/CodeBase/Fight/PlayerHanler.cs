@@ -17,6 +17,9 @@ namespace Fairy
 
         public void SaveHeroBeforeFight()
         {
+            _stats.Clear();
+            _consumables.Clear();
+
             Hero.Stats.FillAllStatsValues(_stats);
             _consumables.Clear();
             _consumables.AddRange(Hero.Inventory.Consumables);

@@ -15,3 +15,5 @@ MonoBehaviour:
   Encounters:
   - EncounterId: Blob
     EnemyId: Blob
+  - EncounterId: BlobBoss
+    EnemyId: BlobBoss

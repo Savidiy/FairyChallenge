@@ -38,6 +38,7 @@ namespace Fairy
             Container.BindInterfacesTo<ButtonStepFactory>().AsSingle();
             Container.BindInterfacesTo<EncounterStepFactory>().AsSingle();
             Container.BindInterfacesTo<GotoStepFactory>().AsSingle();
+            Container.BindInterfacesTo<OffFightState>().AsSingle();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Fairy
             if (_fightCalculator.TryCalcResult(hero, heroActionIndex, enemy, out ActionResult actionResult))
             {
                 ApplyResult(actionResult, heroes);
-                await ShowActionResult(actionResult);
+                await ShowActionResult(hero, enemy, actionResult);
             }
 
             if (IsEndFight(hero, enemy))
@@ -59,7 +59,7 @@ namespace Fairy
             else if (_fightCalculator.TryCalcResult(enemy, enemyActionIndex, hero, out ActionResult enemyActionResult))
             {
                 ApplyResult(enemyActionResult, heroes);
-                await ShowActionResult(actionResult);
+                await ShowActionResult(hero, enemy, actionResult);
             }
 
             if (IsEndFight(hero, enemy))
@@ -68,9 +68,9 @@ namespace Fairy
                 _fightStateMachine.EnterToState<SelectActionFightState>();
         }
 
-        private async UniTask ShowActionResult(ActionResult actionResult)
+        private async UniTask ShowActionResult(Hero hero, Hero enemy, ActionResult actionResult)
         {
-            _fightWindow.ShowActionResult(actionResult);
+            _fightWindow.ShowActionResult(hero, enemy, actionResult);
             await UniTask.Delay(500);
         }
 
