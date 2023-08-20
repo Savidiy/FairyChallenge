@@ -38,6 +38,16 @@ namespace Fight
 
             SavePrefab();
         }
+
+        public ItemStaticData GetItemData(string itemId)
+        {
+            foreach (ItemStaticData item in Items)
+                if (item.ItemId.Equals(itemId))
+                    return item;
+
+            Debug.LogError($"Item with id '{itemId}' not found");
+            return new ItemStaticData() {ItemId = itemId};
+        }
     }
 
     [Serializable]

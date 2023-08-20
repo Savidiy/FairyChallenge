@@ -167,9 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3124cb3c98603bb4a9f965c17c6aad36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackLibrary: {fileID: 11400000, guid: d61f3de341c9d474089c79f9c205364c, type: 2}
+  ActionLibrary: {fileID: 11400000, guid: d61f3de341c9d474089c79f9c205364c, type: 2}
   HeroLibrary: {fileID: 11400000, guid: 56df309ea786a6b42ac06aa5a8d34b30, type: 2}
   FightTestLibrary: {fileID: 11400000, guid: baf402ac4c5f4bb4ca5c9df40fe2c225, type: 2}
+  ItemsLibrary: {fileID: 11400000, guid: 55af0e8115c07be42b7f1995d2c228db, type: 2}
   FightSettings: {fileID: 11400000, guid: fae41b335ad98384fb63780711b98608, type: 2}
   ShowVariantsLog: 0
   FightTestIds:

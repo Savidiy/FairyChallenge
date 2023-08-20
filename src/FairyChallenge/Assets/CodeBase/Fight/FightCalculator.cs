@@ -11,15 +11,59 @@ namespace Fight
         {
             _fightSettings = fightSettings;
         }
-
-        public ActionResult CalcAction(Hero attacker, int heroAttackIndex, Hero defender)
+        
+        public bool TryCalcResult(Hero attacker, int actionIndex, Hero defender, out ActionResult actionResult)
         {
-            var actionResult = new ActionResult();
+            actionResult = new ActionResult();
 
-            if (IsIndexOutOfRange(attacker, heroAttackIndex))
-                return actionResult;
+            if (IsIndexOutOfRange(attacker, actionIndex))
+                return false;
+            
+            if (actionIndex >= attacker.Actions.Count)
+            {
+                UseItem(attacker, actionIndex, actionResult);
+                return true;
+            }
 
-            ActionData actionData = attacker.Actions[heroAttackIndex];
+            UseAction(attacker, defender, actionResult, actionIndex);
+
+            return true;
+        }
+
+        private static void UseItem(Hero attacker, int heroAttackIndex, ActionResult actionResult)
+        {
+            int itemIndex = heroAttackIndex - attacker.Actions.Count;
+            Item item = attacker.Inventory.TakeConsumable(itemIndex);
+
+            string itemId = item.ItemStaticData.ItemId;
+            actionResult.SetActionId(itemId);
+            
+            foreach (ItemEffect itemEffect in item.ItemStaticData.Effects)
+            {
+                if (itemEffect.ItemEffectType == ItemEffectType.AddAction)
+                    Debug.LogError($"Consumable '{itemId}' can't add action");
+
+                if (itemEffect.ItemEffectType == ItemEffectType.ChangeStat)
+                {
+                    int value = itemEffect.Value;
+                    ItemStatType itemStatType = itemEffect.StatType;
+                    var statType = itemStatType switch
+                    {
+                        ItemStatType.Attack => StatType.Attack,
+                        ItemStatType.Defence => StatType.Defence,
+                        ItemStatType.HealthPoints => StatType.HealthPoints,
+                        _ => throw new Exception($"Unknown stat type '{itemStatType}'")
+                    };
+
+                    var statChangeData = new StatChangeData(attacker, statType, value);
+                    actionResult.AddChange(statChangeData);
+                }
+            }
+        }
+
+        private void UseAction(Hero attacker, Hero defender, ActionResult actionResult, int actionIndex)
+        {
+            ActionData actionData = attacker.Actions[actionIndex];
             actionResult.SetActionId(actionData.ActionId);
             var damage = 0;
 
@@ -38,6 +82,7 @@ namespace Fight
                     EffectType.DebuffEnemyDefence => CalcBuff(StatType.Defence, defender, -power),
                     _ => throw new Exception($"Unknown effect type '{effectType}'")
                 };
+
                 actionResult.AddChange(statChangeData);
                 if (effectType == EffectType.Damage)
                 {
@@ -45,8 +90,6 @@ namespace Fight
                     damage += effectiveDamage;
                 }
             }
-
-            return actionResult;
         }
 
         private static StatChangeData CalcHeal(Hero attacker, int power)
@@ -74,12 +117,8 @@ namespace Fight
 
         private static bool IsIndexOutOfRange(Hero attacker, int heroAttackIndex)
         {
-            int actionsCount = attacker.Actions.Count;
-            if (heroAttackIndex < actionsCount)
-                return false;
-
-            Debug.LogError($"Action index '{heroAttackIndex}' out of range '{actionsCount}'");
-            return true;
+            int actionsCount = attacker.Actions.Count + attacker.Inventory.Consumables.Count;
+            return heroAttackIndex >= actionsCount;
         }
 
         private StatChangeData CalcDamage(Hero attacker, Hero defender, int power)

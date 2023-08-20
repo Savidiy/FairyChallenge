@@ -11,6 +11,7 @@ namespace Fight
         public IReadOnlyList<ActionData> Actions => _actions;
         public bool IsAlive => Stats.IsAlive;
         public readonly HeroStats Stats;
+        public readonly Inventory Inventory = new();
 
         public Hero(HeroStaticData heroStaticData, IReadOnlyList<ActionData> allAttacks)
         {

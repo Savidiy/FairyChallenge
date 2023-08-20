@@ -15,6 +15,7 @@ namespace Fight
         [FormerlySerializedAs("AttackLibrary")] [FoldoutGroup(DEPENDENCIES)] public ActionLibrary ActionLibrary;
         [FoldoutGroup(DEPENDENCIES)] public HeroLibrary HeroLibrary;
         [FoldoutGroup(DEPENDENCIES)] public FightTestLibrary FightTestLibrary;
+        [FoldoutGroup(DEPENDENCIES)] public ItemsLibrary ItemsLibrary;
         [FoldoutGroup(DEPENDENCIES)] public FightSettings FightSettings;
 
         public bool ShowVariantsLog;
@@ -28,7 +29,8 @@ namespace Fight
         private void Initialize()
         {
             var actionFactory = new ActionFactory(ActionLibrary);
-            _heroFactory = new HeroFactory(HeroLibrary, actionFactory);
+            var itemFactory = new ItemFactory(ItemsLibrary);
+            _heroFactory = new HeroFactory(HeroLibrary, actionFactory, itemFactory);
             _fightCalculator = new FightCalculator(FightSettings);
             _testStatistics = new TestStatistics(FightTestLibrary);
         }
@@ -82,7 +84,7 @@ namespace Fight
 
         private Hero CreateHero(FightTestStaticData data)
         {
-            return _heroFactory.Create(data.HeroId, data.AdditionalActions);
+            return _heroFactory.Create(data.HeroId, data.AdditionalActions, data.Consumables);
         }
 
         private Hero CreateEnemy(FightTestStaticData data)
@@ -102,7 +104,12 @@ namespace Fight
                 actionIterator.GetIndexForTurn(turn, out int firstIndex, out int secondIndex);
 
                 _actionResultLogger.SaveState(heroes);
-                ActionResult actionResult = _fightCalculator.CalcAction(hero, firstIndex, enemy);
+                if (!_fightCalculator.TryCalcResult(hero, firstIndex, enemy, out var actionResult))
+                {   
+                    actionIterator.FightEndOnTurn(turn);
+                    return;
+                }
+
                 ApplyResult(actionResult, heroes);
                 _actionResultLogger.ApplyState(heroes);
                 turnString = (turn + 1).ToString();
@@ -111,7 +118,12 @@ namespace Fight
                 if (enemy.IsAlive)
                 {
                     _actionResultLogger.SaveState(heroes);
-                    actionResult = _fightCalculator.CalcAction(enemy, secondIndex, hero);
+                    if (!_fightCalculator.TryCalcResult(enemy, secondIndex, hero, out actionResult))
+                    {
+                        actionIterator.FightEndOnTurn(turn);
+                        return;
+                    }
+
                     ApplyResult(actionResult, heroes);
                     _actionResultLogger.ApplyState(heroes);
                     log += LogTurn(turnString, enemy, hero, actionResult, _actionResultLogger);

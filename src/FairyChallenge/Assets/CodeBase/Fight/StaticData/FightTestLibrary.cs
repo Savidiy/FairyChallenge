@@ -34,8 +34,9 @@ namespace Fight
                 string heroId = test.HeroId;
                 string enemyId = test.EnemyId;
                 List<AdditionalActionData> actions = test.AdditionalActions;
+                List<SelectedConsumablesData> consumables = test.Consumables;
                 test.TestId =
-                    $"{heroId} {(actions.Count > 0 ? $"({string.Join(",", actions)}) " : "")}vs {enemyId}";
+                    $"{heroId}{(actions.Count > 0 ? $" ({string.Join(",", actions)}) " : " ")}{(consumables.Count > 0 ? $" ({string.Join(",", consumables)}) " : " ")}vs {enemyId}";
 
                 TestIds.Add(test.TestId);
             }
@@ -56,14 +57,18 @@ namespace Fight
     {
         public string TestId = string.Empty;
         public List<AdditionalActionData> AdditionalActions = new();
+        public List<SelectedConsumablesData> Consumables = new();
         [ValueDropdown(nameof(HeroIds))] public string HeroId;
         private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
         [ValueDropdown(nameof(HeroIds))] public string EnemyId;
         [ShowInInspector] public string LastResult;
-        [Button, HorizontalGroup(width:0.2f)] private void ToConsole() => Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
+
+        [Button, HorizontalGroup(width: 0.2f)] private void ToConsole() =>
+            Debug.Log($"Test '{TestId.Color("white")}' results:\n{LastResult}");
+
         [Button, HorizontalGroup] private void Test() => FightTestRunner.StartTest(TestId, false);
         [Button, HorizontalGroup] private void TestWithDetails() => FightTestRunner.StartTest(TestId, true);
-        [Button, HorizontalGroup(width:0.2f)] private void ClearConsole() => SafeEditorUtils.ClearLogConsole();
+        [Button, HorizontalGroup(width: 0.2f)] private void ClearConsole() => SafeEditorUtils.ClearLogConsole();
 
         public override string ToString() => TestId;
     }
@@ -74,9 +79,15 @@ namespace Fight
         [FormerlySerializedAs("AttackId")] [ValueDropdown(nameof(ActionIds)), HideLabel] public string ActionId;
         private ValueDropdownList<string> ActionIds => OdinActionIdProvider.ActionIds;
 
-        public override string ToString()
-        {
-            return ActionId;
-        }
+        public override string ToString() => ActionId;
+    }
+
+    [Serializable]
+    public class SelectedConsumablesData
+    {
+        [ValueDropdown(nameof(ItemIds)), HideLabel] public string ItemId;
+        private ValueDropdownList<string> ItemIds => OdinItemIdProvider.GetItemIds(ItemType.Consumable);
+        
+        public override string ToString() => ItemId;
     }
 }

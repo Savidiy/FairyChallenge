@@ -14,8 +14,8 @@ namespace Fight
 
         public ActionIterator(Hero hero, Hero enemy)
         {
-            int firstActionCount = hero.Actions.Count;
-            _secondActionCount = enemy.Actions.Count;
+            int firstActionCount = hero.Actions.Count + hero.Inventory.Consumables.Count;
+            _secondActionCount = enemy.Actions.Count + enemy.Inventory.Consumables.Count;
             _oneTurnVariantsCount = firstActionCount * _secondActionCount;
             _currentVariant.Clear();
         }
