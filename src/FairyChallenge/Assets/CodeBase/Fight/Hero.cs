@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Savidiy.Utils;
 
 namespace Fight
 {
@@ -18,10 +19,8 @@ namespace Fight
             Stats = new HeroStats(_heroStaticData);
         }
 
-        public override string ToString()
-        {
-            return $"{_heroStaticData.HeroId}";
-        }
+        public override string ToString() => _heroStaticData.HeroId;
+        public string ForConsole => _heroStaticData.HeroId.Color(_heroStaticData.ConsoleColor);
 
         public string PrintStats()
         {

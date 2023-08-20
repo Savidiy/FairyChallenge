@@ -19,9 +19,11 @@ MonoBehaviour:
     HealthPoints: 14
     Attack: 11
     Defence: 10
+    ConsoleColor: {r: 1, g: 0, b: 0.87771463, a: 1}
   - HeroId: Blob
     Attacks:
     - AttackId: BlobHit
     HealthPoints: 17
     Attack: 7
     Defence: 7
+    ConsoleColor: {r: 0.22107512, g: 0.6792453, b: 0.38798904, a: 1}

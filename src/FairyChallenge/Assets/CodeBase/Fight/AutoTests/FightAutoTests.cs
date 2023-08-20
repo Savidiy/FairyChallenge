@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static Savidiy.Utils.ConsoleColor;
 using static Savidiy.Utils.SafeEditorUtils;
 
 namespace Fight
@@ -61,7 +63,7 @@ namespace Fight
         {
             Hero hero = _heroFactory.Create(ourHeroData);
             Hero enemy = _heroFactory.Create(enemyTestData);
-            Debug.Log($"Start test '{testId}' {hero}: {hero.PrintStats()} vs {enemy}: {enemy.PrintStats()}");
+            Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
 
             var attackIterator = new AttackIterator(hero, enemy);
             do
@@ -71,7 +73,7 @@ namespace Fight
                 int currentVariantNumber = attackIterator.CurrentVariantNumber();
                 int estimateVariantsCount = attackIterator.EstimateVariantsCount();
                 float progress = currentVariantNumber / (float) estimateVariantsCount;
-                var info = $"{hero} vs {enemy}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
+                var info = $"{hero.ForConsole} vs {enemy.ForConsole}\nVariant {currentVariantNumber}/{estimateVariantsCount}";
                 DisplayProgressBar("Fight", info, progress);
 
                 CalcFight(hero, enemy, attackIterator, needDetails);
@@ -111,7 +113,7 @@ namespace Fight
             string printCurrentVariant = attackIterator.PrintCurrentVariant();
             if (needDetails)
                 Debug.Log(
-                    $"Result {hero} {PrintAlive(hero.IsAlive)} vs {enemy} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
+                    $"Result {hero.ForConsole} {PrintAlive(hero.IsAlive)} vs {enemy.ForConsole} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
 
             int lastTurn = turn - 1;
             _testStatistics.Add(hero, enemy, lastTurn, printCurrentVariant);
@@ -122,12 +124,12 @@ namespace Fight
             AttackResultLogger attackResultLogger)
         {
             return
-                $"{logTurn}: <color=white>{firstHero}</color> with <color=white>{attackResult.AttackId}</color> attacks {secondHero} : {attackResultLogger.PrintLog()}\n";
+                $"{logTurn}: {firstHero.ForConsole} use {attackResult.AttackId.Color(WHITE)}: {attackResultLogger.PrintLog()}\n";
         }
 
         public static string PrintAlive(bool isAlive)
         {
-            return isAlive ? "<color=#00FF00>is alive</color>" : "<color=red>is dead</color>";
+            return isAlive ? "is alive".Color(GREEN) : "is dead".Color(RED);
         }
 
         private static void ApplyResult(AttackResult attackResult, List<Hero> heroes)

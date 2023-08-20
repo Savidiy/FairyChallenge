@@ -40,13 +40,16 @@ namespace Fight
                 };
                 attackResult.AddChange(statChangeData);
                 if (effectType == EffectType.Damage)
-                    damage = -statChangeData.Delta;
+                {
+                    var effectiveDamage = Mathf.Min(defender.Stats.Get(StatType.HealthPoints), -statChangeData.Delta);
+                    damage += effectiveDamage;
+                }
             }
 
             return attackResult;
         }
 
-        private StatChangeData CalcHeal(Hero attacker, int power)
+        private static StatChangeData CalcHeal(Hero attacker, int power)
         {
             int baseValue = attacker.Stats.Get(StatType.MaxHealthPoints);
             return CalcHeal(attacker, power, baseValue);
@@ -58,7 +61,7 @@ namespace Fight
             return new StatChangeData(attacker, StatType.HealthPoints, value);
         }
 
-        private StatChangeData CalcBuff(StatType statType, Hero target, int percent)
+        private static StatChangeData CalcBuff(StatType statType, Hero target, int percent)
         {
             int value = Ceil(target.Stats.Get(statType) * percent / 100f);
             return new StatChangeData(target, statType, value);

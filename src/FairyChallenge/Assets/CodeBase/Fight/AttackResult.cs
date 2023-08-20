@@ -34,7 +34,7 @@ namespace Fight
             string result = string.Empty;
             foreach ((Hero hero, List<StatChangeData> list) in _changes)
             {
-                result += $"{hero} {string.Join(", ", list)}";
+                result += $"{hero.ForConsole} {string.Join(", ", list)}";
             }
 
             return result;
