@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Savidiy.Utils;
@@ -18,6 +19,24 @@ namespace Fight
             _secondActionCount = enemy.Actions.Count + enemy.Inventory.Consumables.Count;
             _oneTurnVariantsCount = firstActionCount * _secondActionCount;
             _currentVariant.Clear();
+        }
+
+        public ActionIterator(Hero hero, Hero enemy, string actionVariant) : this(hero, enemy)
+        {
+            string[] split = actionVariant.Split(',');
+            foreach (string template in split)
+            {
+                if (template.Length != 2)
+                {
+                    Debug.LogError($"Wrong action variant template: {actionVariant}");
+                    return;
+                }
+                
+                int firstIndex = int.Parse(template[0].ToString());
+                int secondIndex = int.Parse(template[1].ToString());
+                int action = firstIndex * _secondActionCount + secondIndex;
+                _currentVariant.Add(action);
+            }
         }
 
         public int CurrentVariantNumber()

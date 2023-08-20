@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Savidiy.Utils;
 
 namespace Fight
 {
@@ -39,9 +40,9 @@ namespace Fight
 
         public override string ToString()
         {
-            return $"HP {Get(StatType.HealthPoints)}/{Get(StatType.MaxHealthPoints)} " +
-                   $"Att {Get(StatType.Attack)}, " +
-                   $"Def {Get(StatType.Defence)}";
+            return $"HP {Get(StatType.HealthPoints).Color(ConsoleColor.GREEN)}/{Get(StatType.MaxHealthPoints)} " +
+                   $"Att {Get(StatType.Attack).Color(ConsoleColor.RED)}, " +
+                   $"Def {Get(StatType.Defence).Color(ConsoleColor.BLUE)}";
         }
 
         public void FillAllStatsValues(Dictionary<StatType, int> dictionary)

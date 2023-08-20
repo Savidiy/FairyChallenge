@@ -39,6 +39,7 @@ MonoBehaviour:
       dead</color>, LastTurn: 4, HP=<color=#FF0000>2</color>/14, Att=11, Def=10,
       23% 6/26 ex. 00,00,10,10,00 00,10,00,10,00 00,10,10,00,00 10,00,00,10,00 10,00,10,00,00
       10,10,00,00,00'
+    Variant: 
   - TestId: Fairy (Vampire5-40)  vs Blob
     AdditionalActions:
     - ActionId: Vampire5-40
@@ -62,6 +63,7 @@ MonoBehaviour:
       <color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>,
       <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
       Att=11, Def=10, 25% 2/8 ex. 00,00,00 10,00,00'
+    Variant: 
   - TestId: Fairy (Vampire6-40)  vs Blob
     AdditionalActions:
     - ActionId: Vampire6-40
@@ -88,6 +90,7 @@ MonoBehaviour:
       dead</color>, LastTurn: 4, HP=<color=#FF0000>2</color>/14, Att=11, Def=10,
       23% 6/26 ex. 00,00,10,10,00 00,10,00,10,00 00,10,10,00,00 10,00,00,10,00 10,00,10,00,00
       10,10,00,00,00'
+    Variant: 
   - TestId: Fairy (Vampire7-40)  vs Blob
     AdditionalActions:
     - ActionId: Vampire7-40
@@ -110,6 +113,7 @@ MonoBehaviour:
       <color=#FF00E0>Fairy</color> <color=#00FF00>is
       alive</color>, <color=#38AD63>Blob</color> <color=#FF0000>is dead</color>,
       LastTurn: 2, HP=<color=#FF0000>8</color>/14, Att=11, Def=10, 20% 1/5 ex. 00,00,00'
+    Variant: 
   - TestId: Fairy  vs Blob
     AdditionalActions: []
     Consumables: []
@@ -118,6 +122,7 @@ MonoBehaviour:
     LastResult: '<color=#FF00E0>Fairy</color> <color=#00FF00>is alive</color>, <color=#38AD63>Blob</color>
       <color=#FF0000>is dead</color>, LastTurn: 2, HP=<color=#FF0000>8</color>/14,
       Att=11, Def=10, 100% 1/1 ex. 00,00,00'
+    Variant: 
   - TestId: Fairy  vs BlobBoss
     AdditionalActions: []
     Consumables: []
@@ -126,6 +131,7 @@ MonoBehaviour:
     LastResult: '<color=#FF00E0>Fairy</color> <color=#FF0000>is dead</color>, <color=#2AFFB6>BlobBoss</color>
       <color=#00FF00>is alive</color>, LastTurn: 4, HP=<color=#FF0000>-1</color>/14,
       Att=11, Def=10, 100% 1/1 ex. 00,00,00,00,00'
+    Variant: 
   - TestId: Fairy  (Small Health Potion) vs BlobBoss
     AdditionalActions: []
     Consumables:
@@ -145,6 +151,7 @@ MonoBehaviour:
       alive</color>, <color=#2AFFB6>BlobBoss</color> <color=#FF0000>is dead</color>,
       LastTurn: 6, HP=<color=#FF0000>2</color>/14, Att=11, Def=10, 50% 3/6 ex. 00,00,00,00,10,00,00
       00,00,00,10,00,00,00 00,00,10,00,00,00,00'
+    Variant: 00,10,00,00,00,00  00,00,00,10,00,00,00
   - TestId: Fairy  (Small Health Potion,Small Health Potion) vs BlobBoss
     AdditionalActions: []
     Consumables:
@@ -187,3 +194,4 @@ MonoBehaviour:
       17% 8/45 ex. 00,00,10,10,00,00,00,00 00,00,20,10,00,00,00,00 00,10,00,00,00,10,00,00
       00,10,00,00,10,00,00,00 00,10,00,10,00,00,00,00 00,20,00,00,00,10,00,00 00,20,00,00,10,00,00,00
       00,20,00,10,00,00,00,00'
+    Variant: 

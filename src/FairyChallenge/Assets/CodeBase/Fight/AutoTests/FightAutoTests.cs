@@ -59,6 +59,19 @@ namespace Fight
         [Button, HorizontalGroup(BUTTONS)]
         public void ClearConsole() => ClearLogConsole();
 
+        public void StartTest(string testId, string actionVariant)
+        {
+            Initialize();
+
+            FightTestStaticData data = FightTestLibrary.GetFightTest(testId);
+            Hero hero = CreateHero(data);
+            Hero enemy = CreateEnemy(data);
+            Debug.Log($"Start test '{testId}' {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole}: {enemy.PrintStats()}");
+
+            var actionIterator = new ActionIterator(hero, enemy, actionVariant);
+            CalcFight(hero, enemy, actionIterator, needDetails: true);
+        }
+
         private void TestFight(string testId, bool needDetails)
         {
             FightTestStaticData data = FightTestLibrary.GetFightTest(testId);
@@ -98,6 +111,7 @@ namespace Fight
             var heroes = new List<Hero> {hero, enemy};
             var turn = 0;
             var turnString = string.Empty;
+            var startStatLog = $"Start stat {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole} {enemy.PrintStats()}";
 
             while (hero.IsAlive && enemy.IsAlive)
             {
@@ -134,8 +148,12 @@ namespace Fight
 
             string printCurrentVariant = actionIterator.PrintCurrentVariant();
             if (needDetails)
+            {
+                var endStatLog = $"End stat {hero.ForConsole} {hero.PrintStats()} VS {enemy.ForConsole} {enemy.PrintStats()}";
                 Debug.Log(
-                    $"Result {hero.ForConsole} {PrintAlive(hero.IsAlive)} vs {enemy.ForConsole} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n{log}");
+                    $"Result {hero.ForConsole} {PrintAlive(hero.IsAlive)} vs {enemy.ForConsole} {PrintAlive(enemy.IsAlive)} at turn {turnString}: {printCurrentVariant}\n" +
+                    $"{log}\n{startStatLog}\n{endStatLog}");
+            }
 
             int lastTurn = turn - 1;
             _testStatistics.Add(hero, enemy, lastTurn, printCurrentVariant);

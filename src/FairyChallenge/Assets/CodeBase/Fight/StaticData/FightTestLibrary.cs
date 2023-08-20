@@ -70,6 +70,9 @@ namespace Fight
         [Button, HorizontalGroup] private void TestWithDetails() => FightTestRunner.StartTest(TestId, true);
         [Button, HorizontalGroup(width: 0.2f)] private void ClearConsole() => SafeEditorUtils.ClearLogConsole();
 
+        [InlineButton(nameof(TestVariant))]public string Variant;
+        private void TestVariant() => FightTestRunner.StartTest(TestId, Variant);
+
         public override string ToString() => TestId;
     }
 
