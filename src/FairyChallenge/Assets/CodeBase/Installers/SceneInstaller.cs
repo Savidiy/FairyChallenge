@@ -20,8 +20,17 @@ namespace Fairy
             Container.BindInterfacesTo<NewGameApplicationState>().AsSingle();
             Container.BindInterfacesTo<StoryApplicationState>().AsSingle();
             Container.BindInterfacesTo<FightApplicationState>().AsSingle();
+            
+            Container.Bind<FightStateMachine>().AsSingle();
+            Container.BindInterfacesTo<ActionFightState>().AsSingle();
+            Container.BindInterfacesTo<IntroFightState>().AsSingle();
+            Container.BindInterfacesTo<LoadingFightState>().AsSingle();
+            Container.BindInterfacesTo<SelectActionFightState>().AsSingle();
+            Container.BindInterfacesTo<LoseFightState>().AsSingle();
+            Container.BindInterfacesTo<WinFightState>().AsSingle();
 
             Container.Bind<StoryTeller>().AsSingle();
+            Container.Bind<FightLoop>().AsSingle();
 
             Container.Bind<StepFactory>().AsSingle();
             Container.BindInterfacesTo<BackgroundStepFactory>().AsSingle();

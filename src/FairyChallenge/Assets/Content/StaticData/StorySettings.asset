@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: StorySettings
   m_EditorClassIdentifier: 
   FirstNodeId: Intro1
+  StartHeroId: Fairy

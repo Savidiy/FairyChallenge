@@ -49,6 +49,7 @@ namespace Fairy
         [ProgressBar(1, nameof(MAX_ATTACK), r: 1, g: 0, b: 0)] public int Attack;
         [ProgressBar(1, nameof(MAX_DEFENCE), r: 0, g: 0, b: 1)] public int Defence;
         public Color ConsoleColor = new Color(1, 1, 1, 1);
+        public Sprite FightSprite;
 
         public override string ToString()
         {

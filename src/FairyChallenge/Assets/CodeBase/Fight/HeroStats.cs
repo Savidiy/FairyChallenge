@@ -50,5 +50,11 @@ namespace Fairy
             foreach ((StatType key, StatValue value) in _values)
                 dictionary.Add(key, value.Value);
         }
+
+        public void SetAll(Dictionary<StatType,int> stats)
+        {
+            foreach ((StatType key, int value) in stats)
+                _values[key].Set(value);
+        }
     }
 }

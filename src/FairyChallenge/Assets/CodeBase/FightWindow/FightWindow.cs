@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +8,16 @@ namespace Fairy
 {
     public class FightWindow : MonoBehaviour
     {
-        public Button WinButton;
-        public Button LoseButton;
         private UniTaskCompletionSource<bool> _completionSource;
+        public Image HeroImage;
+        public Image EnemyImage;
+        public HeroActionButtons ActionButtons;
+        public event Action<int> ActionSelected;
+        public event Action RepeatClicked;
+        public event Action RestartClicked;
+        [SerializeField] private Button RepeatButton;
+        [SerializeField] private Button RestartButton;
+        [SerializeField] private GameObject LosePanel;
 
         private void Awake()
         {
@@ -25,8 +34,12 @@ namespace Fairy
 
         private void SubscribeButtons()
         {
-            WinButton.onClick.AddListener(OnWinClick);
-            LoseButton.onClick.AddListener(OnLoseClick);
+            ActionButtons.NodeClicked += OnActionClicked;
+        }
+
+        private void OnActionClicked(int index)
+        {
+            ActionSelected?.Invoke(index);
         }
 
         public UniTask HideAsync()
@@ -40,22 +53,86 @@ namespace Fairy
             gameObject.SetActive(false);
         }
 
-        private void OnWinClick()
-        {
-            UnsubscribeButtons();
-            _completionSource.TrySetResult(true);
-        }
-
         private void UnsubscribeButtons()
         {
-            WinButton.onClick.RemoveListener(OnWinClick);
-            LoseButton.onClick.RemoveListener(OnLoseClick);
+            ActionButtons.NodeClicked -= OnActionClicked;
         }
 
-        private void OnLoseClick()
+        public void Initialize(Hero hero, Hero enemy)
         {
-            UnsubscribeButtons();
-            _completionSource.TrySetResult(false);
+            HeroImage.sprite = hero.StaticData.FightSprite;
+            EnemyImage.sprite = enemy.StaticData.FightSprite;
         }
+
+        public void ShowActions(Hero hero)
+        {
+            ActionButtons.HideButtons();
+            int actionsCount = hero.HeroActions.Actions.Count;
+            for (var index = 0; index < actionsCount; index++)
+            {
+                ActionData action = hero.HeroActions.Actions[index];
+                ActionButtons.AddButton(action.UseText, index);
+            }
+
+            var showedItemId = new List<string>();
+            IReadOnlyList<Item> consumables = hero.Inventory.Consumables;
+            for (var index = 0; index < consumables.Count; index++)
+            {
+                Item item = consumables[index];
+                string itemId = item.ItemStaticData.ItemId;
+                if (showedItemId.Contains(itemId))
+                    continue;
+
+                showedItemId.Add(itemId);
+                int count = CountSameItemsCount(index, consumables, itemId);
+
+                string buttonText = item.ItemStaticData.UseText;
+                if (count > 1)
+                    buttonText += $" ({count})";
+                ActionButtons.AddButton(buttonText, index + actionsCount);
+            }
+        }
+
+        private static int CountSameItemsCount(int index, IReadOnlyList<Item> consumables, string itemId)
+        {
+            int count = 1;
+            for (var j = index + 1; j < consumables.Count; j++)
+            {
+                Item item2 = consumables[j];
+                if (item2.ItemStaticData.ItemId == itemId)
+                    count++;
+            }
+
+            return count;
+        }
+
+        public void HideActions()
+        {
+            ActionButtons.HideButtons();
+            UnsubscribeButtons();
+        }
+
+        public void ShowActionResult(ActionResult actionResult)
+        {
+            
+        }
+
+        public void ShowLose()
+        {
+            LosePanel.SetActive(true);
+            RepeatButton.onClick.AddListener(OnRepeatClicked);
+            RestartButton.onClick.AddListener(OnRestartClicked);
+        }
+
+        public void HideLose()
+        {
+            LosePanel.SetActive(false);
+            RepeatButton.onClick.RemoveListener(OnRepeatClicked);
+            RestartButton.onClick.RemoveListener(OnRestartClicked);
+        }
+
+        private void OnRestartClicked() => RestartClicked?.Invoke();
+
+        private void OnRepeatClicked() => RepeatClicked?.Invoke();
     }
 }

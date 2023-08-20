@@ -20,6 +20,7 @@ MonoBehaviour:
     Attack: 11
     Defence: 10
     ConsoleColor: {r: 1, g: 0, b: 0.87771463, a: 1}
+    FightSprite: {fileID: 21300000, guid: 7a3c822cd2a20a84c97833ccc3733390, type: 3}
   - HeroId: Blob
     Actions:
     - ActionId: BlobHit
@@ -27,6 +28,7 @@ MonoBehaviour:
     Attack: 7
     Defence: 7
     ConsoleColor: {r: 0.22107512, g: 0.6792453, b: 0.38798904, a: 1}
+    FightSprite: {fileID: 21300000, guid: 98d4d486fb6612446b8c5d09165cdfce, type: 3}
   - HeroId: BlobBoss
     Actions:
     - ActionId: BlobHit
@@ -34,3 +36,4 @@ MonoBehaviour:
     Attack: 8
     Defence: 13
     ConsoleColor: {r: 0.16509432, g: 1, b: 0.7124639, a: 1}
+    FightSprite: {fileID: 21300000, guid: 98d4d486fb6612446b8c5d09165cdfce, type: 3}

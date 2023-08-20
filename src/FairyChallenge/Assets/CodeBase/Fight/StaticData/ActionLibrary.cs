@@ -37,6 +37,7 @@ namespace Fairy
     public class ActionStaticData
     {
         [FormerlySerializedAs("AttackId")] public string ActionId = string.Empty;
+        public string UseText;
         public List<EffectStaticData> Effects = new();
     }
     

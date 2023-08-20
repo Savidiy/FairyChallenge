@@ -167,7 +167,7 @@ MonoBehaviour:
       PersonId: 
       Text: 
       ButtonText: 
-      EncounterId: 
+      EncounterId: Blob
       WinNodeId: Intro2Win
       LoseNodeId: Intro2Lose
   - NodeId: Intro2Win
@@ -230,7 +230,7 @@ MonoBehaviour:
       PersonId: 
       Text: 
       ButtonText: 
-      EncounterId: 
+      EncounterId: Blob
       WinNodeId: Intro2Win
       LoseNodeId: Intro2Lose
   - NodeId: Intro3
@@ -263,7 +263,7 @@ MonoBehaviour:
       PersonId: 
       Text: 
       ButtonText: 
-      EncounterId: 
+      EncounterId: Blob
       WinNodeId: Intro4
       LoseNodeId: Intro3
   - NodeId: Intro4

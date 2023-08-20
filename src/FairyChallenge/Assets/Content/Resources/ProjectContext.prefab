@@ -82,3 +82,5 @@ MonoBehaviour:
   NodesLibrary: {fileID: 11400000, guid: c6ae223c4fdf9a24ba58e4f5db9baa3f, type: 2}
   StorySettings: {fileID: 11400000, guid: b271ebd605d48434c99e686629821ea6, type: 2}
   PersonLibrary: {fileID: 11400000, guid: 0193c6d271a1ad34dbed00dc813ff4f0, type: 2}
+  ActionLibrary: {fileID: 11400000, guid: d61f3de341c9d474089c79f9c205364c, type: 2}
+  EncounterLibrary: {fileID: 11400000, guid: 6df304474b465ca4385bc7019bcea603, type: 2}

@@ -9,10 +9,13 @@ namespace Fairy
         private ApplicationStateMachine _mainStateMachine;
 
         [Inject]
-        public void Construct(ApplicationStateMachine applicationStateMachine, List<IApplicationState> applicationStates)
+        public void Construct(ApplicationStateMachine applicationStateMachine, List<IApplicationState> applicationStates,
+            FightStateMachine fightStateMachine, List<IFightState> fightStates)
         {
             _mainStateMachine = applicationStateMachine;
             _mainStateMachine.AddStates(applicationStates);
+
+            fightStateMachine.AddStates(fightStates);
         }
 
         public void Start()

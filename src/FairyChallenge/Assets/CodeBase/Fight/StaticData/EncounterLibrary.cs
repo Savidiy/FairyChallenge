@@ -38,6 +38,8 @@ namespace Fairy
     public class EncounterStaticData
     {
         public string EncounterId = string.Empty;
+        [ValueDropdown(nameof(HeroIds))] public string EnemyId;
+        private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
 
         public override string ToString()
         {

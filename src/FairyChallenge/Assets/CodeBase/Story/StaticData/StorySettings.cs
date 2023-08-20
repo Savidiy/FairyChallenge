@@ -9,5 +9,8 @@ namespace Fairy
     {
         [ValueDropdown(nameof(NodeIds))] public string FirstNodeId;
         private ValueDropdownList<string> NodeIds => OdinNodeIdProvider.NodeIds;
+        
+        [ValueDropdown(nameof(HeroIds))] public string StartHeroId;
+        private ValueDropdownList<string> HeroIds => OdinHeroIdProvider.HeroIds;
     }
 }

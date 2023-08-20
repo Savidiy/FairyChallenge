@@ -4,8 +4,8 @@ namespace Fairy
 {
     public class Hero
     {
-        private readonly HeroStaticData _heroStaticData;
-        
+        public HeroStaticData StaticData { get; }
+
         public bool IsAlive => Stats.IsAlive;
         public readonly HeroStats Stats;
         public readonly Inventory Inventory;
@@ -13,14 +13,14 @@ namespace Fairy
         
         public Hero(HeroStaticData heroStaticData, HeroActions heroActions, HeroStats heroStats, Inventory inventory)
         {
-            _heroStaticData = heroStaticData;
+            StaticData = heroStaticData;
             HeroActions = heroActions;
             Stats = heroStats;
             Inventory = inventory;
         }
 
-        public override string ToString() => _heroStaticData.HeroId;
-        public string ForConsole => _heroStaticData.HeroId.Color(_heroStaticData.ConsoleColor);
+        public override string ToString() => StaticData.HeroId;
+        public string ForConsole => StaticData.HeroId.Color(StaticData.ConsoleColor);
 
         public string PrintStats()
         {

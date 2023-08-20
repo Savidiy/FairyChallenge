@@ -57,6 +57,7 @@ namespace Fairy
     public class ItemStaticData
     {
         public string ItemId = string.Empty;
+        public string UseText;
         [EnumToggleButtons, LabelWidth(80)] public ItemType ItemType;
         [ListDrawerSettings(AlwaysAddDefaultValue = true)] public List<ItemEffect> Effects = new();
     }
